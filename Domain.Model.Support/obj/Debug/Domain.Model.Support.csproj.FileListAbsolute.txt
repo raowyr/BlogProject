@@ -1,0 +1,5 @@
+C:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\Domain.Model.Support\bin\Debug\Domain.Model.Support.dll
+C:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\Domain.Model.Support\bin\Debug\Domain.Model.Support.pdb
+C:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\Domain.Model.Support\obj\Debug\Domain.Model.Support.dll
+C:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\Domain.Model.Support\obj\Debug\Domain.Model.Support.pdb
+C:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\Domain.Model.Support\obj\Debug\Domain.Model.Support.csprojResolveAssemblyReference.cache
