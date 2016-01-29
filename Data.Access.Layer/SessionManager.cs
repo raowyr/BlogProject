@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using FluentNHibernate.Cfg;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
@@ -61,7 +63,10 @@ namespace Data.Access.Layer
                 BuildConfiguration();
             }
             //get the session factory
-            _sessionFactory = Configuration.BuildSessionFactory();
+            //_sessionFactory = Configuration.BuildSessionFactory();
+            _sessionFactory = Fluently.Configure(Configuration)
+                .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
+                .BuildSessionFactory();
         }
 
         private void BuildConfiguration()

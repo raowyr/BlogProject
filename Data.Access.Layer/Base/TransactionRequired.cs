@@ -15,7 +15,7 @@ namespace Data.Access.Layer.Base
     /// <remarks>
     /// Equivalent to <see cref="System.Transactions.TransactionScope"/> with default <see cref="System.Transactions.TransactionScopeOption"/> value <c>Required</c> (enlist in enclosing transaction or create a new one if it doesn't exist).
     /// </remarks>
-    class TransactionRequired : IDisposable, ITransactionRequired
+    public class TransactionRequired : IDisposable, ITransactionRequired
     {
         //private const string TRANSACTIONKEY = "NHIBERNATE.TRANSACTION";
         private ITransaction _transaction;

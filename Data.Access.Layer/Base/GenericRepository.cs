@@ -19,7 +19,7 @@ namespace Data.Access.Layer.Base
     /// Se NON vi è una Transazione aperta, allora viene aperta e al termine viene committata automaticamente.
     /// Se CI STA una transazione aperta, niente viene committato, il commit deve essere effettuato a livello più alto.
     /// </remarks>
-    class GenericRepository<T> : IRepository<T> where T : new() 
+    public class GenericRepository<T> : IRepository<T> where T : new() 
     {
         readonly ISession _session;
         private ISession Session
