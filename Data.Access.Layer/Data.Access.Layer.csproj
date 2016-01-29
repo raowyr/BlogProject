@@ -30,11 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Iesi.Collections">
-      <HintPath>..\lib\Nhibernate\Iesi.Collections.dll</HintPath>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\lib\Nhibernate\NHibernate.dll</HintPath>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,10 +54,12 @@
     <Compile Include="Base\GenericRepository.cs" />
     <Compile Include="Base\TransactionRequired.cs" />
     <Compile Include="Base\UnitOfWork.cs" />
+    <Compile Include="Mapping\BlogMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Schemas\nhibernate-configuration.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -64,6 +71,10 @@
     <ProjectReference Include="..\Domain.Model.Support\Domain.Model.Support.csproj">
       <Project>{47a7d8fb-0da5-4c9f-8506-906c92060a22}</Project>
       <Name>Domain.Model.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{fb550cab-43da-4d4e-82e4-0256a4fa4831}</Project>
+      <Name>Domain.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

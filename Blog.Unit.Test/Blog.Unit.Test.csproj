@@ -57,6 +57,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Access.Layer\Data.Access.Layer.csproj">
+      <Project>{babfdc92-eec8-424f-b46c-5946de5a08c7}</Project>
+      <Name>Data.Access.Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{fb550cab-43da-4d4e-82e4-0256a4fa4831}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
