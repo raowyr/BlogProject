@@ -26,7 +26,10 @@ namespace Blog.Unit.Test
                 b.Name = "prova";
                 b.Description = "prova";
                 br.Save(b);
-                uow.Rollback();
+
+                uow.Commit();
+
+                Domain.Model.Entities.Blog bb = br.Load(b.Id);
             }
         }
     }

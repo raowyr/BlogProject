@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Blog.cs" />
+    <Compile Include="Entities\Page.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,12 @@ namespace Domain.Model.Entities
     {
         private string _name;
         private string _description;
+        private IList<Page> _pages;
+
+        public Blog()
+        {
+            _pages = new List<Page>();
+        }
 
         public virtual string Name
         {
@@ -22,6 +28,12 @@ namespace Domain.Model.Entities
         {
             get { return _description; }
             set { _description = value; }
+        }
+
+        public IList<Page> Pages
+        {
+            get { return _pages; }
+            set { _pages = value; }
         }
     }
 }
