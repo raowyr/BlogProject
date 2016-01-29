@@ -10,6 +10,12 @@ namespace Blog.Unit.Test
     [TestClass]
     public class UnitTest1
     {
+        [TestInitialize]
+        public void Start()
+        {
+            SessionManager initializeSession = SessionManager.Instance;
+        }
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -20,7 +26,7 @@ namespace Blog.Unit.Test
                 b.Name = "prova";
                 b.Description = "prova";
                 br.Save(b);
-                uow.Commit();
+                uow.Rollback();
             }
         }
     }
