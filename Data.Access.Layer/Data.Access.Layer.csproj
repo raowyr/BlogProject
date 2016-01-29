@@ -69,6 +69,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.Access.Layer.Support\Data.Access.Layer.Support.csproj">
+      <Project>{e881edb6-ea7c-4ce6-80e1-8ff55e520825}</Project>
+      <Name>Data.Access.Layer.Support</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.Model.Support\Domain.Model.Support.csproj">
       <Project>{47a7d8fb-0da5-4c9f-8506-906c92060a22}</Project>
       <Name>Domain.Model.Support</Name>

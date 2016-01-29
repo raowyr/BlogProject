@@ -62,6 +62,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.Access.Layer.Support\Data.Access.Layer.Support.csproj">
+      <Project>{e881edb6-ea7c-4ce6-80e1-8ff55e520825}</Project>
+      <Name>Data.Access.Layer.Support</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.Access.Layer\Data.Access.Layer.csproj">
       <Project>{babfdc92-eec8-424f-b46c-5946de5a08c7}</Project>
       <Name>Data.Access.Layer</Name>

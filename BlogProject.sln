@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Model.Support", "Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Unit.Test", "Blog.Unit.Test\Blog.Unit.Test.csproj", "{39BD2007-67A9-4BFF-AFEB-7DBAC11F66B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Access.Layer.Support", "Data.Access.Layer.Support\Data.Access.Layer.Support.csproj", "{E881EDB6-EA7C-4CE6-80E1-8FF55E520825}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{39BD2007-67A9-4BFF-AFEB-7DBAC11F66B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39BD2007-67A9-4BFF-AFEB-7DBAC11F66B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39BD2007-67A9-4BFF-AFEB-7DBAC11F66B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E881EDB6-EA7C-4CE6-80E1-8FF55E520825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E881EDB6-EA7C-4CE6-80E1-8FF55E520825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E881EDB6-EA7C-4CE6-80E1-8FF55E520825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E881EDB6-EA7C-4CE6-80E1-8FF55E520825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
