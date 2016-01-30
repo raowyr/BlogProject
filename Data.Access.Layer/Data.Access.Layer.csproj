@@ -54,7 +54,13 @@
     <Compile Include="Base\GenericRepository.cs" />
     <Compile Include="Base\TransactionRequired.cs" />
     <Compile Include="Base\UnitOfWork.cs" />
+    <Compile Include="Mapping\AuthorMap.cs" />
     <Compile Include="Mapping\BlogMap.cs" />
+    <Compile Include="Mapping\CategoryMap.cs" />
+    <Compile Include="Mapping\ClassMap.cs" />
+    <Compile Include="Mapping\CommentMap.cs" />
+    <Compile Include="Mapping\PageMap.cs" />
+    <Compile Include="Mapping\TagMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BlogRepository.cs" />
     <Compile Include="SessionManager.cs" />

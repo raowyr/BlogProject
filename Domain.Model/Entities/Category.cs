@@ -7,13 +7,13 @@ using Domain.Model.Support.Entities;
 
 namespace Domain.Model.Entities
 {
-    public class Blog : EntityBase<int, Blog>
+    public class Category : EntityBase<int,Category>
     {
         private string _name;
         private string _description;
         private IList<Page> _pages;
 
-        public Blog()
+        public Category()
         {
             _pages = new List<Page>();
         }
@@ -34,15 +34,6 @@ namespace Domain.Model.Entities
         {
             get { return _pages; }
             set { _pages = value; }
-        }
-
-        public virtual void AddPage(Page prmPage)
-        {
-            if (_pages != null)
-            {
-                prmPage.Blog = this;
-                _pages.Add(prmPage);
-            }
         }
     }
 }

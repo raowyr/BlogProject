@@ -12,6 +12,7 @@ using FluentNHibernate.Cfg;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
+using NHibernate.Tool.hbm2ddl;
 
 namespace Data.Access.Layer
 {
@@ -24,8 +25,8 @@ namespace Data.Access.Layer
         private const string SESSIONKEY = "NHIBERNATE.SESSION";
         [ThreadStatic]
         private static ISession _Session; //this session is not used in web
-        private readonly Configuration _configuration;
-        private readonly ISessionFactory _sessionFactory;
+        private Configuration _configuration;
+        private ISessionFactory _sessionFactory;
 
         #region Constructor
 
@@ -56,17 +57,17 @@ namespace Data.Access.Layer
         /// </summary>
         private SessionManager()
         {
-            _configuration = RestoreConfiguration();
-            if (_configuration == null)
-            {
-                _configuration = new Configuration();
-                BuildConfiguration();
-            }
-            //get the session factory
-            //_sessionFactory = Configuration.BuildSessionFactory();
-            _sessionFactory = Fluently.Configure(Configuration)
-                .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
-                .BuildSessionFactory();
+            //_configuration = RestoreConfiguration();
+            //if (_configuration == null)
+            //{
+            //    _configuration = new Configuration();
+            //    BuildConfiguration();
+            //}
+            ////get the session factory
+            ////_sessionFactory = Configuration.BuildSessionFactory();
+            //_sessionFactory = Fluently.Configure(Configuration)
+            //    .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
+            //    .BuildSessionFactory();
         }
 
         private void BuildConfiguration()
@@ -141,6 +142,26 @@ namespace Data.Access.Layer
         public void Close()
         {
             SessionFactory.Close();
+        }
+
+        public void Configure()
+        {
+            _configuration = RestoreConfiguration();
+            if (_configuration == null)
+            {
+                _configuration = new Configuration();
+                BuildConfiguration();
+            }
+            //get the session factory
+            //_sessionFactory = Configuration.BuildSessionFactory();
+            _sessionFactory = Fluently.Configure(Configuration)
+                .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
+                .BuildSessionFactory();
+        }
+
+        public void BuildSchema()
+        {
+            new SchemaExport(Configuration).Create(true, true);
         }
 
         internal static bool IsWeb { get { return (HttpContext.Current != null); } }

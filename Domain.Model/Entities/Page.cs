@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Model.Support.Entities;
 
 namespace Domain.Model.Entities
 {
-    public class Page
+    public class Page : EntityBase<int,Page>
     {
         private string _title;
         private string _description;
@@ -15,6 +16,9 @@ namespace Domain.Model.Entities
         private Author _author;
         private IList<Tag> _tags;
         private Blog _blog;
+        private Category _category;
+        private IList<Comment> _comments;
+
 
         public Page() 
         {
@@ -48,7 +52,11 @@ namespace Domain.Model.Entities
         public virtual Author Author
         {
             get { return _author; }
-            set { _author = value; }
+            set 
+            {
+
+                _author = value;
+            }
         }
 
         public virtual IList<Tag> Tags
@@ -63,5 +71,33 @@ namespace Domain.Model.Entities
             set { _blog = value; }
         }
 
+        public virtual void AddTag(Tag prmTag)
+        {
+            if (_tags != null)
+            {
+                _tags.Add(prmTag);
+            }
+        }
+
+        public virtual Category Category
+        {
+            get { return _category; }
+            set { _category = value; }
+        }
+
+        public virtual IList<Comment> Comments
+        {
+            get { return _comments; }
+            set { _comments = value; }
+        }
+
+        public virtual void AddComment(Comment prmComment)
+        {
+            prmComment.Page = this;
+            if (_comments != null)
+            {
+                _comments.Add(prmComment);
+            }
+        }
     }
 }
