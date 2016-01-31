@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Devevil.Blog.Model.Entities;
+using Devevil.Blog.Model.Domain.Entities;
 using FluentNHibernate.Mapping;
 
 namespace Devevil.Blog.DAL.Mapping
 {
-    public class BlogMap : ClassMap<Devevil.Blog.Model.Entities.Blog>
+    public class BlogMap : ClassMap<Devevil.Blog.Model.Domain.Entities.Blog>
     {
         public BlogMap()
         {
@@ -19,7 +19,7 @@ namespace Devevil.Blog.DAL.Mapping
             Map(x => x.Description).Length(255).Not.Nullable();
             //Relazione uno a molti. Una qualsiasi modifica al blog ha effetto su tutte le pagine ad esso afferenti
             //ad esempio se elimino il blog, elimino anche tutte le pagine
-            HasMany(x => x.Pages).Cascade.All();
+            HasMany(x => x.Pages).Inverse().Cascade.All();
         }
     }
 }

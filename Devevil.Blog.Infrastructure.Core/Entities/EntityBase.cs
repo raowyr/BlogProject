@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Devevil.Blog.Infrastructure.Core.Entities.Exception;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,6 @@ namespace Devevil.Blog.Infrastructure.Core.Entities
                 + (IsTransient() ? "(Transient)" : Id.ToString());
         }
 
-        private int? _transientHashCode;
         /// <summary>
         /// Serves as a hash function for a particular type.
         /// If persistent, uses Id; if transient, uses temporary code.
@@ -78,6 +78,9 @@ namespace Devevil.Blog.Infrastructure.Core.Entities
             return !(Equals(first, second));
         }
 
+        #endregion
+
+        private int? _transientHashCode;
         /// <summary>
         /// Determines whether this instance is transient.
         /// </summary>
@@ -85,6 +88,31 @@ namespace Devevil.Blog.Infrastructure.Core.Entities
         {
             return Id == null || Id.Equals(default(TId));
         }
-        #endregion
+
+        protected abstract bool IsValidState();
+
+        public virtual void ValidateState()
+        {
+            if (!IsValidState())
+            {
+                throw new EntityInvalidStateException();
+            }
+        }
+
+        private IList<string> _wrongStates;
+        public void AddWrongState(String prmState)
+        {
+            if (_wrongStates == null)
+                _wrongStates = new List<string>();
+            _wrongStates.Add(prmState);
+        }
+
+        public IList<string> WrongStates
+        {
+            get
+            {
+                return _wrongStates;
+            }
+        }
     }
 }

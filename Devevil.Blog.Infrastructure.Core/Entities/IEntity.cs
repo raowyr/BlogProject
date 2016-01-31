@@ -14,5 +14,10 @@ namespace Devevil.Blog.Infrastructure.Core.Entities
             set;
         }
 
+        bool IsTransient();
+
+        void ValidateState();
+
+        IList<string> WrongStates { get; }
     }
 }

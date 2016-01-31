@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
-using Devevil.Blog.Model.Entities;
+using Devevil.Blog.Model.Domain.Entities;
 
 namespace Devevil.Blog.DAL.Mapping
 {
@@ -17,7 +17,7 @@ namespace Devevil.Blog.DAL.Mapping
             Map(x => x.Surname).Length(255).Not.Nullable();
             Map(x => x.Email).Length(255).Not.Nullable();
             Map(x => x.BirthDate).Not.Nullable();
-            HasMany(x => x.Pages);
+            HasMany(x => x.Pages).Inverse();
         }
     }
 }

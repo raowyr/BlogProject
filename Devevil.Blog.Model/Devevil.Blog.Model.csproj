@@ -39,12 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Author.cs" />
-    <Compile Include="Entities\Blog.cs" />
-    <Compile Include="Entities\Category.cs" />
-    <Compile Include="Entities\Comment.cs" />
-    <Compile Include="Entities\Page.cs" />
-    <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Business.Helpers\EmailValidator.cs" />
+    <Compile Include="Domain.Entities\Author.cs" />
+    <Compile Include="Domain.Entities\Blog.cs" />
+    <Compile Include="Domain.Entities\Category.cs" />
+    <Compile Include="Domain.Entities\Comment.cs" />
+    <Compile Include="Domain.Entities\Page.cs" />
+    <Compile Include="Domain.Entities\Tag.cs" />
+    <Compile Include="Domain.Exceptions\AuthorMailException.cs" />
+    <Compile Include="Domain.Exceptions\CategoryNullException.cs" />
+    <Compile Include="Domain.Exceptions\PageAuthorNullException.cs" />
+    <Compile Include="Domain.Exceptions\TagNullException.cs" />
+    <Compile Include="Domain.Exceptions\UserBadMailException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

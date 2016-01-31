@@ -161,7 +161,9 @@ namespace Devevil.Blog.DAL
 
         public void BuildSchema()
         {
-            new SchemaExport(Configuration).Create(true, true);
+            SchemaExport se = new SchemaExport(Configuration);
+            se.Drop(true, true);
+            se.Execute(true, true,false);
         }
 
         internal static bool IsWeb { get { return (HttpContext.Current != null); } }

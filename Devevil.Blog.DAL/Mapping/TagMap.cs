@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Devevil.Blog.Model.Entities;
+using Devevil.Blog.Model.Domain.Entities;
 using FluentNHibernate.Mapping;
 
 namespace Devevil.Blog.DAL.Mapping

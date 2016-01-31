@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Devevil.Blog.Model.Entities;
+using Devevil.Blog.Model.Domain.Entities;
 using FluentNHibernate.Mapping;
 
 namespace Devevil.Blog.DAL.Mapping
@@ -20,8 +20,8 @@ namespace Devevil.Blog.DAL.Mapping
             References(x => x.Author).Column("AuthorId").Not.Nullable().Cascade.All();
             References(x => x.Blog).Column("BlogId").Not.Nullable();
             References(x => x.Category).Column("CategoryId").Not.Nullable().Cascade.All();
-            HasManyToMany(x => x.Tags).Cascade.All().Table("PagesTags");
-            HasMany(x => x.Comments).Cascade.All();
+            HasManyToMany(x => x.Tags).Inverse().Cascade.All().Table("PagesTags");
+            HasMany(x => x.Comments).Inverse().Cascade.All();
         }
     }
 }

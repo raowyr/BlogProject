@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Devevil.Blog.DAL;
 using Devevil.Blog.DAL.Base;
 using Devevil.Blog.DAL.Repositories;
-using Devevil.Blog.Model.Entities;
+using Devevil.Blog.Model.Domain.Entities;
 
 namespace Devevil.Blog.Unit.Test
 {
@@ -13,8 +13,11 @@ namespace Devevil.Blog.Unit.Test
         [TestInitialize]
         public void Start()
         {
+            //Inizializza Nhibernate
             SessionManager.Instance.Configure();
             SessionManager.Instance.BuildSchema();
+            //Log su standard output delle query eseguite da Nhibernate
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         [TestCleanup]
@@ -23,13 +26,21 @@ namespace Devevil.Blog.Unit.Test
             SessionManager.Instance.Close();
         }
 
+        /// <summary>
+        /// Creazione di un Blog con una pagina di default associata.
+        /// Una Pagina deve necessariamente avere entità associate, quali:
+        /// Un Autore
+        /// Una Categoria di appartenenza
+        /// (Eventualmente uno o più tag descrittivi per i contenuti della pagina)
+        /// (Eventualmente uno più commenti associati alla pagina)
+        /// </summary>
         [TestMethod]
-        public void TestMethod1()
+        public void CreateSuccessfulBlogTest()
         {
             using (UnitOfWork uow = new UnitOfWork())
             {
                 BlogRepository br = new BlogRepository(uow.Current);
-                Devevil.Blog.Model.Entities.Blog b = new Devevil.Blog.Model.Entities.Blog();
+                Devevil.Blog.Model.Domain.Entities.Blog b = new Devevil.Blog.Model.Domain.Entities.Blog();
                 b.Name = ".Net Help";
                 b.Description = "Un blog dedicato allo sviluppo in ambiente .NET. Tanti articoli, tips and trick.";
 
@@ -37,7 +48,7 @@ namespace Devevil.Blog.Unit.Test
                 a.Name = "Pasquale";
                 a.Surname = "Garzillo";
                 a.BirthDate = Convert.ToDateTime("27/12/1987");
-                a.Email = "@";
+                a.Email = "prova@prova.it";
 
                 Tag t = new Tag();
                 t.Name = "c#";
@@ -45,6 +56,11 @@ namespace Devevil.Blog.Unit.Test
                 Category c = new Category();
                 c.Name = "Generica";
                 c.Description = "Categoria generica";
+
+                Comment co = new Comment();
+                co.UserName = "raowyr";
+                co.UserMail = "prova@prova.it";
+                co.TextComment = "commento di prova";
 
                 Page p = new Page();
                 p.Title = "Prima pagina del blog";
@@ -54,13 +70,36 @@ namespace Devevil.Blog.Unit.Test
                 p.Author = a;
                 p.AddTag(t);
                 p.Category = c;
+                p.AddComment(co);
 
                 b.AddPage(p);
+
                 br.Save(b);
 
                 uow.Commit();
 
-                Devevil.Blog.Model.Entities.Blog bb = br.Load(b.Id);
+                Devevil.Blog.Model.Domain.Entities.Blog bb = br.Load(b.Id);
+
+                Assert.IsNotNull(bb);
+            }
+        }
+
+        /// <summary>
+        /// Creazione di un blog senza pagina di default associata.
+        /// </summary>
+        [TestMethod]
+        public void CreateSuccessfulBlogWithoutPageTest()
+        {
+            using (UnitOfWork uow = new UnitOfWork())
+            {
+                BlogRepository br = new BlogRepository(uow.Current);
+                Devevil.Blog.Model.Domain.Entities.Blog b = new Devevil.Blog.Model.Domain.Entities.Blog();
+                b.Name = ".Net Help";
+                b.Description = "Un blog dedicato allo sviluppo in ambiente .NET. Tanti articoli, tips and trick.";
+
+                br.Save(b);
+
+                uow.Commit();
             }
         }
     }
