@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
-using Devevil.Blog.Model.Business.Helpers;
 using Devevil.Blog.Model.Domain.Exceptions;
+using Devevil.Blog.Support.Validator;
 
 namespace Devevil.Blog.Model.Domain.Entities
 {
@@ -28,7 +28,7 @@ namespace Devevil.Blog.Model.Domain.Entities
             set {
                 if (value != null)
                 {
-                    if (EmailValidator.IsValidMail(value))
+                    if (StringValidator.CheckIsValidMail(value))
                         _userMail = value;
                     else
                         throw new UserBadMailException();

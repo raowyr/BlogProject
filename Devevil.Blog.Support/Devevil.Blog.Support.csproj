@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FB550CAB-43DA-4D4E-82E4-0256A4FA4831}</ProjectGuid>
+    <ProjectGuid>{4673771D-8CF1-4DA1-A3D7-B18B35CBEDCB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Devevil.Blog.Model</RootNamespace>
-    <AssemblyName>Devevil.Blog.Model</AssemblyName>
+    <RootNamespace>Devevil.Blog.Support</RootNamespace>
+    <AssemblyName>Devevil.Blog.Support</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,33 +37,16 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain.Entities\Author.cs" />
-    <Compile Include="Domain.Entities\Blog.cs" />
-    <Compile Include="Domain.Entities\Category.cs" />
-    <Compile Include="Domain.Entities\Comment.cs" />
-    <Compile Include="Domain.Entities\Page.cs" />
-    <Compile Include="Domain.Entities\Tag.cs" />
-    <Compile Include="Domain.Exceptions\AuthorBadMailException.cs" />
-    <Compile Include="Domain.Exceptions\CategoryNullException.cs" />
-    <Compile Include="Domain.Exceptions\PageAuthorNullException.cs" />
-    <Compile Include="Domain.Exceptions\TagNullException.cs" />
-    <Compile Include="Domain.Exceptions\UserBadMailException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator\StringValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Devevil.Blog.Infrastructure.Core\Devevil.Blog.Infrastructure.Core.csproj">
-      <Project>{47a7d8fb-0da5-4c9f-8506-906c92060a22}</Project>
-      <Name>Devevil.Blog.Infrastructure.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Devevil.Blog.Support\Devevil.Blog.Support.csproj">
-      <Project>{4673771d-8cf1-4da1-a3d7-b18b35cbedcb}</Project>
-      <Name>Devevil.Blog.Support</Name>
-    </ProjectReference>
+    <Folder Include="Security\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

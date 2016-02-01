@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
-using Devevil.Blog.Model.Business.Helpers;
 using Devevil.Blog.Model.Domain.Exceptions;
+using Devevil.Blog.Support.Validator;
 
 namespace Devevil.Blog.Model.Domain.Entities
 {
@@ -55,7 +55,7 @@ namespace Devevil.Blog.Model.Domain.Entities
             {
                 if (!String.IsNullOrEmpty(value))
                 {
-                    if (EmailValidator.IsValidMail(value))
+                    if (StringValidator.CheckIsValidMail(value))
                         _email = value;
                     else
                         throw new AuthorBadMailException();
@@ -83,6 +83,12 @@ namespace Devevil.Blog.Model.Domain.Entities
             set { _password = value; }
         }
 
+        public virtual bool CheckLogin(string prmPlainPassword)
+        {
+            bool toReturn = false;
+            return toReturn;
+        }
+
         protected override bool IsValidState()
         {
             bool toReturn = true;
@@ -106,7 +112,7 @@ namespace Devevil.Blog.Model.Domain.Entities
                 toReturn = false;
                 AddWrongState("Email obbligatoria");
             }
-            if (!String.IsNullOrEmpty("Email") && !EmailValidator.IsValidMail(_email))
+            if (!String.IsNullOrEmpty("Email") && !StringValidator.CheckIsValidMail(_email))
             {
                 toReturn = false;
                 AddWrongState("Email non valida");

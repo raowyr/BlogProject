@@ -5,13 +5,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Devevil.Blog.Model.Business.Helpers
+namespace Devevil.Blog.Support.Validator
 {
-    public class EmailValidator
+    public class StringValidator
     {
-        public static bool IsValidMail(string prmEmail)
+        public static bool CheckIsValidMail(string prmEmail)
         {
-            if(!String.IsNullOrEmpty(prmEmail))
+            if (!String.IsNullOrEmpty(prmEmail))
                 return Regex.IsMatch(prmEmail, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
             else
                 return false;
