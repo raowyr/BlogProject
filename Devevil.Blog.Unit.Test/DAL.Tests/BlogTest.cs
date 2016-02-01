@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Devevil.Blog.DAL;
-using Devevil.Blog.DAL.Base;
-using Devevil.Blog.DAL.Repositories;
+using Devevil.Blog.Nhibernate.DAL;
+using Devevil.Blog.Nhibernate.DAL.Base;
+using Devevil.Blog.Nhibernate.DAL.Repositories;
 using Devevil.Blog.Model.Domain.Entities;
 
 namespace Devevil.Blog.Unit.Test
