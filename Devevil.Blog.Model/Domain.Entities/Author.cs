@@ -16,6 +16,8 @@ namespace Devevil.Blog.Model.Domain.Entities
         private DateTime? _birthDate;
         private string _email;
         private IList<Page> _pages;
+        private bool _isAdministrator;
+        private string _password;
 
         public Author()
         {
@@ -67,6 +69,18 @@ namespace Devevil.Blog.Model.Domain.Entities
                 _pages.Add(prmPage);
             else
                 throw new ArgumentNullException();
+        }
+
+        public virtual bool IsAdministrator
+        {
+            get { return _isAdministrator; }
+            set { _isAdministrator = value; }
+        }
+
+        public virtual string Password
+        {
+            get { return _password; }
+            set { _password = value; }
         }
 
         protected override bool IsValidState()

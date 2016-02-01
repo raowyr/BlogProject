@@ -40,13 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business.Helpers\EmailValidator.cs" />
+    <Compile Include="Business.Helpers\SecurityManager.cs" />
     <Compile Include="Domain.Entities\Author.cs" />
     <Compile Include="Domain.Entities\Blog.cs" />
     <Compile Include="Domain.Entities\Category.cs" />
     <Compile Include="Domain.Entities\Comment.cs" />
     <Compile Include="Domain.Entities\Page.cs" />
     <Compile Include="Domain.Entities\Tag.cs" />
-    <Compile Include="Domain.Exceptions\AuthorMailException.cs" />
+    <Compile Include="Domain.Exceptions\AuthorBadMailException.cs" />
     <Compile Include="Domain.Exceptions\CategoryNullException.cs" />
     <Compile Include="Domain.Exceptions\PageAuthorNullException.cs" />
     <Compile Include="Domain.Exceptions\TagNullException.cs" />

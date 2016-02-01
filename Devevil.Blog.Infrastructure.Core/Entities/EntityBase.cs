@@ -91,6 +91,10 @@ namespace Devevil.Blog.Infrastructure.Core.Entities
 
         protected abstract bool IsValidState();
 
+        /// <summary>
+        /// Valida lo stato dell'entità
+        /// </summary>
+        /// <exception cref="EntityInvalidStateException">Se l'entità è in uno stato non valido, lancia l'eccezione</exception>
         public virtual void ValidateState()
         {
             if (!IsValidState())

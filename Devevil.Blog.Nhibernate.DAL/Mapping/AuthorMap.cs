@@ -17,6 +17,8 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Map(x => x.Surname).Length(255).Not.Nullable();
             Map(x => x.Email).Length(255).Not.Nullable();
             Map(x => x.BirthDate).Not.Nullable();
+            Map(x => x.IsAdministrator).Not.Nullable();
+            Map(x => x.Password);
             HasMany(x => x.Pages).Inverse();
         }
     }
