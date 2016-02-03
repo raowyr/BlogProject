@@ -16,5 +16,13 @@ namespace Devevil.Blog.Support.Validator
             else
                 return false;
         }
+
+        public static bool CheckIsValidUsername(string prmUsername)
+        {
+            if (!String.IsNullOrEmpty(prmUsername))
+                return true;
+            else
+                return false;
+        }
     }
 }
