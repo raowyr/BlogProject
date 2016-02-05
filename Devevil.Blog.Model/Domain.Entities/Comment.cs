@@ -29,7 +29,12 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new UserBadMailException();
 
             _textComment = prmText;
-            _page = prmPage;
+
+            if (prmPage != null)
+            {
+                prmPage.AddComment(this);
+                _page = prmPage;
+            }
 
             if (!IsValidState())
                 throw new EntityInvalidStateException();

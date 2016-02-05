@@ -52,8 +52,7 @@ namespace Devevil.Blog.Unit.Test
 
                 Comment co = new Comment("Raowyr", "raowyr@sdn-napoli.it", "Testo commento", p);
 
-                p.AddComment(co);
-                b.AddPageToBlog(p);
+                p.AddTag(t);
 
                 br.Save(b);
 

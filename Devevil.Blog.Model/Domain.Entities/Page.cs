@@ -35,11 +35,18 @@ namespace Devevil.Blog.Model.Domain.Entities
                 prmAuthor.AddAuthoringPage(this);
                 _author = prmAuthor;
             }
-            else
-                throw new PageAuthorNullException();
 
-            _blog = prmBlog;
-            _category = prmCategory;
+            if (prmBlog != null)
+            {
+                prmBlog.AddPageToBlog(this);
+                _blog = prmBlog;
+            }
+
+            if (prmCategory != null)
+            {
+                prmCategory.AddCategoryToPage(this);
+                _category = prmCategory;
+            }
 
             _tags = new List<Tag>();
             _comments = new List<Comment>();
@@ -119,8 +126,9 @@ namespace Devevil.Blog.Model.Domain.Entities
             {
                 if (prmTag != null)
                 {
-                    prmTag.AddTagToPage(this);
                     _tags.Add(prmTag);
+                    prmTag.AddTagToPage(this);
+                    
                 }
                 else
                     throw new TagNullException();

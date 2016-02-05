@@ -43,12 +43,17 @@ namespace Devevil.Blog.Model.Domain.Entities
             //set { _pages = value; }
         }
 
-        public virtual void AddPage(Page prmPage)
+        public virtual void AddCategoryToPage(Page prmPage)
         {
-            if (_pages != null && prmPage != null)
-                _pages.Add(prmPage);
+            if (_pages != null)
+            {
+                if (prmPage != null)
+                    _pages.Add(prmPage);
+                else
+                    throw new ArgumentNullException();
+            }
             else
-                throw new ArgumentNullException();
+                throw new EntityInvalidStateException();
         }
 
         protected override bool IsValidState()
