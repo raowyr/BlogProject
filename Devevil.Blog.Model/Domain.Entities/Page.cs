@@ -115,7 +115,9 @@ namespace Devevil.Blog.Model.Domain.Entities
         public virtual void ReferencesToBlog(Blog prmBlog)
         {
             if (prmBlog != null)
+            {
                 _blog = prmBlog;
+            }
             else
                 throw new ArgumentNullException();
         }

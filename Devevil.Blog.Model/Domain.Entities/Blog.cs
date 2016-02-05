@@ -41,8 +41,12 @@ namespace Devevil.Blog.Model.Domain.Entities
         {
             if (_pages != null)
             {
-                prmPage.ReferencesToBlog(this);
-                _pages.Add(prmPage);
+                if (!_pages.Contains(prmPage))
+                {
+                    _pages.Add(prmPage);
+                    if (prmPage.Blog == null)
+                        prmPage.ReferencesToBlog(this);
+                }
             }
         }
 
