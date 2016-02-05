@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
+using Devevil.Blog.Infrastructure.Core.Entities.Exception;
 
 namespace Devevil.Blog.Model.Domain.Entities
 {
@@ -13,27 +14,33 @@ namespace Devevil.Blog.Model.Domain.Entities
         private string _description;
         private IList<Page> _pages;
 
-        public Category()
+        protected Category() { }
+
+        public Category(string prmName, string prmDescription)
         {
+            _name = prmName;
+            _description = prmDescription;
             _pages = new List<Page>();
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
         }
 
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
+            //set { _name = value; }
         }
 
         public virtual string Description
         {
             get { return _description; }
-            set { _description = value; }
+            //set { _description = value; }
         }
 
         public virtual IList<Page> Pages
         {
             get { return _pages; }
-            set { _pages = value; }
+            //set { _pages = value; }
         }
 
         public virtual void AddPage(Page prmPage)

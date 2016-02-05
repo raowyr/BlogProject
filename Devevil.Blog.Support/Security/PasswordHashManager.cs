@@ -25,16 +25,21 @@ namespace Devevil.Blog.Support.Security
         /// <returns>The hash of the password.</returns>
         public static string CreateHash(string password)
         {
-            // Generate a random salt
-            RNGCryptoServiceProvider csprng = new RNGCryptoServiceProvider();
-            byte[] salt = new byte[SALT_BYTE_SIZE];
-            csprng.GetBytes(salt);
+            if (password != null)
+            {
+                // Generate a random salt
+                RNGCryptoServiceProvider csprng = new RNGCryptoServiceProvider();
+                byte[] salt = new byte[SALT_BYTE_SIZE];
+                csprng.GetBytes(salt);
 
-            // Hash the password and encode the parameters
-            byte[] hash = PBKDF2(password, salt, PBKDF2_ITERATIONS, HASH_BYTE_SIZE);
-            return PBKDF2_ITERATIONS + ":" +
-                Convert.ToBase64String(salt) + ":" +
-                Convert.ToBase64String(hash);
+                // Hash the password and encode the parameters
+                byte[] hash = PBKDF2(password, salt, PBKDF2_ITERATIONS, HASH_BYTE_SIZE);
+                return PBKDF2_ITERATIONS + ":" +
+                    Convert.ToBase64String(salt) + ":" +
+                    Convert.ToBase64String(hash);
+            }
+            else
+                throw new ArgumentNullException();
         }
 
         /// <summary>

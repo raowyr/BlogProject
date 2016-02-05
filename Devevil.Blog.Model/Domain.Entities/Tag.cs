@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
+using Devevil.Blog.Infrastructure.Core.Entities.Exception;
 
 namespace Devevil.Blog.Model.Domain.Entities
 {
@@ -12,29 +13,40 @@ namespace Devevil.Blog.Model.Domain.Entities
         private string _name;
         private IList<Page> _pages;
 
-        public Tag()
+        protected Tag() { }
+
+        public Tag(string prmtagName)
         {
+            _name = prmtagName;
             _pages = new List<Page>();
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
         }
 
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
         }
 
         public virtual IList<Page> Pages
         {
             get { return _pages; }
-            set { _pages = value; }
         }
 
-        public virtual void AddPage(Page prmPage)
+        public virtual void AddTagToPage(Page prmPage)
         {
-            if (_pages != null && prmPage != null)
-                _pages.Add(prmPage);
+            if (_pages != null)
+            {
+                if (prmPage != null)
+                {
+                    prmPage.AddTag(this);
+                    _pages.Add(prmPage);
+                }
+                else
+                    throw new ArgumentNullException();
+            }
             else
-                throw new ArgumentNullException();
+                throw new EntityInvalidStateException();
         }
 
         protected override bool IsValidState()

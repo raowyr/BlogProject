@@ -25,5 +25,22 @@ namespace Devevil.Blog.Unit.Test.Support
 
             Assert.IsFalse(pwd == pwdSame);
         }
+
+        /// <summary>
+        /// Un hash della stessa stringa è diverso dal momento che viene utilizzato un algoritmo SALTED
+        /// </summary>
+        [TestMethod]
+        public void HashWithNullStringTest()
+        {
+            try
+            {
+                string pwd = PasswordHashManager.CreateHash(null);
+                Assert.Fail();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Assert.IsTrue(true);
+            }
+        }
     }
 }

@@ -13,34 +13,35 @@ namespace Devevil.Blog.Model.Domain.Entities
         private string _description;
         private IList<Page> _pages;
 
-        public Blog()
+        protected Blog() { }
+
+        public Blog(string prmName, string prmDescription)
         {
+            _name = prmName;
+            _description = prmDescription;
             _pages = new List<Page>();
         }
 
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
         }
 
         public virtual string Description
         {
             get { return _description; }
-            set { _description = value; }
         }
 
         public virtual IList<Page> Pages
         {
             get { return _pages; }
-            set { _pages = value; }
         }
 
-        public virtual void AddPage(Page prmPage)
+        public virtual void AddPageToBlog(Page prmPage)
         {
             if (_pages != null)
             {
-                prmPage.Blog = this;
+                prmPage.ReferencesToBlog(this);
                 _pages.Add(prmPage);
             }
         }

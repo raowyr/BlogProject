@@ -40,39 +40,20 @@ namespace Devevil.Blog.Unit.Test
             using (UnitOfWork uow = new UnitOfWork())
             {
                 BlogRepository br = new BlogRepository(uow.Current);
-                Devevil.Blog.Model.Domain.Entities.Blog b = new Devevil.Blog.Model.Domain.Entities.Blog();
-                b.Name = ".Net Help";
-                b.Description = "Un blog dedicato allo sviluppo in ambiente .NET. Tanti articoli, tips and trick.";
+                Devevil.Blog.Model.Domain.Entities.Blog b = new Devevil.Blog.Model.Domain.Entities.Blog(".Net Help", "Un blog dedicato allo sviluppo");
 
-                Author a = new Author();
-                a.Name = "Pasquale";
-                a.Surname = "Garzillo";
-                a.BirthDate = Convert.ToDateTime("27/12/1987");
-                a.Email = "prova@prova.it";
+                Category c = new Category("Nessuna categoria", "Categoria generica");
 
-                Tag t = new Tag();
-                t.Name = "c#";
+                Tag t = new Tag("C#");
 
-                Category c = new Category();
-                c.Name = "Generica";
-                c.Description = "Categoria generica";
+                Author a = new Author("Pasquale", "Garzillo", Convert.ToDateTime("27/12/1987"), "prova@prova.it",true,"rofox2011");
 
-                Comment co = new Comment();
-                co.UserName = "raowyr";
-                co.UserMail = "prova@prova.it";
-                co.TextComment = "commento di prova";
+                Page p = new Page("Prima pagina del blog", "Descrizione della prima pagina", DateTime.Today, "testo pagina", a, b, c);
 
-                Page p = new Page();
-                p.Title = "Prima pagina del blog";
-                p.Description = "Descrizione della prima pagina";
-                p.Date = DateTime.Today;
-                p.BodyText = "testo testo teso";
-                p.Author = a;
-                p.AddTag(t);
-                p.Category = c;
+                Comment co = new Comment("Raowyr", "raowyr@sdn-napoli.it", "Testo commento", p);
+
                 p.AddComment(co);
-
-                b.AddPage(p);
+                b.AddPageToBlog(p);
 
                 br.Save(b);
 
@@ -92,14 +73,14 @@ namespace Devevil.Blog.Unit.Test
         {
             using (UnitOfWork uow = new UnitOfWork())
             {
-                BlogRepository br = new BlogRepository(uow.Current);
-                Devevil.Blog.Model.Domain.Entities.Blog b = new Devevil.Blog.Model.Domain.Entities.Blog();
-                b.Name = ".Net Help";
-                b.Description = "Un blog dedicato allo sviluppo in ambiente .NET. Tanti articoli, tips and trick.";
+                //BlogRepository br = new BlogRepository(uow.Current);
+                //Devevil.Blog.Model.Domain.Entities.Blog b = new Devevil.Blog.Model.Domain.Entities.Blog();
+                //b.Name = ".Net Help";
+                //b.Description = "Un blog dedicato allo sviluppo in ambiente .NET. Tanti articoli, tips and trick.";
 
-                br.Save(b);
+                //br.Save(b);
 
-                uow.Commit();
+                //uow.Commit();
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
+using Devevil.Blog.Infrastructure.Core.Entities.Exception;
 using Devevil.Blog.Model.Domain.Exceptions;
 
 namespace Devevil.Blog.Model.Domain.Entities
@@ -20,62 +21,96 @@ namespace Devevil.Blog.Model.Domain.Entities
         private Category _category;
         private IList<Comment> _comments;
 
+        protected Page() { }
 
-        public Page() 
+        public Page(string prmTitle, string prmDescription, DateTime prmDate, string prmBodyText, Author prmAuthor, Blog prmBlog, Category prmCategory)
         {
+            _title = prmTitle;
+            _description = prmDescription;
+            _date = prmDate;
+            _bodyText = prmBodyText;
+
+            if (prmAuthor != null)
+            {
+                prmAuthor.AddAuthoringPage(this);
+                _author = prmAuthor;
+            }
+            else
+                throw new PageAuthorNullException();
+
+            _blog = prmBlog;
+            _category = prmCategory;
+
             _tags = new List<Tag>();
             _comments = new List<Comment>();
+
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
         }
+
+        //public Page() 
+        //{
+        //    _tags = new List<Tag>();
+        //    _comments = new List<Comment>();
+        //}
 
         public virtual string Title
         {
             get { return _title; }
-            set { _title = value; }
+            //set { _title = value; }
         }
 
         public virtual string Description
         {
             get { return _description; }
-            set { _description = value; }
+            //set { _description = value; }
         }
 
         public virtual DateTime? Date
         {
             get { return _date; }
-            set { _date = value; }
+            //set { _date = value; }
         }
 
         public virtual string BodyText
         {
             get { return _bodyText; }
-            set { _bodyText = value; }
+            //set { _bodyText = value; }
         }
 
         public virtual Author Author
         {
             get { return _author; }
-            set 
-            {
-                if (value != null)
-                {
-                    value.AddPage(this);
-                    _author = value;
-                }
-                else
-                    throw new PageAuthorNullException();
-            }
+            //set 
+            //{
+            //    if (value != null)
+            //    {
+            //        value.AddPage(this);
+            //        _author = value;
+            //    }
+            //    else
+            //        throw new PageAuthorNullException();
+            //}
         }
 
         public virtual IList<Tag> Tags
         {
             get { return _tags; }
-            set { _tags = value; }
+            //set { _tags = value; }
         }
 
         public virtual Blog Blog
         {
             get { return _blog; }
-            set { _blog = value; }
+            //set { _blog = value; }
+        }
+
+        public virtual void ReferencesToBlog(Blog prmBlog)
+        {
+            if (prmBlog != null)
+                _blog = prmBlog;
+            else
+                throw new ArgumentNullException();
         }
 
         public virtual void AddTag(Tag prmTag)
@@ -84,7 +119,7 @@ namespace Devevil.Blog.Model.Domain.Entities
             {
                 if (prmTag != null)
                 {
-                    prmTag.AddPage(this);
+                    prmTag.AddTagToPage(this);
                     _tags.Add(prmTag);
                 }
                 else
@@ -95,30 +130,31 @@ namespace Devevil.Blog.Model.Domain.Entities
         public virtual Category Category
         {
             get { return _category; }
-            set {
-                if (value != null)
-                {
-                    value.AddPage(this);
-                    _category = value;
-                }
-                else
-                    throw new CategoryNullException();
-            }
+            //set {
+            //    if (value != null)
+            //    {
+            //        value.AddPage(this);
+            //        _category = value;
+            //    }
+            //    else
+            //        throw new CategoryNullException();
+            //}
         }
 
         public virtual IList<Comment> Comments
         {
             get { return _comments; }
-            set { _comments = value; }
         }
 
         public virtual void AddComment(Comment prmComment)
         {
             if (_comments != null)
             {
-                prmComment.Page = this;
+                prmComment.IsCommentOfPage(this);
                 _comments.Add(prmComment);
             }
+            else
+                throw new EntityInvalidStateException();
         }
 
         protected override bool IsValidState()

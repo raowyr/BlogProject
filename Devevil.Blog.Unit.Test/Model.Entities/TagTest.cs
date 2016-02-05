@@ -11,26 +11,23 @@ namespace Devevil.Blog.Unit.Test.Model.Entities
         [TestMethod]
         public void TagValidStateTest()
         {
-            Tag a = new Tag();
-            a.Name = "c#";
-
-            a.ValidateState();
+            Tag a = new Tag("C#");
             Assert.IsTrue(true);
         }
 
-        [TestMethod]
-        public void TagInvalidStateNameTest()
-        {
-            try
-            {
-                Tag a = new Tag();
+        //[TestMethod]
+        //public void TagInvalidStateNameTest()
+        //{
+        //    try
+        //    {
+        //        Tag a = new Tag();
 
-                a.ValidateState();
-            }
-            catch (EntityInvalidStateException ex)
-            {
-                Assert.IsTrue(true);
-            }
-        }
+        //        a.ValidateState();
+        //    }
+        //    catch (EntityInvalidStateException ex)
+        //    {
+        //        Assert.IsTrue(true);
+        //    }
+        //}
     }
 }

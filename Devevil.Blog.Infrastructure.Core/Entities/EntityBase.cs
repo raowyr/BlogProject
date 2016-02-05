@@ -104,14 +104,14 @@ namespace Devevil.Blog.Infrastructure.Core.Entities
         }
 
         private IList<string> _wrongStates;
-        public void AddWrongState(String prmState)
+        public virtual void AddWrongState(String prmState)
         {
             if (_wrongStates == null)
                 _wrongStates = new List<string>();
             _wrongStates.Add(prmState);
         }
 
-        public IList<string> WrongStates
+        public virtual IList<string> WrongStates
         {
             get
             {

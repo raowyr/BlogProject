@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
 using Devevil.Blog.Infrastructure.Core.RepositoryPattern;
+using Devevil.Blog.Infrastructure.Core.Entities;
 
 namespace Devevil.Blog.Nhibernate.DAL.Base
 {
@@ -19,7 +20,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Base
     /// Se NON vi è una Transazione aperta, allora viene aperta e al termine viene committata automaticamente.
     /// Se CI STA una transazione aperta, niente viene committato, il commit deve essere effettuato a livello più alto.
     /// </remarks>
-    public class GenericRepository<T> : IRepository<T> where T : new() 
+    public class GenericRepository<T> : IRepository<T>
     {
         readonly ISession _session;
         private ISession Session
