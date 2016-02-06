@@ -30,23 +30,23 @@ namespace Devevil.Blog.Model.Domain.Entities
             _date = prmDate;
             _bodyText = prmBodyText;
 
-            if (prmAuthor != null)
-            {
-                prmAuthor.AddAuthoringPage(this);
+            //if (prmAuthor != null)
+            //{
+            //    prmAuthor.AddAuthoringPage(this);
                 _author = prmAuthor;
-            }
+            //}
 
-            if (prmBlog != null)
-            {
-                prmBlog.AddPageToBlog(this);
+            //if (prmBlog != null)
+            //{
+            //    prmBlog.AddPageToBlog(this);
                 _blog = prmBlog;
-            }
+            //}
 
-            if (prmCategory != null)
-            {
-                prmCategory.AddCategoryToPage(this);
+            //if (prmCategory != null)
+            //{
+            //    prmCategory.AddCategoryToPage(this);
                 _category = prmCategory;
-            }
+            //}
 
             _tags = new List<Tag>();
             _comments = new List<Comment>();
@@ -55,71 +55,56 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
-        //public Page() 
-        //{
-        //    _tags = new List<Tag>();
-        //    _comments = new List<Comment>();
-        //}
-
         public virtual string Title
         {
             get { return _title; }
-            //set { _title = value; }
         }
 
         public virtual string Description
         {
             get { return _description; }
-            //set { _description = value; }
         }
 
         public virtual DateTime? Date
         {
             get { return _date; }
-            //set { _date = value; }
         }
 
         public virtual string BodyText
         {
             get { return _bodyText; }
-            //set { _bodyText = value; }
         }
 
         public virtual Author Author
         {
             get { return _author; }
-            //set 
-            //{
-            //    if (value != null)
-            //    {
-            //        value.AddPage(this);
-            //        _author = value;
-            //    }
-            //    else
-            //        throw new PageAuthorNullException();
-            //}
+        }
+
+        public virtual void ReferencesToAuthor(Author prmAuthor)
+        {
+            if (prmAuthor != null)
+            {
+                _author = prmAuthor;
+            }
+            else
+                throw new ArgumentNullException();
         }
 
         public virtual IList<Tag> Tags
         {
             get { return _tags; }
-            //set { _tags = value; }
         }
 
         public virtual Blog Blog
         {
             get { return _blog; }
-            //set { _blog = value; }
         }
 
         public virtual void ReferencesToBlog(Blog prmBlog)
         {
-            if (prmBlog != null)
-            {
+
                 _blog = prmBlog;
-            }
-            else
-                throw new ArgumentNullException();
+
         }
 
         public virtual void AddTag(Tag prmTag)
@@ -128,27 +113,30 @@ namespace Devevil.Blog.Model.Domain.Entities
             {
                 if (prmTag != null)
                 {
-                    _tags.Add(prmTag);
-                    prmTag.AddTagToPage(this);
-                    
+                    if (!_tags.Contains(prmTag))
+                    {
+                        _tags.Add(prmTag);
+                        prmTag.AddTagToPage(this);
+                    }   
                 }
                 else
-                    throw new TagNullException();
+                    throw new ArgumentNullException();
             }
         }
 
         public virtual Category Category
         {
             get { return _category; }
-            //set {
-            //    if (value != null)
-            //    {
-            //        value.AddPage(this);
-            //        _category = value;
-            //    }
-            //    else
-            //        throw new CategoryNullException();
-            //}
+        }
+
+        public virtual void ReferencesToCategory(Category prmCategory)
+        {
+            if (prmCategory != null)
+            {
+                _category = prmCategory;
+            }
+            else
+                throw new ArgumentNullException();
         }
 
         public virtual IList<Comment> Comments
@@ -160,8 +148,16 @@ namespace Devevil.Blog.Model.Domain.Entities
         {
             if (_comments != null)
             {
-                prmComment.IsCommentOfPage(this);
-                _comments.Add(prmComment);
+                if (prmComment != null)
+                {
+                    if (!_comments.Contains(prmComment))
+                    {
+                        _comments.Add(prmComment);
+                        prmComment.IsCommentOfPage(this);
+                    }
+                }
+                else
+                    throw new ArgumentNullException();
             }
             else
                 throw new EntityInvalidStateException();

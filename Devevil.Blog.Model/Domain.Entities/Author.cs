@@ -20,10 +20,22 @@ namespace Devevil.Blog.Model.Domain.Entities
         private IList<Page> _pages;
         private bool _isAdministrator;
         private string _password;
+        private Blog _blog;
 
         protected Author() { }
 
-        public Author(string prmName, string prmSurname, DateTime prmBirthDate, string prmEmail, bool prmIsAdministrator, string prmPassword)
+        /// <summary>
+        /// Crea un oggetto Autore
+        /// </summary>
+        /// <param name="prmName"></param>
+        /// <param name="prmSurname"></param>
+        /// <param name="prmBirthDate"></param>
+        /// <param name="prmEmail"></param>
+        /// <param name="prmIsAdministrator"></param>
+        /// <param name="prmPassword"></param>
+        /// <exception cref="AuthorBadMailException"></exception>
+        /// <exception cref="EntityInvalidStateException"></exception>
+        public Author(string prmName, string prmSurname, DateTime prmBirthDate, string prmEmail, bool prmIsAdministrator, string prmPassword, Blog prmBlog)
         {
             _name = prmName;
             _surname = prmSurname;
@@ -38,6 +50,8 @@ namespace Devevil.Blog.Model.Domain.Entities
 
             if(!String.IsNullOrEmpty(prmPassword))
                 _password = PasswordHashManager.CreateHash(prmPassword);
+
+            _blog = prmBlog;
 
             _pages = new List<Page>();
 
@@ -75,7 +89,13 @@ namespace Devevil.Blog.Model.Domain.Entities
             if (_pages != null)
             {
                 if (prmPage != null)
-                    _pages.Add(prmPage);
+                {
+                    if (!_pages.Contains(prmPage))
+                    {
+                        _pages.Add(prmPage);
+                        prmPage.ReferencesToAuthor(this);
+                    }
+                }
                 else
                     throw new ArgumentNullException();
             }
@@ -103,6 +123,16 @@ namespace Devevil.Blog.Model.Domain.Entities
             return toReturn;
         }
 
+        public virtual Blog Blog
+        {
+            get { return _blog; }
+        }
+
+        public virtual void ReferencesToBlog(Blog prmBlog)
+        {
+            _blog = prmBlog;
+        }
+
         protected override bool IsValidState()
         {
             bool toReturn = true;
@@ -121,12 +151,12 @@ namespace Devevil.Blog.Model.Domain.Entities
                 toReturn = false;
                 AddWrongState("Data di nascita obbligatoria");
             }
-            if (String.IsNullOrEmpty("Email"))
+            if (String.IsNullOrEmpty(_email))
             {
                 toReturn = false;
                 AddWrongState("Email obbligatoria");
             }
-            if (String.IsNullOrEmpty(_email) && !StringValidator.CheckIsValidMail(_email))
+            if (!StringValidator.CheckIsValidMail(_email))
             {
                 toReturn = false;
                 AddWrongState("Email non valida");
@@ -134,9 +164,16 @@ namespace Devevil.Blog.Model.Domain.Entities
             if (String.IsNullOrEmpty(_password))
             {
                 toReturn = false;
-                AddWrongState("Password non valida");
+                AddWrongState("Password obbligatoria");
+            }
+            if (_blog == null)
+            {
+                toReturn = false;
+                AddWrongState("Il blog è obbligatorio");
             }
             return toReturn;
         }
+
+
     }
 }

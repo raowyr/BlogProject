@@ -17,10 +17,10 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Map(x => x.Description).Length(255).Not.Nullable();
             Map(x => x.Date).Not.Nullable();
             Map(x => x.BodyText).Not.Nullable();
-            References(x => x.Author).Column("AuthorId").Not.Nullable().Cascade.All();
-            References(x => x.Blog).Column("BlogId").Not.Nullable();
-            References(x => x.Category).Column("CategoryId").Not.Nullable().Cascade.All();
-            HasManyToMany(x => x.Tags).Inverse().Cascade.All().Table("PagesTags");
+            References(x => x.Author).Column("AuthorId").Cascade.SaveUpdate();
+            References(x => x.Blog).Column("BlogId");
+            References(x => x.Category).Column("CategoryId").Cascade.SaveUpdate();
+            HasManyToMany(x => x.Tags).Table("PagesTags").Cascade.SaveUpdate();
             HasMany(x => x.Comments).Inverse().Cascade.All();
         }
     }

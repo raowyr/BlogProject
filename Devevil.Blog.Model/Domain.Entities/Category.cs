@@ -48,7 +48,13 @@ namespace Devevil.Blog.Model.Domain.Entities
             if (_pages != null)
             {
                 if (prmPage != null)
-                    _pages.Add(prmPage);
+                {
+                    if (!_pages.Contains(prmPage))
+                    {
+                        _pages.Add(prmPage);
+                        prmPage.ReferencesToCategory(this);
+                    }
+                }
                 else
                     throw new ArgumentNullException();
             }

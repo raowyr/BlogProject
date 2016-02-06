@@ -39,10 +39,8 @@ namespace Devevil.Blog.Model.Domain.Entities
             {
                 if (prmPage != null)
                 {
-                    _pages.Add(prmPage);
-                    if (!prmPage.Tags.Contains(this))
-                        prmPage.AddTag(this);
-                    
+                    if(!_pages.Contains(prmPage))
+                        _pages.Add(prmPage);
                 }
                 else
                     throw new ArgumentNullException();

@@ -19,7 +19,8 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Map(x => x.Description).Length(255).Not.Nullable();
             //Relazione uno a molti. Una qualsiasi modifica al blog ha effetto su tutte le pagine ad esso afferenti
             //ad esempio se elimino il blog, elimino anche tutte le pagine
-            HasMany(x => x.Pages).Inverse().Cascade.All();
+            HasMany(x => x.Pages).Inverse().Cascade.AllDeleteOrphan();
+            HasMany(x => x.Authors).Inverse().Cascade.AllDeleteOrphan();
         }
     }
 }

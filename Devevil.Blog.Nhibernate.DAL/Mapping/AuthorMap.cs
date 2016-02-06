@@ -20,6 +20,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Map(x => x.IsAdministrator).Not.Nullable();
             Map(x => x.Password);
             HasMany(x => x.Pages).Inverse();
+            References(x => x.Blog).Column("BlogId");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Id(x => x.Id).GeneratedBy.Identity();
             //colonna not nullable di lunghezza 255
             Map(x => x.Name).Length(255).Not.Nullable();
-            HasManyToMany(x => x.Pages).Table("PagesTags");
+            HasManyToMany(x => x.Pages).Table("PagesTags").Inverse().Cascade.SaveUpdate();
         }
     }
 }

@@ -13,17 +13,29 @@ namespace Devevil.Blog.Unit.Test.Model.Entities
     [TestClass]
     public class AuthorTest
     {
+        private Blog.Model.Domain.Entities.Blog b;
+
+        [TestInitialize]
+        public void Init()
+        {
+            b = new Blog.Model.Domain.Entities.Blog("Blog test", "test");
+        }
+
         [TestMethod]
         public void AuthorValidStateTest()
         {
-            //Author a = new Author();
-            //a.Name = "Pasquale";
-            //a.Surname = "Garzillo";
-            //a.BirthDate = Convert.ToDateTime("27/12/1987");
-            //a.Email = "pasquale.garzillo@gmail.com";
-
-            //a.ValidateState();
-            //Assert.IsTrue(true);
+            try
+            {
+                Author a = new Author("Pasquale", "Garzillo", Convert.ToDateTime("27/12/1987"), "pgarzillo@sdn-napoli.it", true, "rofox2011", b);
+            }
+            catch (EntityInvalidStateException ex)
+            {
+                Assert.Fail();
+            }
+            catch (AuthorBadMailException bex)
+            {
+                Assert.Fail();
+            }
         }
 
         [TestMethod]
@@ -31,13 +43,8 @@ namespace Devevil.Blog.Unit.Test.Model.Entities
         {
             try
             {
-                //Author a = new Author();
-                //a.Surname = "Garzillo";
-                //a.BirthDate = Convert.ToDateTime("27/12/1987");
-                //a.Email = "pasquale.garzillo@gmail.com";
-                //a.ValidateState();
-
-                //Assert.Fail();
+                Author a = new Author("", "Garzillo", Convert.ToDateTime("27/12/1987"), "pgarzillo@sdn-napoli.it", true, "rofox2011",b);
+                Assert.Fail();
             }
             catch (EntityInvalidStateException ex)
             {
@@ -51,33 +58,8 @@ namespace Devevil.Blog.Unit.Test.Model.Entities
         {
             try
             {
-                //Author a = new Author();
-                //a.Name = "Pasquale";
-                //a.BirthDate = Convert.ToDateTime("27/12/1987");
-                //a.Email = "pasquale.garzillo@gmail.com";
-                //a.ValidateState();
-
-                //Assert.Fail();
-            }
-            catch (EntityInvalidStateException ex)
-            {
-                //OK, Assert true
-                Assert.IsTrue(true);
-            }
-        }
-
-        [TestMethod]
-        public void AuthorInvalidStateBithDateTest()
-        {
-            try
-            {
-                //Author a = new Author();
-                //a.Name = "Pasquale";
-                //a.Surname = "Garzillo";
-                //a.Email = "pasquale.garzillo@gmail.com";
-
-                //a.ValidateState();
-                //Assert.Fail();
+                Author a = new Author("Pasquale", "", Convert.ToDateTime("27/12/1987"), "pgarzillo@sdn-napoli.it", true, "rofox2011",b);
+                Assert.Fail();
             }
             catch (EntityInvalidStateException ex)
             {
@@ -91,14 +73,10 @@ namespace Devevil.Blog.Unit.Test.Model.Entities
         {
             try
             {
-                //Author a = new Author();
-                //a.Name = "Pasquale";
-                //a.Surname = "Garzillo";
-                //a.BirthDate = Convert.ToDateTime("27/12/1987");
-                //a.ValidateState();
-                //Assert.Fail();
+                Author a = new Author("Pasquale", "Garzillo", Convert.ToDateTime("27/12/1987"), "", true, "rofox2011",b);
+                Assert.Fail();
             }
-            catch (EntityInvalidStateException ex)
+            catch (AuthorBadMailException ex)
             {
                 //OK, Assert true
                 Assert.IsTrue(true);
@@ -110,15 +88,25 @@ namespace Devevil.Blog.Unit.Test.Model.Entities
         {
             try
             {
-                //Author a = new Author();
-                //a.Name = "Pasquale";
-                //a.Surname = "Garzillo";
-                //a.BirthDate = Convert.ToDateTime("27/12/1987");
-                //a.Email = "@";
-                //a.ValidateState();
-                //Assert.Fail();
+                Author a = new Author("Pasquale", "Garzillo", Convert.ToDateTime("27/12/1987"), "@.it", true, "rofox2011",b);
+                Assert.Fail();
             }
             catch (AuthorBadMailException ex)
+            {
+                //OK, Assert true
+                Assert.IsTrue(true);
+            }
+        }
+
+        [TestMethod]
+        public void AuthorInvalidStatePasswordTest()
+        {
+            try
+            {
+                Author a = new Author("Pasquale", "Garzillo", Convert.ToDateTime("27/12/1987"), "google@google.it", true, "",b);
+                Assert.Fail();
+            }
+            catch (EntityInvalidStateException ex)
             {
                 //OK, Assert true
                 Assert.IsTrue(true);

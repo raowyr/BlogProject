@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
+using Devevil.Blog.Infrastructure.Core.Entities.Exception;
 
 namespace Devevil.Blog.Model.Domain.Entities
 {
@@ -12,6 +13,12 @@ namespace Devevil.Blog.Model.Domain.Entities
         private string _name;
         private string _description;
         private IList<Page> _pages;
+        private IList<Author> _authors;
+
+        public virtual IList<Author> Authors
+        {
+            get { return _authors; }
+        }
 
         protected Blog() { }
 
@@ -20,6 +27,7 @@ namespace Devevil.Blog.Model.Domain.Entities
             _name = prmName;
             _description = prmDescription;
             _pages = new List<Page>();
+            _authors = new List<Author>();
         }
 
         public virtual string Name
@@ -41,13 +49,54 @@ namespace Devevil.Blog.Model.Domain.Entities
         {
             if (_pages != null)
             {
-                if (!_pages.Contains(prmPage))
+                if (prmPage != null)
                 {
-                    _pages.Add(prmPage);
-                    if (prmPage.Blog == null)
+                    if (!_pages.Contains(prmPage))
+                    {
+                        _pages.Add(prmPage);
                         prmPage.ReferencesToBlog(this);
+                    }
                 }
+                else
+                    throw new ArgumentNullException();
             }
+            else
+                throw new EntityInvalidStateException();
+        }
+
+        public virtual void AddAuthorToBlog(Author prmAuthor)
+        {
+            if (_authors != null)
+            {
+                if (prmAuthor != null)
+                {
+                    if (!_authors.Contains(prmAuthor))
+                    {
+                        _authors.Add(prmAuthor);
+                        prmAuthor.ReferencesToBlog(this);
+                    }
+                }
+                else
+                    throw new ArgumentNullException();
+            }
+            else
+                throw new EntityInvalidStateException();
+        }
+
+        public virtual void RemovePageFromBlog(Page prmPage)
+        {
+            if (_pages != null)
+            {
+                if (prmPage != null)
+                {
+                    _pages.Remove(prmPage);
+                    prmPage.ReferencesToBlog(null);
+                }
+                else
+                    throw new ArgumentNullException();
+            }
+            else
+                throw new EntityInvalidStateException();
         }
 
         protected override bool IsValidState()
