@@ -48,8 +48,8 @@
     <Compile Include="RepositoryPattern\IRepositoryFind.cs" />
     <Compile Include="RepositoryPattern\IRepositoryRead.cs" />
     <Compile Include="RepositoryPattern\IRepositorySave.cs" />
-    <Compile Include="RepositoryPattern\ITransactionRequired.cs" />
-    <Compile Include="RepositoryPattern\IUnitOfWork.cs" />
+    <Compile Include="Transaction\ITransactionRequired.cs" />
+    <Compile Include="Transaction\IUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

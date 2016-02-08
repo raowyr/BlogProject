@@ -58,10 +58,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DAL.Tests\AuthorTest.cs" />
-    <Compile Include="DAL.Tests\BlogTest.cs" />
+    <Compile Include="DAL.Tests\AuthorRepositoryTest.cs" />
+    <Compile Include="DAL.Tests\BlogRepositoryTest.cs" />
+    <Compile Include="DAL.Tests\PageRepositoryTest.cs" />
+    <Compile Include="DAL.Tests\TagRepositoryTest.cs" />
     <Compile Include="Model.Entities\AuthorTest.cs" />
     <Compile Include="Model.Entities\TagTest.cs" />
+    <Compile Include="DAL.Tests\CategoryRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\PasswordHashManagerTest.cs" />
   </ItemGroup>

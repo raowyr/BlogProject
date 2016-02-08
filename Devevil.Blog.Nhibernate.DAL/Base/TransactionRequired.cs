@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
 using Devevil.Blog.Infrastructure.Core.RepositoryPattern;
+using Devevil.Blog.Infrastructure.Core.Transaction;
 
 namespace Devevil.Blog.Nhibernate.DAL.Base
 {
