@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Devevil.Blog.Infrastructure.Core.Entities;
 using Devevil.Blog.Infrastructure.Core.Entities.Exception;
+using Devevil.Blog.Model.Domain.Exceptions;
 
 namespace Devevil.Blog.Model.Domain.Entities
 {
@@ -14,6 +15,12 @@ namespace Devevil.Blog.Model.Domain.Entities
         private string _description;
         private IList<Page> _pages;
         private IList<Author> _authors;
+        private bool _isDeleted;
+
+        public virtual bool IsDeleted
+        {
+            get { return _isDeleted; }
+        }
 
         public virtual IList<Author> Authors
         {
@@ -28,6 +35,7 @@ namespace Devevil.Blog.Model.Domain.Entities
             _description = prmDescription;
             _pages = new List<Page>();
             _authors = new List<Author>();
+            _isDeleted = false;
         }
 
         public virtual string Name
@@ -89,11 +97,60 @@ namespace Devevil.Blog.Model.Domain.Entities
             {
                 if (prmPage != null)
                 {
-                    _pages.Remove(prmPage);
-                    prmPage.ReferencesToBlog(null);
+                    Page tmp = _pages.Where(x => x == prmPage).FirstOrDefault();
+                    if (tmp != null)
+                        tmp.DeletePage();
+                    else
+                        throw new PageNotFoundException();
                 }
                 else
                     throw new ArgumentNullException();
+            }
+            else
+                throw new EntityInvalidStateException();
+        }
+
+        public virtual void RemoveAuthorFromBlog(Author prmAuthor)
+        {
+            if (_pages != null && _authors!=null)
+            {
+                if (prmAuthor != null)
+                {
+                    var auth = _authors.Where(x => x == prmAuthor).FirstOrDefault();
+
+                    if (auth != null)
+                    {
+                        auth.DeleteAuthor();
+
+                        var tmpPages = _pages.Where(x => x.Author == prmAuthor);
+
+                        if (tmpPages != null)
+                        {
+                            foreach (var p in tmpPages.ToList())
+                                p.DeletePage();
+                        }
+                    }
+                    else
+                        throw new AuthorNotFoundException();
+                }
+                else
+                    throw new ArgumentNullException();
+            }
+            else
+                throw new EntityInvalidStateException();
+        }
+
+        public virtual void DeleteBlog()
+        {
+            if (_pages != null && _authors!=null)
+            {
+                foreach (var p in _pages)
+                {
+                    p.DeletePage();
+                }
+                foreach (var a in _authors)
+                    RemoveAuthorFromBlog(a);
+                _isDeleted = true;
             }
             else
                 throw new EntityInvalidStateException();

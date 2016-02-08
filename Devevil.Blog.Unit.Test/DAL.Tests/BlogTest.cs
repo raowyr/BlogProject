@@ -4,6 +4,7 @@ using Devevil.Blog.Nhibernate.DAL;
 using Devevil.Blog.Nhibernate.DAL.Base;
 using Devevil.Blog.Nhibernate.DAL.Repositories;
 using Devevil.Blog.Model.Domain.Entities;
+using System.Linq;
 
 namespace Devevil.Blog.Unit.Test
 {
@@ -84,7 +85,7 @@ namespace Devevil.Blog.Unit.Test
         }
 
         [TestMethod]
-        public void CreateSuccessfulBlogAndRemovePageTest()
+        public void CreateSuccessfulBlogAndRemoveLogicallyPageTest()
         {
             using (UnitOfWork uow = new UnitOfWork())
             {
@@ -140,12 +141,12 @@ namespace Devevil.Blog.Unit.Test
 
                 Devevil.Blog.Model.Domain.Entities.Blog bb = br.GetById(1);
 
-                Assert.IsTrue(bb.Pages.Count == 0);
+                Assert.IsTrue(bb.Pages.Where(x=>x.IsDeleted == true).Count()>0);
             }
         }
 
         [TestMethod]
-        public void CreateSuccessfulBlogAndThenRemoveItselfTest()
+        public void CreateSuccessfulBlogAndThenRemoveLogicallyItselfTest()
         {
             using (UnitOfWork uow = new UnitOfWork())
             {
@@ -192,15 +193,16 @@ namespace Devevil.Blog.Unit.Test
             {
                 BlogRepository br = new BlogRepository(uow.Current);
 
-                Devevil.Blog.Model.Domain.Entities.Blog b = br.Load(1);
+                Devevil.Blog.Model.Domain.Entities.Blog b = br.GetById(1);
+                b.DeleteBlog();
 
-                br.Delete(b);
+                //br.Delete(b);
 
                 uow.Commit();
 
                 Devevil.Blog.Model.Domain.Entities.Blog bb = br.GetById(1);
 
-                Assert.IsTrue(bb == null);
+                Assert.IsTrue(bb.IsDeleted == true);
             }
         }
     }

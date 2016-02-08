@@ -7,12 +7,11 @@ using Devevil.Blog.Model.Domain.Entities;
 using Devevil.Blog.Nhibernate.DAL.Base;
 using NHibernate;
 
-
 namespace Devevil.Blog.Nhibernate.DAL.Repositories
 {
-    public class BlogRepository : GenericRepositoryWithoutDelete<Devevil.Blog.Model.Domain.Entities.Blog>
+    public class AuthorRepository : GenericRepositoryWithoutDelete<Author>
     {
-        public BlogRepository(ISession session) : base(session) { }
+        public AuthorRepository(ISession session) : base(session) { }
 
     }
 }

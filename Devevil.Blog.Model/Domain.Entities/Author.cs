@@ -21,6 +21,25 @@ namespace Devevil.Blog.Model.Domain.Entities
         private bool _isAdministrator;
         private string _password;
         private Blog _blog;
+        private bool _isDeleted;
+
+        public virtual bool IsDeleted
+        {
+            get { return _isDeleted; }
+        }
+
+        public virtual void DeleteAuthor()
+        {
+            if (_pages != null)
+            {
+                _isDeleted = true;
+                foreach (var p in _pages)
+                    p.DeletePage();
+            }
+            else
+                throw new EntityInvalidStateException();
+
+        }
 
         protected Author() { }
 
@@ -52,6 +71,7 @@ namespace Devevil.Blog.Model.Domain.Entities
                 _password = PasswordHashManager.CreateHash(prmPassword);
 
             _blog = prmBlog;
+            _isDeleted = false;
 
             _pages = new List<Page>();
 

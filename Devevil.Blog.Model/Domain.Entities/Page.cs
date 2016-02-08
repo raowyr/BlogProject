@@ -20,6 +20,12 @@ namespace Devevil.Blog.Model.Domain.Entities
         private Blog _blog;
         private Category _category;
         private IList<Comment> _comments;
+        private bool _isDeleted;
+
+        public virtual bool IsDeleted
+        {
+            get { return _isDeleted; }
+        }
 
         protected Page() { }
 
@@ -50,6 +56,7 @@ namespace Devevil.Blog.Model.Domain.Entities
 
             _tags = new List<Tag>();
             _comments = new List<Comment>();
+            _isDeleted = false;
 
             if (!IsValidState())
                 throw new EntityInvalidStateException();
@@ -161,6 +168,11 @@ namespace Devevil.Blog.Model.Domain.Entities
             }
             else
                 throw new EntityInvalidStateException();
+        }
+
+        public virtual void DeletePage()
+        {
+            _isDeleted = true;
         }
 
         protected override bool IsValidState()

@@ -46,9 +46,8 @@
     <Compile Include="Domain.Entities\Page.cs" />
     <Compile Include="Domain.Entities\Tag.cs" />
     <Compile Include="Domain.Exceptions\AuthorBadMailException.cs" />
-    <Compile Include="Domain.Exceptions\CategoryNullException.cs" />
-    <Compile Include="Domain.Exceptions\PageAuthorNullException.cs" />
-    <Compile Include="Domain.Exceptions\TagNullException.cs" />
+    <Compile Include="Domain.Exceptions\AuthorNotFoundException.cs" />
+    <Compile Include="Domain.Exceptions\PageNotFoundException.cs" />
     <Compile Include="Domain.Exceptions\UserBadMailException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

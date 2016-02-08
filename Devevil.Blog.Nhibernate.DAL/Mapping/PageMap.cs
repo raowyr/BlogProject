@@ -17,6 +17,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Map(x => x.Description).Length(255).Not.Nullable();
             Map(x => x.Date).Not.Nullable();
             Map(x => x.BodyText).Not.Nullable();
+            Map(x => x.IsDeleted).Not.Nullable();
             References(x => x.Author).Column("AuthorId").Cascade.SaveUpdate();
             References(x => x.Blog).Column("BlogId");
             References(x => x.Category).Column("CategoryId").Cascade.SaveUpdate();

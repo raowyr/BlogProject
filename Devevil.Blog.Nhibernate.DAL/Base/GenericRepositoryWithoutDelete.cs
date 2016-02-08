@@ -3,24 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NHibernate;
 using Devevil.Blog.Infrastructure.Core.RepositoryPattern;
-using Devevil.Blog.Infrastructure.Core.Entities;
+using NHibernate;
 
 namespace Devevil.Blog.Nhibernate.DAL.Base
 {
-    /// <summary>
-    /// Repository Generico.
-    /// Normalmente è una classe base per respositories di entità personalizzati.
-    /// Non dovrebbe essere esposto all'esterno del DAL.
-    /// </summary>
-    /// <typeparam name="T">Parametro generico, rappresenta il tipo di entità</typeparam>
-    /// <remarks>
-    /// Tutte le operazioni sono wrappate con <see cref="TransactionRquired"/>.
-    /// Se NON vi è una Transazione aperta, allora viene aperta e al termine viene committata automaticamente.
-    /// Se CI STA una transazione aperta, niente viene committato, il commit deve essere effettuato a livello più alto.
-    /// </remarks>
-    public class GenericRepository<T> : IRepository<T>
+        public class GenericRepositoryWithoutDelete<T> : IRepositoryFind<T>, IRepositoryRead<T>, IRepositorySave<T>
     {
         readonly ISession _session;
         private ISession Session
@@ -28,7 +16,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Base
             get { return _session; }
         }
 
-        public GenericRepository(ISession session)
+        public GenericRepositoryWithoutDelete(ISession session)
         {
             _session = session;
         }
@@ -142,17 +130,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Base
             }
         }
 
-        /// <summary>
-        /// Deletes the specified object within a transaction.
-        /// </summary>
-        public virtual void Delete(T entity)
-        {
-            using (TransactionRequired transaction = new TransactionRequired(_session))
-            {
-                Session.Delete(entity);
-                transaction.Commit(); //flush to database
-            }
-        }
         #endregion
     }
+
 }
