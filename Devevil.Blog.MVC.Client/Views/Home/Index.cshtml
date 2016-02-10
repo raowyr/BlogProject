@@ -1,4 +1,6 @@
-﻿<!DOCTYPE HTML>
+﻿@model Devevil.Blog.MVC.Client.Models.HomePageModel
+
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>
@@ -21,9 +23,9 @@
 			<!-- Features -->
 				<div id="features-wrapper">
 					<section id="features" class="container">
-						<header>
+@*						<header>
 							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
-						</header>
+						</header>*@
 						<div class="row">
 							<div class="4u 12u(mobile)">
 
@@ -31,11 +33,10 @@
 									<section>
 										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 										<header>
-											<h3>Okay, so what is this?</h3>
+											<h3>Software developer</h3>
 										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
+										<p>Mi occupo, da svariati anni, dello sviluppo di sistemi software, complessi e strutturati, integrabili nel workflow aziendale ed a supporto dei processi di business aziendali.
+										E' il mio lavoro e la mia passione.</p>
 									</section>
 
 							</div>
@@ -45,11 +46,11 @@
 									<section>
 										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
 										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
+											<h3>Web designer</h3>
 										</header>
-										<p><a href="http://html5up.net">HTML5 UP</a> is a side project of <a href="http://n33.co">AJ’s</a> (= me).
-										I started it as a way to both test my <strong>skel</strong> framework and sharpen up my coding
-										and design skills a bit.</p>
+										<p>Realizzo siti web per presentare il proprio businnes e la propria attività è l'obiettivo principale per incrementare il bacino di utenza raggiunto.
+                                            utilizzo, da sempre, tecnolgie solide, robuste ed all'avanguardia.
+										</p>
 									</section>
 
 							</div>
@@ -59,11 +60,9 @@
 									<section>
 										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
 										<header>
-											<h3>Skel? What's that?</h3>
+											<h3>Consulente IT</h3>
 										</header>
-										<p><strong>Skel</strong> is a lightweight framework for building responsive
-										sites and apps. All of my stuff at <a href="http://html5up.net">HTML5 UP</a> (including this
-										one) are built on this framework.</p>
+										<p>Supporto aziende, associazioni e clienti privati offrendo consulenza su tutto ciò che riguarda il mondo dell'Information & Communication Technology.</p>
 									</section>
 
 							</div>
@@ -78,7 +77,7 @@
 				<div id="banner-wrapper">
 					<div class="inner">
 						<section id="banner" class="container">
-							<p>@ViewBag.Aforisma</p>
+							<p>@Model.Aforisma</p>
 						</section>
 					</div>
 				</div>
@@ -158,11 +157,10 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 30</span>
-																<h3><a href="#">Just another post</a></h3>
+																<span class="date">@Model.PostPreview[0].Data.ToLongDateString()</span>
+																<h3><a href="#">@Model.PostPreview[0].Titolo</a></h3>
 															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+															<p>@Model.PostPreview[0].Testo</p>
 														</article>
 
 												</li>
@@ -171,11 +169,10 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 28</span>
-																<h3><a href="#">And another post</a></h3>
+																<span class="date">@Model.PostPreview[1].Data.ToLongDateString()</span>
+																<h3><a href="#">@Model.PostPreview[1].Titolo</a></h3>
 															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+															<p>@Model.PostPreview[1].Testo</p>
 														</article>
 
 												</li>
@@ -184,11 +181,10 @@
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
-																<span class="date">July 24</span>
-																<h3><a href="#">One more post</a></h3>
+																<span class="date">@Model.PostPreview[2].Data.ToLongDateString()</span>
+																<h3><a href="#">@Model.PostPreview[2].Titolo</a></h3>
 															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+															<p>@Model.PostPreview[2].Testo</p>
 														</article>
 
 												</li>
