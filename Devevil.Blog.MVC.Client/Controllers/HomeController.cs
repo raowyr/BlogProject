@@ -14,10 +14,10 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
         public ActionResult Index()
         {
-            HomePageModel m = new HomePageModel();
-            PostModel p1 = new PostModel();
-            PostModel p2 = new PostModel();
-            PostModel p3 = new PostModel();
+            HomePageViewModel m = new HomePageViewModel();
+            PostViewModel p1 = new PostViewModel();
+            PostViewModel p2 = new PostViewModel();
+            PostViewModel p3 = new PostViewModel();
 
             p1.Titolo = "tuitolo 1!";
             p1.Testo = "asdbasmndb asmndbam sndb asd...";
@@ -37,6 +37,42 @@ namespace Devevil.Blog.MVC.Client.Controllers
             m.PostPreview.Add(p3);
 
             return View(m);
+        }
+
+        public ActionResult Test()
+        {
+            HomePageViewModel m = new HomePageViewModel();
+            PostViewModel p1 = new PostViewModel();
+            PostViewModel p2 = new PostViewModel();
+            PostViewModel p3 = new PostViewModel();
+
+            p1.Titolo = "tuitsdfsdfsdfsdfolo 1!";
+            p1.Testo = "asdbasmndb asmndbam sndb asd...";
+            p1.Data = DateTime.Today;
+
+            p2.Titolo = "tuitsdfsdfsdfsdfolo 2!";
+            p2.Testo = "asdbasmndb asmndbam sndb asd...";
+            p2.Data = DateTime.Today;
+
+            p3.Titolo = "tuisdfsdfsdfsdftolo 3!";
+            p3.Testo = "asdbasmndb asmndbam sndb asd...";
+            p3.Data = DateTime.Today;
+
+            m.Aforisma = "Afossssssssssssssssssssrisma random";
+            m.PostPreview.Add(p1);
+            m.PostPreview.Add(p2);
+            m.PostPreview.Add(p3);
+            return View(m);
+        }
+
+        [AllowAnonymous]
+        public ActionResult SendMessage(HomePageViewModel prmHomeModel)
+        {
+            if (prmHomeModel != null)
+            {
+ 
+            }
+            return View();
         }
 
     }

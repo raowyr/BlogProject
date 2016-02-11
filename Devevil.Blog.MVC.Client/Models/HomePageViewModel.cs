@@ -5,17 +5,18 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class HomePageModel
+    public class HomePageViewModel
     {
         private string _aforisma;
-        private IList<PostModel> _postPreview;
+        private IList<PostViewModel> _postPreview;
+        private MessageViewModel _message;
 
-        public HomePageModel()
+        public HomePageViewModel()
         {
-            _postPreview = new List<PostModel>();
+            _postPreview = new List<PostViewModel>();
         }
 
-        public IList<PostModel> PostPreview
+        public IList<PostViewModel> PostPreview
         {
             get { return _postPreview; }
             set { _postPreview = value; }
@@ -25,6 +26,12 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _aforisma; }
             set { _aforisma = value; }
+        }
+
+        public MessageViewModel Message
+        {
+            get { return _message; }
+            set { _message = value; }
         }
     }
 }
