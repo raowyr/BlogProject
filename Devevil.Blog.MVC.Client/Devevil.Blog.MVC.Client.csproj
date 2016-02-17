@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -104,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,6 +168,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -192,7 +198,18 @@
     <Content Include="Views\Shared\headerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_Message.cshtml" />
+    <ProjectReference Include="..\Devevil.Blog.Infrastructure.Core\Devevil.Blog.Infrastructure.Core.csproj">
+      <Project>{47a7d8fb-0da5-4c9f-8506-906c92060a22}</Project>
+      <Name>Devevil.Blog.Infrastructure.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Devevil.Blog.Model\Devevil.Blog.Model.csproj">
+      <Project>{fb550cab-43da-4d4e-82e4-0256a4fa4831}</Project>
+      <Name>Devevil.Blog.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Devevil.Blog.Nhibernate.DAL\Devevil.Blog.Nhibernate.DAL.csproj">
+      <Project>{babfdc92-eec8-424f-b46c-5946de5a08c7}</Project>
+      <Name>Devevil.Blog.Nhibernate.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

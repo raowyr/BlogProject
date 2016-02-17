@@ -82,7 +82,7 @@
 					</section>
 				</div>
 
-			<!-- Banner -->
+			    <!-- Banner -->
 				<div id="banner-wrapper">
 					<div class="inner">
 						<section id="banner" class="container">
@@ -91,37 +91,31 @@
 					</div>
 				</div>
 
-			<!-- Main -->
+			    <!-- Main -->
 				<div id="main-wrapper">
 					<div id="main" class="container">
 						<div class="row">
-
 							<!-- Content -->
+                            @{if (Model.PostDetail!=null && Model.PostDetail.Count>0)
+                                {
 								<div id="content" class="8u 12u(mobile)">
-
-									<!-- Post -->
+                                    @foreach (var item in Model.PostDetail)
+                                    {
+									    <!-- Post -->
 										<article class="box post">
 											<header>
-												<h2><a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
-												but it’s the aliens.</a></h2>
+												<h2><a href="#">@item.Titolo</a></h2>
 											</header>
 											<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-											<h3>I mean isn't it possible?</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.</p>
+											@*<h3>I mean isn't it possible?</h3>*@
+											<p>@item.Testo</p>
 											<ul class="actions">
-												<li><a href="#" class="button icon fa-file">Continue Reading</a></li>
+												<li><a href="#" class="button icon fa-file">Vai all'articolo</a></li>
 											</ul>
 										</article>
+                                    }
 
-									<!-- Post -->
+									@*<!-- Post -->
 										<article class="box post">
 											<header>
 												<h2><a href="#">By the way, many thanks to <strong>regularjane</strong>
@@ -151,29 +145,37 @@
 											<ul class="actions">
 												<li><a href="#" class="button icon fa-file">Continue Reading</a></li>
 											</ul>
-										</article>
+										</article>*@
 
 								</div>
+                                }
+                            }
 
 							<!-- Sidebar -->
 								<div id="sidebar" class="4u 12u(mobile)">
 
 									<!-- Excerpts -->
+                                    @{if (Model.PostPreview!=null && Model.PostPreview.Count>0)
+                                        {
 										<section>
+                                            
 											<ul class="divided">
-												<li>
+                                                @foreach (var item in Model.PostPreview)
+                                                {
+												    <li>
 
-													<!-- Excerpt -->
-														<article class="box excerpt">
-															<header>
-																<span class="date">@Model.PostPreview[0].Data.ToLongDateString()</span>
-																<h3><a href="#">@Model.PostPreview[0].Titolo</a></h3>
-															</header>
-															<p>@Model.PostPreview[0].Testo</p>
-														</article>
+													    <!-- Excerpt -->
+														    <article class="box excerpt">
+															    <header>
+																    <span class="date">@item.Data.ToLongDateString()</span>
+																    <h3><a href="#">@item.Titolo</a></h3>
+															    </header>
+															    <p>@item.Testo</p>
+														    </article>
 
-												</li>
-												<li>
+												    </li>
+                                                }
+												@*<li>
 
 													<!-- Excerpt -->
 														<article class="box excerpt">
@@ -196,10 +198,11 @@
 															<p>@Model.PostPreview[2].Testo</p>
 														</article>
 
-												</li>
+												</li>*@
 											</ul>
 										</section>
-
+                                        }
+                                    }
 									<!-- Highlights -->
 										<section>
 											<ul class="divided">
@@ -255,12 +258,39 @@
 							<h2>Desideri ricevere maggiori informazioni? <strong>Restiamo in contatto:</strong></h2>
 						</header>
 						<div class="row">
-                            @Html.Partial("_Message", new Devevil.Blog.MVC.Client.Models.MessageViewModel())
+                            <div class="6u 12u(mobile)">
+								<section>
+                                   @using(Html.BeginForm("Index","Contact")){
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary()
+										<div class="row 50%">
+											<div class="6u 12u(mobile)">
+                                                @Html.TextBoxFor(m => m.Message.Name, new { placeholder="Nome"})
+												@*<input name="name" placeholder="Name" type="text" />*@
+											</div>
+											<div class="6u 12u(mobile)">
+                                                @Html.TextBoxFor(m => m.Message.Email, new { placeholder="Email"})
+												@*<input name="email" placeholder="Email" type="text" />*@
+											</div>
+										</div>
+										<div class="row 50%">
+											<div class="12u">
+                                                @Html.TextAreaFor(m => m.Message.Message, new { placeholder="Messaggio"})
+												@*<textarea name="message" placeholder="Message"></textarea>*@
+											</div>
+										</div>
+										<div class="row 50%">
+											<div class="12u">
+                                                <button name="SendButton" value="Invia Messaggio" class="form-button-submit button icon fa-envelope">Invia Messaggio</button>
+												@*<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>*@
+											</div>
+										</div>
+									}
+								</section>
+							</div>
 							<div class="6u 12u(mobile)">
 								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
+									<p>Puoi inviarmi una mail oppure contattarmi tramite i miei account social.</p>
 									<div class="row">
 										<div class="6u 12u(mobile)">
 											<ul class="icons">

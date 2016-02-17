@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Devevil.Blog.Nhibernate.DAL;
 
 namespace Devevil.Blog.MVC.Client
 {
@@ -19,6 +20,9 @@ namespace Devevil.Blog.MVC.Client
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //configura Nhibernate
+            SessionManager.Instance.Configure();
         }
     }
 }

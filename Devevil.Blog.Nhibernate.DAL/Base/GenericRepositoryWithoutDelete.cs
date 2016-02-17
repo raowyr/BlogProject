@@ -11,7 +11,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Base
         public class GenericRepositoryWithoutDelete<T> : IRepositoryFind<T>, IRepositoryRead<T>, IRepositorySave<T>
     {
         readonly ISession _session;
-        private ISession Session
+        protected ISession Session
         {
             get { return _session; }
         }

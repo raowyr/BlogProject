@@ -32,5 +32,13 @@ namespace Devevil.Blog.MVC.Client.Models
             get { return _message; }
             set { _message = value; }
         }
+
+        private string _result;
+
+        public string Result
+        {
+            get { return _result; }
+            set { _result = value; }
+        }
     }
 }
