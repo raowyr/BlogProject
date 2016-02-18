@@ -10,7 +10,7 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _aforisma;
         private IList<PostViewModel> _postPreview;
         private IList<PostViewModel> _postDetail;
-
+        private IList<CategoryViewModel> _categoriesPreview;
 
         private MessageViewModel _message;
 
@@ -18,6 +18,7 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             _postPreview = new List<PostViewModel>();
             _postDetail = new List<PostViewModel>();
+            _categoriesPreview = new List<CategoryViewModel>();
         }
 
         public IList<PostViewModel> PostPreview
@@ -42,6 +43,19 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _message; }
             set { _message = value; }
+        }
+
+        public IList<CategoryViewModel> CategoriesPreview
+        {
+            get
+            {
+                return _categoriesPreview;
+            }
+
+            set
+            {
+                _categoriesPreview = value;
+            }
         }
     }
 }

@@ -1,127 +1,19 @@
 ﻿@model Devevil.Blog.MVC.Client.Models.MessageViewModel
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>No Sidebar - Strongly Typed by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	</head>
-	<body class="no-sidebar">
-		<div id="page-wrapper">
+@section main{
+    <!-- Main -->
+    <div id="main-wrapper">
+        @*<div id="main" class="container">
+            <div class="row">
+            </div>
+        </div>*@
+    </div>
+}         
 
-            <!-- Header -->
-            @Html.Partial("../Shared/headerPartial")
-
-            <!-- MAIN -->
-@*            <div id="main-wrapper">
-				<div id="main" class="container">*@
-					<div class="row">
-                    </div>
-@*                </div>
-            </div>*@
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<div id="footer" class="container">
-						<header>
-							<h2>Desideri ricevere maggiori informazioni? <strong>Restiamo in contatto:</strong></h2>
-						</header>
-						<div class="row">
-                            <div class="6u 12u(mobile)">
-								<section>
-                                   @using(Html.BeginForm("Index","Contact")){
-                                        @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary()
-										<div class="row 50%">
-											<div class="6u 12u(mobile)">
-                                                @Html.TextBoxFor(m => m.Name, new { placeholder="Nome"})
-												@*<input name="name" placeholder="Name" type="text" />*@
-											</div>
-											<div class="6u 12u(mobile)">
-                                                @Html.TextBoxFor(m => m.Email, new { placeholder="Email"})
-												@*<input name="email" placeholder="Email" type="text" />*@
-											</div>
-										</div>
-										<div class="row 50%">
-											<div class="12u">
-                                                @Html.TextAreaFor(m => m.Message, new { placeholder="Messaggio"})
-												@*<textarea name="message" placeholder="Message"></textarea>*@
-											</div>
-										</div>
-										<div class="row 50%">
-											<div class="12u">
-                                                <button name="SendButton" value="Invia Messaggio" class="form-button-submit button icon fa-envelope">Invia Messaggio</button>
-												@*<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>*@
-											</div>
-										</div>
-                                       if (Model!=null && !String.IsNullOrEmpty(Model.Result)){
-                                            @Model.Result
-                                        }
-									}
-								</section>
-							</div>
-							<div class="6u 12u(mobile)">
-								<section>
-									<p>Puoi inviarmi una mail oppure contattarmi tramite i miei account social.</p>
-									<div class="row">
-										<div class="6u 12u(mobile)">
-											<ul class="icons">
-@*												<li class="icon fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
-												</li>*@
-@*												<li class="icon fa-phone">
-													(000) 000-0000
-												</li>*@
-												<li class="icon fa-envelope">
-													<a href="#">info@untitled.tld</a>
-												</li>
-											</ul>
-										</div>
-										<div class="6u 12u(mobile)">
-											<ul class="icons">
-												<li class="icon fa-linkedin">
-													<a href="#">asdasd</a>
-												</li>
-												<li class="icon fa-google">
-													<a href="#">instagram.com/untitled-tld</a>
-												</li>
-												<li class="icon fa-skype">
-													<a href="#">dribbble.com/untitled-tld</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</div>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Pasquale garzillo. All rights reserved.</li>
-						</ul>
-					</div>
-				</div>
-
-
-		</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+@section footMessage{
+    @Html.Partial("../Shared/_Message", new Devevil.Blog.MVC.Client.Models.MessageViewModel())
+}

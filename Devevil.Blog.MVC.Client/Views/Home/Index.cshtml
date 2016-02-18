@@ -1,340 +1,223 @@
 ﻿@model Devevil.Blog.MVC.Client.Models.HomePageViewModel
 
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>
-                @{
-                ViewBag.Title = "Index";
-            }
-		</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-        <!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/skel.min.js"></script>
-		<script src="assets/js/skel-viewport.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="assets/js/main.js"></script>
-	</head>
-	<body class="homepage">
-		<div id="page-wrapper">
+@section features{
+    <!-- Features -->
+    <div id="features-wrapper">
+        <section id="features" class="container">
+            @*						<header>
+                    <h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
+                </header>*@
+            <div class="row">
+                <div class="4u 12u(mobile)">
 
-            <!-- Header -->
-            @Html.Partial("../Shared/headerPartial")
+                    <!-- Feature -->
+                    <section>
+                        <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                        <header>
+                            <h3>Software developer</h3>
+                        </header>
+                        <p>
+                            Mi occupo, da svariati anni, dello sviluppo di sistemi software, complessi e strutturati, integrabili nel workflow aziendale ed a supporto dei processi di business aziendali.
+                            E' il mio lavoro e la mia passione.
+                        </p>
+                    </section>
 
-			<!-- Features -->
-				<div id="features-wrapper">
-					<section id="features" class="container">
-@*						<header>
-							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
-						</header>*@
-						<div class="row">
-							<div class="4u 12u(mobile)">
+                </div>
+                <div class="4u 12u(mobile)">
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<header>
-											<h3>Software developer</h3>
-										</header>
-										<p>Mi occupo, da svariati anni, dello sviluppo di sistemi software, complessi e strutturati, integrabili nel workflow aziendale ed a supporto dei processi di business aziendali.
-										E' il mio lavoro e la mia passione.</p>
-									</section>
+                    <!-- Feature -->
+                    <section>
+                        <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                        <header>
+                            <h3>Web designer</h3>
+                        </header>
+                        <p>
+                            Realizzo siti web per presentare il proprio businnes e la propria attività è l'obiettivo principale per incrementare il bacino di utenza raggiunto.
+                            utilizzo, da sempre, tecnolgie solide, robuste ed all'avanguardia.
+                        </p>
+                    </section>
 
-							</div>
-							<div class="4u 12u(mobile)">
+                </div>
+                <div class="4u 12u(mobile)">
 
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-										<header>
-											<h3>Web designer</h3>
-										</header>
-										<p>Realizzo siti web per presentare il proprio businnes e la propria attività è l'obiettivo principale per incrementare il bacino di utenza raggiunto.
-                                            utilizzo, da sempre, tecnolgie solide, robuste ed all'avanguardia.
-										</p>
-									</section>
+                    <!-- Feature -->
+                    <section>
+                        <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                        <header>
+                            <h3>Consulente IT</h3>
+                        </header>
+                        <p>Supporto aziende, associazioni e clienti privati offrendo consulenza su tutto ciò che riguarda il mondo dell'Information & Communication Technology.</p>
+                    </section>
 
-							</div>
-							<div class="4u 12u(mobile)">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-										<header>
-											<h3>Consulente IT</h3>
-										</header>
-										<p>Supporto aziende, associazioni e clienti privati offrendo consulenza su tutto ciò che riguarda il mondo dell'Information & Communication Technology.</p>
-									</section>
-
-							</div>
-						</div>
-						<ul class="actions">
-							<li><a href="#" class="button icon fa-file">Guarda alcuni dei miei lavori</a></li>
-						</ul>
-					</section>
-				</div>
-
-			    <!-- Banner -->
-				<div id="banner-wrapper">
-					<div class="inner">
-						<section id="banner" class="container">
-							<p>@Model.Aforisma</p>
-						</section>
-					</div>
-				</div>
-
-			    <!-- Main -->
-				<div id="main-wrapper">
-					<div id="main" class="container">
-						<div class="row">
-							<!-- Content -->
-                            @{if (Model.PostDetail!=null && Model.PostDetail.Count>0)
-                                {
-								<div id="content" class="8u 12u(mobile)">
-                                    @foreach (var item in Model.PostDetail)
-                                    {
-									    <!-- Post -->
-										<article class="box post">
-											<header>
-												<h2><a href="#">@item.Titolo</a></h2>
-											</header>
-											<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-											@*<h3>I mean isn't it possible?</h3>*@
-											<p>@item.Testo</p>
-											<ul class="actions">
-												<li><a href="#" class="button icon fa-file">Vai all'articolo</a></li>
-											</ul>
-										</article>
-                                    }
-
-									@*<!-- Post -->
-										<article class="box post">
-											<header>
-												<h2><a href="#">By the way, many thanks to <strong>regularjane</strong>
-												for these awesome demo photos</a></h2>
-											</header>
-											<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-											<h3>You should probably check out her work</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.</p>
-											<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat
-											Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula
-											vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet
-											magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in,
-											tristique at erat. Curabitur leo nibh, rutrum eu malesuada  in, tristique
-											at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna
-											tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros consequat
-											magna tempus</p>
-											<ul class="actions">
-												<li><a href="#" class="button icon fa-file">Continue Reading</a></li>
-											</ul>
-										</article>*@
-
-								</div>
-                                }
-                            }
-
-							<!-- Sidebar -->
-								<div id="sidebar" class="4u 12u(mobile)">
-
-									<!-- Excerpts -->
-                                    @{if (Model.PostPreview!=null && Model.PostPreview.Count>0)
-                                        {
-										<section>
-                                            
-											<ul class="divided">
-                                                @foreach (var item in Model.PostPreview)
-                                                {
-												    <li>
-
-													    <!-- Excerpt -->
-														    <article class="box excerpt">
-															    <header>
-																    <span class="date">@item.Data.ToLongDateString()</span>
-																    <h3><a href="#">@item.Titolo</a></h3>
-															    </header>
-															    <p>@item.Testo</p>
-														    </article>
-
-												    </li>
-                                                }
-												@*<li>
-
-													<!-- Excerpt -->
-														<article class="box excerpt">
-															<header>
-																<span class="date">@Model.PostPreview[1].Data.ToLongDateString()</span>
-																<h3><a href="#">@Model.PostPreview[1].Titolo</a></h3>
-															</header>
-															<p>@Model.PostPreview[1].Testo</p>
-														</article>
-
-												</li>
-												<li>
-
-													<!-- Excerpt -->
-														<article class="box excerpt">
-															<header>
-																<span class="date">@Model.PostPreview[2].Data.ToLongDateString()</span>
-																<h3><a href="#">@Model.PostPreview[2].Titolo</a></h3>
-															</header>
-															<p>@Model.PostPreview[2].Testo</p>
-														</article>
-
-												</li>*@
-											</ul>
-										</section>
-                                        }
-                                    }
-									<!-- Highlights -->
-										<section>
-											<ul class="divided">
-												<li>
-
-													<!-- Highlight -->
-														<article class="box highlight">
-															<header>
-																<h3><a href="#">Something of note</a></h3>
-															</header>
-															<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>
-															<p>Phasellus  sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-															<ul class="actions">
-																<li><a href="#" class="button icon fa-file">Learn More</a></li>
-															</ul>
-														</article>
-
-												</li>
-												<li>
-
-													<!-- Highlight -->
-														<article class="box highlight">
-															<header>
-																<h3><a href="#">Something of less note</a></h3>
-															</header>
-															<a href="#" class="image left"><img src="images/pic07.jpg" alt="" /></a>
-															<p>Phasellus  sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-															<ul class="actions">
-																<li><a href="#" class="button icon fa-file">Learn More</a></li>
-															</ul>
-														</article>
-
-												</li>
-											</ul>
-										</section>
-
-								</div>
-
-						</div>
-					</div>
-				</div>
-
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<div id="footer" class="container">
-						<header>
-							<h2>Desideri ricevere maggiori informazioni? <strong>Restiamo in contatto:</strong></h2>
-						</header>
-						<div class="row">
-                            <div class="6u 12u(mobile)">
-								<section>
-                                   @using(Html.BeginForm("Index","Contact")){
-                                        @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary()
-										<div class="row 50%">
-											<div class="6u 12u(mobile)">
-                                                @Html.TextBoxFor(m => m.Message.Name, new { placeholder="Nome"})
-												@*<input name="name" placeholder="Name" type="text" />*@
-											</div>
-											<div class="6u 12u(mobile)">
-                                                @Html.TextBoxFor(m => m.Message.Email, new { placeholder="Email"})
-												@*<input name="email" placeholder="Email" type="text" />*@
-											</div>
-										</div>
-										<div class="row 50%">
-											<div class="12u">
-                                                @Html.TextAreaFor(m => m.Message.Message, new { placeholder="Messaggio"})
-												@*<textarea name="message" placeholder="Message"></textarea>*@
-											</div>
-										</div>
-										<div class="row 50%">
-											<div class="12u">
-                                                <button name="SendButton" value="Invia Messaggio" class="form-button-submit button icon fa-envelope">Invia Messaggio</button>
-												@*<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>*@
-											</div>
-										</div>
-									}
-								</section>
-							</div>
-							<div class="6u 12u(mobile)">
-								<section>
-									<p>Puoi inviarmi una mail oppure contattarmi tramite i miei account social.</p>
-									<div class="row">
-										<div class="6u 12u(mobile)">
-											<ul class="icons">
-@*												<li class="icon fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
-												</li>*@
-@*												<li class="icon fa-phone">
-													(000) 000-0000
-												</li>*@
-												<li class="icon fa-envelope">
-													<a href="#">info@untitled.tld</a>
-												</li>
-											</ul>
-										</div>
-										<div class="6u 12u(mobile)">
-											<ul class="icons">
-												<li class="icon fa-linkedin">
-													<a href="#">asdasd</a>
-												</li>
-												<li class="icon fa-google">
-													<a href="#">instagram.com/untitled-tld</a>
-												</li>
-												<li class="icon fa-skype">
-													<a href="#">dribbble.com/untitled-tld</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</div>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Pasquale garzillo. All rights reserved.</li>
-						</ul>
-					</div>
-				</div>
-
+                </div>
+            </div>
+            <ul class="actions">
+                <li><a href="#" class="button icon fa-file">Guarda alcuni dei miei lavori</a></li>
+            </ul>
+        </section>
+    </div>
+}
+@section banner{
+	<!-- Banner -->
+	<div id="banner-wrapper">
+		<div class="inner">
+			<section id="banner" class="container">
+				<p>@Model.Aforisma</p>
+			</section>
 		</div>
+	</div>
+}
+@section main{
+	<!-- Main -->
+	<div id="main-wrapper">
+		<div id="main" class="container">
+			<div class="row">
+				<!-- Content -->
+                @{if (Model.PostDetail != null && Model.PostDetail.Count > 0)
+                    {
+					<div id="content" class="8u 12u(mobile)">
+                        @foreach (var item in Model.PostDetail)
+                        {
+							<!-- Post -->
+							<article class="box post">
+								<header>
+									<h2><a href="#">@item.Titolo</a></h2>
+								</header>
+								<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+								@*<h3>I mean isn't it possible?</h3>*@
+								<p>@item.Testo</p>
+								<ul class="actions">
+									<li><a href="#" class="button icon fa-file">Vai all'articolo</a></li>
+								</ul>
+							</article>
+                        }
 
+						@*<!-- Post -->
+							<article class="box post">
+								<header>
+									<h2><a href="#">By the way, many thanks to <strong>regularjane</strong>
+									for these awesome demo photos</a></h2>
+								</header>
+								<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+								<h3>You should probably check out her work</h3>
+								<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
+								ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
+								sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
+								in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
+								consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
+								in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
+								magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
+								consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
+								justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
+								mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
+								Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.</p>
+								<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat
+								Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula
+								vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet
+								magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in,
+								tristique at erat. Curabitur leo nibh, rutrum eu malesuada  in, tristique
+								at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna
+								tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros consequat
+								magna tempus</p>
+								<ul class="actions">
+									<li><a href="#" class="button icon fa-file">Continue Reading</a></li>
+								</ul>
+							</article>*@
 
+					</div>
+                    }
+                }
 
-	</body>
-</html>
+				<!-- Sidebar -->
+					<div id="sidebar" class="4u 12u(mobile)">
+
+						<!-- Excerpts -->
+                        @{if (Model.PostPreview != null && Model.PostPreview.Count > 0)
+                            {
+							<section>
+                                            
+								<ul class="divided">
+                                    @foreach (var item in Model.PostPreview)
+                                    {
+										<li>
+
+											<!-- Excerpt -->
+												<article class="box excerpt">
+													<header>
+														<span class="date">@item.Data.ToLongDateString()</span>
+														<h3><a href="#">@item.Titolo</a></h3>
+													</header>
+													<p>@item.Testo</p>
+												</article>
+
+										</li>
+                                    }
+									@*<li>
+
+										<!-- Excerpt -->
+											<article class="box excerpt">
+												<header>
+													<span class="date">@Model.PostPreview[1].Data.ToLongDateString()</span>
+													<h3><a href="#">@Model.PostPreview[1].Titolo</a></h3>
+												</header>
+												<p>@Model.PostPreview[1].Testo</p>
+											</article>
+
+									</li>
+									<li>
+
+										<!-- Excerpt -->
+											<article class="box excerpt">
+												<header>
+													<span class="date">@Model.PostPreview[2].Data.ToLongDateString()</span>
+													<h3><a href="#">@Model.PostPreview[2].Titolo</a></h3>
+												</header>
+												<p>@Model.PostPreview[2].Testo</p>
+											</article>
+
+									</li>*@
+								</ul>
+							</section>
+                            }
+                        }
+						<!-- Highlights -->
+                        @{if (Model.CategoriesPreview != null && Model.CategoriesPreview.Count > 0)
+                            {
+							<section>
+								<ul class="divided">
+                                    @foreach (var item in Model.CategoriesPreview)
+                                    {
+									<li>
+
+										<!-- Highlight -->
+											<article class="box highlight">
+												<header>
+													<h3><a href="#">@item.CategoryName</a></h3>
+												</header>
+												@*<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>*@
+												<p>@item.CategoryDescription</p>
+												<ul class="actions">
+													<li><a href="#" class="button icon fa-file">Learn More</a></li>
+												</ul>
+											</article>
+
+									</li>
+                                    }
+								</ul>
+							</section>
+                            }
+                        }
+					</div>
+			</div>
+		</div>
+	</div>
+}
+
+@section footMessage{
+    @Html.Partial("../Shared/_Message", new Devevil.Blog.MVC.Client.Models.MessageViewModel())
+}
+							

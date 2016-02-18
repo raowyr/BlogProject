@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        Pasquale Garzillo
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/skel-viewport.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+</head>
+<body class="homepage">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        @Html.Partial("_HeaderPartial")
+
+        @RenderSection("features", required: false)
+        @RenderSection("banner", required: false)
+        @RenderSection("main", required: false)
+
+        <!-- Footer -->
+        <div id="footer-wrapper">
+            <div id="footer" class="container">
+                <header>
+                    <h2>Desideri ricevere maggiori informazioni? <strong>Restiamo in contatto:</strong></h2>
+                </header>
+                <div class="row">
+                    @RenderSection("footMessage", required: false)
+                    <div class="6u 12u(mobile)">
+                        <section>
+                            <p>Puoi inviarmi una mail oppure contattarmi tramite i miei account social.</p>
+                            <div class="row">
+                                <div class="6u 12u(mobile)">
+                                    <ul class="icons">
+                                        <li class="icon fa-envelope">
+                                            <a href="#">info@untitled.tld</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <ul class="icons">
+                                        <li class="icon fa-linkedin">
+                                            <a href="#">asdasd</a>
+                                        </li>
+                                        <li class="icon fa-google">
+                                            <a href="#">instagram.com/untitled-tld</a>
+                                        </li>
+                                        <li class="icon fa-skype">
+                                            <a href="#">dribbble.com/untitled-tld</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div id="copyright" class="container">
+                <ul class="links">
+                    <li>&copy; Pasquale Garzillo. All rights reserved.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

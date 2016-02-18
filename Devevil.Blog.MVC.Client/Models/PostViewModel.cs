@@ -7,6 +7,8 @@ namespace Devevil.Blog.MVC.Client.Models
 {
     public class PostViewModel
     {
+        private int _id;
+
         private string _titolo;
 
         public string Titolo
@@ -30,6 +32,17 @@ namespace Devevil.Blog.MVC.Client.Models
             set { _data = value; }
         }
 
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
 
+            set
+            {
+                _id = value;
+            }
+        }
     }
 }

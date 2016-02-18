@@ -19,11 +19,12 @@ namespace Devevil.Blog.MVC.Client.Controllers
         {
             HomePageViewModel m = new HomePageViewModel();
 
-            //Carica gli ultimi 3 POST
+            
             using (UnitOfWork uow = new UnitOfWork())
             {
+                //Carica gli ultimi 5 POST
                 PageRepository pr = new PageRepository(uow.Current);
-                IList<Page> pages = pr.GetTop5Post();
+                IList<Page> pages = pr.GetTopPost(5);
                 if (pages != null)
                 {
                     int k = 0;
@@ -31,6 +32,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     {
                         PostViewModel pTemp = new PostViewModel();
 
+                        pTemp.Id = p.Id;
                         pTemp.Data = p.Date.Value;
                         pTemp.Testo = p.BodyText;
                         pTemp.Titolo = p.Title;
@@ -45,30 +47,32 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         k++;
                     }
                 }
+                //Carica le ultime due categoria con maggiori post
+                CategoryRepository cr = new CategoryRepository(uow.Current);
+                IList<Category> tempCats = cr.GetTopCategoryByPostCount(2);
+                if (tempCats != null)
+                {
+                    foreach (var c in tempCats)
+                    {
+                        CategoryViewModel cvTemp = new CategoryViewModel();
+
+                        cvTemp.Id = c.Id;
+                        cvTemp.CategoryName = c.Name;
+                        cvTemp.CategoryDescription = c.Description;
+
+                        m.CategoriesPreview.Add(cvTemp);
+                    }
+                }
             }
             
-            //PostViewModel p1 = new PostViewModel();
-            //PostViewModel p2 = new PostViewModel();
-            //PostViewModel p3 = new PostViewModel();
-
-            //p1.Titolo = "tuitolo 1!";
-            //p1.Testo = "asdbasmndb asmndbam sndb asd...";
-            //p1.Data = DateTime.Today;
-
-            //p2.Titolo = "tuitolo 2!";
-            //p2.Testo = "asdbasmndb asmndbam sndb asd...";
-            //p2.Data = DateTime.Today;
-
-            //p3.Titolo = "tuitolo 3!";
-            //p3.Testo = "asdbasmndb asmndbam sndb asd...";
-            //p3.Data = DateTime.Today;
-
-            m.Aforisma = "Aforisma random";
-            //m.PostPreview.Add(p1);
-            //m.PostPreview.Add(p2);
-            //m.PostPreview.Add(p3);
+            m.Aforisma = GetAforismaRandom();
 
             return View(m);
+        }
+
+        private string GetAforismaRandom()
+        {
+            return "Aforsima";
         }
 
     }

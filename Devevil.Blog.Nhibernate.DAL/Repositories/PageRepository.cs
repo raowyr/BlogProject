@@ -14,13 +14,12 @@ namespace Devevil.Blog.Nhibernate.DAL.Repositories
     {
         public PageRepository(ISession session) : base(session) { }
 
-        public IList<Page> GetTop5Post()
+        public IList<Page> GetTopPost(int prmNPost)
         {
             var linq = (from pag in Session.Query<Page>()
-                        where pag.Date.Value.Year == DateTime.Today.Year
                         orderby pag.Date descending
                         select pag)
-                        .Take(5);
+                        .Take(prmNPost);
             return linq.ToList();
         }
     }
