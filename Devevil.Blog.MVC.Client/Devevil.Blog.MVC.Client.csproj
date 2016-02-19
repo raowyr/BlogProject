@@ -119,6 +119,7 @@
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\SetupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +177,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Message.cshtml" />
     <Content Include="Views\Home\IndexOldBackup.cshtml" />
+    <Content Include="Views\Install\Setup.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
