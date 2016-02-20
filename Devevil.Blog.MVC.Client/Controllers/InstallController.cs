@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Devevil.Blog.MVC.Client.Models;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
@@ -14,6 +15,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
         //
         // GET: /Install/
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             using (UnitOfWork uow = new UnitOfWork())
@@ -25,21 +27,26 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     {
                         //Vai alla pagina di gestione
                     }
-                    else
-                        return RedirectToAction("Setup", "Install");
                 }
                 catch (Exception ex)
                 {
                     //Il database non esiste, lo inizializzo
                     SessionManager.Instance.BuildSchema();
-                    return RedirectToAction("Setup", "Install");
                 }
             }
             return View();
         }
-        public ActionResult Setup()
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Index(SetupViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                return null;
+            }
+            else
+                return View(model);
         }
     }
 }

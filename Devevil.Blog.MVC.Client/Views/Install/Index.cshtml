@@ -2,12 +2,49 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+@model Devevil.Blog.MVC.Client.Models.SetupViewModel
+
 @section main{
 <!-- Main -->
 <div id="main-wrapper">
     <div id="main" class="container">
         <div class="row">
-            Pagina di installazione del BLOG...
+			<!-- Content -->
+			<div id="content" class="8u 12u(mobile)">                <h1>Setup iniziale del BLOG</h1>
+                <!-- FORM SETUP-->
+                <section>
+                    @using (Html.BeginForm("Index", "Install"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        <div class="row 50%">
+                            <div class="6u 12u(mobile)">
+                                @Html.TextBoxFor(m => m.Username, new { placeholder = "Nome utente" })
+                                @*<input name="name" placeholder="Name" type="text" />*@
+                            </div>
+                            
+                        </div>
+                        <div class="row 50%">
+                            <div class="6u 12u(mobile)">
+                                @Html.TextBoxFor(m => m.Password, new { placeholder = "Password" })
+                                @*<input name="email" placeholder="Email" type="text" />*@
+                            </div>
+                        </div>
+                        <div class="row 50%">
+                            <div class="6u 12u(mobile)">
+                                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+                                @*<textarea name="message" placeholder="Message"></textarea>*@
+                            </div>
+                        </div>
+                        <div class="row 50%">
+                            <div class="6u 12u(mobile)">
+                                <button name="SendButton" value="Crea il blog" class="form-button-submit button icon fa-envelope">Crea il blog</button>
+                                @*<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>*@
+                            </div>
+                        </div>
+                    }
+                </section>
+            </div>
         </div>
     </div>
 </div>
