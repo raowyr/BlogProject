@@ -27,30 +27,44 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     IList<Page> pages = pr.GetTopPost(5);
                     if (pages != null)
                     {
-                        int k = 0;
-                        foreach (var p in pages)
+                        if (pages.Count > 0)
+                        {
+                            int k = 0;
+                            foreach (var p in pages)
+                            {
+                                PostViewModel pTemp = new PostViewModel();
+
+                                pTemp.Id = p.Id;
+                                pTemp.Data = p.Date.Value;
+                                pTemp.Testo = p.BodyText;
+                                pTemp.Titolo = p.Title;
+
+                                if (k == 0)
+                                    m.PostDetail.Add(pTemp);
+                                else if (k == 1)
+                                    m.PostDetail.Add(pTemp);
+                                else
+                                    m.PostPreview.Add(pTemp);
+
+                                k++;
+                            }
+                        }
+                        else
                         {
                             PostViewModel pTemp = new PostViewModel();
 
-                            pTemp.Id = p.Id;
-                            pTemp.Data = p.Date.Value;
-                            pTemp.Testo = p.BodyText;
-                            pTemp.Titolo = p.Title;
+                            pTemp.Id = 0;
+                            pTemp.Data = DateTime.Today;
+                            pTemp.Testo = "Non è presente alcun articolo!";
+                            pTemp.Titolo = "Non sono presenti articoli";
 
-                            if (k == 0)
-                                m.PostDetail.Add(pTemp);
-                            else if (k == 1)
-                                m.PostDetail.Add(pTemp);
-                            else
-                                m.PostPreview.Add(pTemp);
-
-                            k++;
+                            m.PostDetail.Add(pTemp);
                         }
                     }
                     //Carica le ultime due categoria con maggiori post
                     CategoryRepository cr = new CategoryRepository(uow.Current);
                     IList<Category> tempCats = cr.GetTopCategoryByPostCount(2);
-                    if (tempCats != null)
+                    if (tempCats != null && tempCats.Count>0)
                     {
                         foreach (var c in tempCats)
                         {
@@ -67,6 +81,14 @@ namespace Devevil.Blog.MVC.Client.Controllers
             } catch (Exception ex)
             {
                 //Errore durante recupero dei dati
+                PostViewModel pTemp = new PostViewModel();
+
+                pTemp.Id = 0;
+                pTemp.Data = DateTime.Today;
+                pTemp.Testo = "Non è presente alcun articolo!";
+                pTemp.Titolo = "Non sono presenti articoli";
+
+                m.PostDetail.Add(pTemp);
             }
             
             m.Aforisma = GetAforismaRandom();

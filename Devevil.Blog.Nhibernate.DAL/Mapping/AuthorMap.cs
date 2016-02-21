@@ -15,7 +15,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.Name).Length(255).Not.Nullable();
             Map(x => x.Surname).Length(255).Not.Nullable();
-            Map(x => x.Email).Length(255).Not.Nullable();
+            Map(x => x.Email).Length(255).Unique().Not.Nullable();
             Map(x => x.BirthDate).Not.Nullable();
             Map(x => x.IsAdministrator).Not.Nullable();
             Map(x => x.Password).Not.Nullable();

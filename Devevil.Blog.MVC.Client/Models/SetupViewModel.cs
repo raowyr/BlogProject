@@ -8,18 +8,28 @@ namespace Devevil.Blog.MVC.Client.Models
 {
     public class SetupViewModel
     {
-        private string _username;
+        private string _nome;
+        private string _cognome;
+        private DateTime _nascita;
+
         private string _password;
         private string _email;
         private string _blog;
         private string _descrizione;
 
+        private string _message;
+        [Required]
+        public string Nome
+        {
+            get { return _nome; }
+            set { _nome = value; }
+        }
 
         [Required]
-        public string Username
+        public string Cognome
         {
-            get { return _username; }
-            set { _username = value; }
+            get { return _nome; }
+            set { _nome = value; }
         }
 
         [Required]
@@ -48,6 +58,34 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _descrizione; }
             set { _descrizione = value; }
+        }
+
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime Nascita
+        {
+            get
+            {
+                return _nascita;
+            }
+
+            set
+            {
+                _nascita = value;
+            }
+        }
+
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+
+            set
+            {
+                _message = value;
+            }
         }
     }
 }

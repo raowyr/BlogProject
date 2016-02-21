@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Devevil.Blog.MVC.Client.Models;
+using Devevil.Blog.Model.Domain.Entities;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
@@ -26,15 +27,19 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     if (br.FindAll().Count > 0)
                     {
                         //Vai alla pagina di gestione
+                        return null;
                     }
+                    else
+                        return View();
                 }
                 catch (Exception ex)
                 {
                     //Il database non esiste, lo inizializzo
                     SessionManager.Instance.BuildSchema();
+                    return View();
                 }
             }
-            return View();
+
         }
 
         [AllowAnonymous]
@@ -43,7 +48,44 @@ namespace Devevil.Blog.MVC.Client.Controllers
         {
             if (ModelState.IsValid)
             {
-                return null;
+                try
+                {
+                    Model.Domain.Entities.Blog b = new Model.Domain.Entities.Blog(model.Blog,
+                        model.Descrizione);
+
+                    Author au = new Author(model.Nome,
+                        model.Cognome,
+                        model.Nascita,
+                        model.Email,
+                        true,
+                        model.Password,
+                        b);
+
+                    Category cc = new Category("Nessuna categoria", "Categoria generica");
+
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        BlogRepository br = new BlogRepository(uow.Current);
+                        AuthorRepository ar = new AuthorRepository(uow.Current);
+                        CategoryRepository cr = new CategoryRepository(uow.Current);
+
+                        br.Save(b);
+                        ar.Save(au);
+                        cr.Save(cc);
+
+                        uow.Commit();
+                    }
+
+                    //In realtà devo gestire il reindirizzamento alla pagina di gestione!!!
+                    model.Message = "Salvataggio dei dati eseguito";
+                    return View(model);
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "Si è verificato un errore durante il salvataggio dei dati";
+                    return View(model);
+                }
+
             }
             else
                 return View(model);
