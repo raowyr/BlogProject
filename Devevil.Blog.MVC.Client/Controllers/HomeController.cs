@@ -14,12 +14,13 @@ namespace Devevil.Blog.MVC.Client.Controllers
     {
         //
         // GET: /Home/
-
+        [AllowAnonymous]
         public ActionResult Index()
         {
             HomePageViewModel m = new HomePageViewModel();
 
-            try {
+            try 
+            {
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     //Carica gli ultimi 5 POST

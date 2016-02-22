@@ -19,6 +19,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(MessageViewModel model)
         {
             if (ModelState.IsValid)

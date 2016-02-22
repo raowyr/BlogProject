@@ -27,7 +27,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     if (br.FindAll().Count > 0)
                     {
                         //Vai alla pagina di gestione
-                        return null;
+                        return RedirectToAction("Index", "Manage");
                     }
                     else
                         return View();
@@ -44,6 +44,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(SetupViewModel model)
         {
             if (ModelState.IsValid)
@@ -77,12 +78,12 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     }
 
                     //In realtà devo gestire il reindirizzamento alla pagina di gestione!!!
-                    model.Message = "Salvataggio dei dati eseguito";
-                    return View(model);
+                    //Vai alla pagina di gestione
+                    return RedirectToAction("Index", "Manage");
                 }
                 catch (Exception ex)
                 {
-                    model.Message = "Si è verificato un errore durante il salvataggio dei dati";
+                    model.Message = "Si è verificato un errore durante il salvataggio dei dati. Controlla i dati inseriti!";
                     return View(model);
                 }
 

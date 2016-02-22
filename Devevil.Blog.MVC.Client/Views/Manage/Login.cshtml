@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Devevil.Blog.MVC.Client.Models.UserViewModel
+
+@section main{
+<!-- Main -->
+<div id="main-wrapper">
+    <div id="main" class="container">
+        <div class="row">
+			<!-- Content -->
+			<div id="content" class="8u 12u(mobile)">
+                <div class="row 50%">
+                    <div class="8u 12u(mobile)">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+                <!-- FORM SETUP-->
+                <section>
+                    @using (Html.BeginForm("Login", "Manage"))
+                    {
+                    <div class="row 50%">
+                        <div class="8u 12u(mobile)">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                            {
+                                @Model.Message
+                            }
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="8u 12u(mobile)">
+                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="8u 12u(mobile)">
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                        </div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="8u 12u(mobile)">
+                            <button name="SendButton" value="Login" class="form-button-submit button icon fa-male">Login</button>
+                        </div>
+                    </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+}
