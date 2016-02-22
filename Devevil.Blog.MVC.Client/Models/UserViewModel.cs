@@ -10,6 +10,8 @@ namespace Devevil.Blog.MVC.Client.Models
     {
         private string _email;
         private string _password;
+        private string _nome;
+        private string _cognome;
         private string _message;
 
         public string Message
@@ -18,8 +20,19 @@ namespace Devevil.Blog.MVC.Client.Models
             set { _message = value; }
         }
 
+        [Required]
+        public string Nome
+        {
+            get { return _nome; }
+            set { _nome = value; }
+        }
 
-
+        [Required]
+        public string Cognome
+        {
+            get { return _cognome; }
+            set { _cognome = value; }
+        }
 
         [Required, EmailAddress]
         public string Email

@@ -43,7 +43,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     if (au!=null && au.ValidatePassword(model.Password))
                     {
                         //Login OK
-                        FormsAuthentication.SetAuthCookie(model.Email, true);
+                        if(FormsAuthentication.IsEnabled)
+                            FormsAuthentication.SetAuthCookie(model.Email, true);
                         return RedirectToAction("Index","Manage");
                     }
                     else
@@ -54,6 +55,39 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 }
             }
             else return View(model);
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            if (FormsAuthentication.IsEnabled)
+            {
+                FormsAuthentication.SignOut();
+            }
+            return RedirectToAction("Index", "Manage");
+        }
+
+        [Authorize]
+        public ActionResult AccountManagment()
+        {
+            UserViewModel uvm = new UserViewModel();
+            if (FormsAuthentication.IsEnabled)
+            {
+
+            }
+            return View(uvm);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult AccountManagment(UserViewModel model)
+        {
+            if (FormsAuthentication.IsEnabled)
+            {
+
+            }
+            return View(model);
         }
     }
 }

@@ -185,6 +185,7 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdminLeftSide.cshtml" />
+    <Content Include="Views\Manage\AccountManagment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
