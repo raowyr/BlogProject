@@ -6,15 +6,10 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class UserViewModel
+    public class UserLoginViewModel
     {
         private string _email;
         private string _password;
-        private string _nome;
-        private string _cognome;
-        private DateTime _nascita;
-
-
 
         private string _message;
 
@@ -22,20 +17,6 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _message; }
             set { _message = value; }
-        }
-
-        [Required]
-        public string Nome
-        {
-            get { return _nome; }
-            set { _nome = value; }
-        }
-
-        [Required]
-        public string Cognome
-        {
-            get { return _cognome; }
-            set { _cognome = value; }
         }
 
         [Required, EmailAddress]
@@ -50,13 +31,6 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _password; }
             set { _password = value; }
-        }
-
-        [Required]
-        public DateTime Nascita
-        {
-            get { return _nascita; }
-            set { _nascita = value; }
         }
 
     }

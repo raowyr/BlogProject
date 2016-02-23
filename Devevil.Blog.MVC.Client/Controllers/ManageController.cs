@@ -31,7 +31,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserViewModel model)
+        public ActionResult Login(UserLoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -67,25 +67,66 @@ namespace Devevil.Blog.MVC.Client.Controllers
             return RedirectToAction("Index", "Manage");
         }
 
+        //Recupero dei dati
         [Authorize]
         public ActionResult AccountManagment()
         {
             UserViewModel uvm = new UserViewModel();
             if (FormsAuthentication.IsEnabled)
             {
+                string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+                if (!String.IsNullOrEmpty(username))
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        AuthorRepository ar = new AuthorRepository(uow.Current);
+                        Author au = ar.GetAuthorByEmail(username);
 
+                        if (au != null)
+                        {
+                            uvm.Cognome = au.Surname;
+                            uvm.Email = au.Email;
+                            uvm.Nascita = au.BirthDate.Value;
+                            uvm.Nome = au.Name;
+                            uvm.Password = au.Password;
+                        }
+                        else
+                            uvm.Message = "Si è verificato un problema durante il caricamento dati.";
+                    }
+                }
+                else
+                    uvm.Message = "Si è verificato un problema durante il caricamento dati.";
             }
             return View(uvm);
         }
 
+        //Modifica dei dati
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult AccountManagment(UserViewModel model)
         {
-            if (FormsAuthentication.IsEnabled)
+            if (ModelState.IsValid)
             {
+                if (FormsAuthentication.IsEnabled)
+                {
+                    string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+                    if (!String.IsNullOrEmpty(username))
+                    {
+                        using (UnitOfWork uow = new UnitOfWork())
+                        {
+                            AuthorRepository ar = new AuthorRepository(uow.Current);
+                            Author au = ar.GetAuthorByEmail(username);
 
+                            //au.BirthDate = model.Nascita;
+                            //au.Email = model.Email;
+                            //au.Name = model.Nome;
+                            //au.Password = model.Password;
+                            //au.Surname = model.Cognome;
+
+                        }
+                    }
+                }
             }
             return View(model);
         }

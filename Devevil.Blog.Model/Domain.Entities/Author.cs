@@ -79,6 +79,8 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
+
+
         public virtual IList<Page> Pages
         {
             get { return _pages; }
