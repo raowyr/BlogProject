@@ -45,7 +45,6 @@ namespace Devevil.Blog.MVC.Client.Models
             set { _email = value; }
         }
 
-        [Required]
         public string Password
         {
             get { return _password; }

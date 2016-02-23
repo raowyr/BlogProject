@@ -79,7 +79,20 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
+        public virtual void ModifyAuthor(string prmName, string prmSurname, DateTime prmBirthDate, string prmEmail)
+        {
+            _name = prmName;
+            _surname = prmSurname;
+            _birthDate = prmBirthDate;
 
+            if (StringValidator.CheckIsValidMail(prmEmail))
+                _email = prmEmail;
+            else
+                throw new AuthorBadMailException();
+
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
+        }
 
         public virtual IList<Page> Pages
         {

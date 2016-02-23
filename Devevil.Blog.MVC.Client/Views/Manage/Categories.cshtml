@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdminLeftSide.cshtml";
+}
+
+@model IEnumerable<Devevil.Blog.MVC.Client.Models.CategoryViewModel>
+
+@section content{
+<!-- Content -->
+<div id="content" class="8u 12u(mobile)">
+    <div class="row 50%">
+        <div class="8u 12u(mobile)">
+            <h1>Gestione categorie</h1>
+        </div>
+    </div>
+    @foreach (var item in Model) {
+        <div class="row">
+            <div class="8u 12u(mobile)">
+                @item.CategoryName
+            </div>
+            <div class="8u 12u(mobile)">
+                @item.CategoryDescription
+            </div>
+        </div>
+    }
+</div>
+}

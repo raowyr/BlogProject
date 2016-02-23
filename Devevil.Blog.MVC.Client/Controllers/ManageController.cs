@@ -115,20 +115,56 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     {
                         using (UnitOfWork uow = new UnitOfWork())
                         {
-                            AuthorRepository ar = new AuthorRepository(uow.Current);
-                            Author au = ar.GetAuthorByEmail(username);
+                            try
+                            {
+                                AuthorRepository ar = new AuthorRepository(uow.Current);
+                                Author au = ar.GetAuthorByEmail(username);
 
-                            //au.BirthDate = model.Nascita;
-                            //au.Email = model.Email;
-                            //au.Name = model.Nome;
-                            //au.Password = model.Password;
-                            //au.Surname = model.Cognome;
+                                au.ModifyAuthor(model.Nome, model.Cognome, model.Nascita, model.Email);
 
+                                ar.SaveOrUpdate(au);
+
+                                uow.Commit();
+
+                                model.Message = "Modifica dei dati eseguita con successo!";
+                            }
+                            catch (Exception ex)
+                            {
+                                model.Message = "Si è verificato un problema durante il salvataggio dei dati.";
+                            }
                         }
                     }
+                    else
+                        model.Message = "Si è verificato un problema durante il salvataggio dei dati.";
                 }
             }
             return View(model);
+        }
+
+         //Recupero dei dati
+        [Authorize]
+        public ActionResult Categories()
+        {
+            IList<CategoryViewModel> categoryList  = null;
+            using (UnitOfWork uow = new UnitOfWork())
+            {
+                CategoryRepository cr = new CategoryRepository(uow.Current);
+                IList<Category> tmpList = cr.FindAll().ToList();
+                if (tmpList != null)
+                {
+                    categoryList = new List<CategoryViewModel>();
+                    foreach (var c in tmpList)
+                    {
+                        CategoryViewModel cvm = new CategoryViewModel();
+                        cvm.CategoryDescription = c.Description;
+                        cvm.CategoryName = c.Name;
+                        cvm.Id = c.Id;
+
+                        categoryList.Add(cvm);
+                    }
+                }
+            }
+            return View(categoryList);
         }
     }
 }
