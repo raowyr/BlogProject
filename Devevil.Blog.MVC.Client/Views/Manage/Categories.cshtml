@@ -12,15 +12,33 @@
             <h1>Gestione categorie</h1>
         </div>
     </div>
-    @foreach (var item in Model) {
-        <div class="row">
+    <div></div>
+    <section>
+        <div class="row 50%">
             <div class="8u 12u(mobile)">
-                @item.CategoryName
-            </div>
-            <div class="8u 12u(mobile)">
-                @item.CategoryDescription
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@Html.ActionLink("Aggiungi Nuova", "Index", new { controller = "Contact" }, new { @class = "icon fa-pencil" })</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nome categoria</strong></td>
+                        <td><strong>Descrizione categoria</strong></td>
+                        <td></td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CategoryName</td>
+                            <td>@item.CategoryDescription</td>
+                            <td>@Html.ActionLink("Modifica", "Index", new { controller = "Contact" }, new { @class = "icon fa-pencil" })</td>
+                        </tr>
+                    }
+                </table>
             </div>
         </div>
-    }
+    </section>
 </div>
 }
