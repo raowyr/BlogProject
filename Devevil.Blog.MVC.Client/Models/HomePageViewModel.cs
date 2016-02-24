@@ -7,10 +7,17 @@ namespace Devevil.Blog.MVC.Client.Models
 {
     public class HomePageViewModel
     {
-        private string _aforisma;
         private IList<PostViewModel> _postPreview;
         private IList<PostViewModel> _postDetail;
         private IList<CategoryViewModel> _categoriesPreview;
+
+        private int _page;
+
+        public int Page
+        {
+            get { return _page; }
+            set { _page = value; }
+        }
 
         private MessageViewModel _message;
 
@@ -31,12 +38,6 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _postDetail; }
             set { _postDetail = value; }
-        }
-
-        public string Aforisma
-        {
-            get { return _aforisma; }
-            set { _aforisma = value; }
         }
 
         public MessageViewModel Message

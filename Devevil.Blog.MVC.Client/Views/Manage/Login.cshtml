@@ -4,51 +4,37 @@
 
 @model Devevil.Blog.MVC.Client.Models.UserLoginViewModel
 
-@section main{
-<!-- Main -->
-<div id="main-wrapper">
-    <div id="main" class="container">
-        <div class="row">
-			<!-- Content -->
-			<div id="content" class="8u 12u(mobile)">
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        <h1>Login</h1>
-                    </div>
-                </div>
-                <!-- FORM SETUP-->
-                <section>
-                    @using (Html.BeginForm("Login", "Manage"))
-                    {
-                    <div class="row 50%">
-                        <div class="8u 12u(mobile)">
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary()
-                            @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
-                            {
-                                @Model.Message
-                            }
-                        </div>
-                    </div>
-                    <div class="row 50%">
-                        <div class="8u 12u(mobile)">
-                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
-                        </div>
-                    </div>
-                    <div class="row 50%">
-                        <div class="8u 12u(mobile)">
-                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
-                        </div>
-                    </div>
-                    <div class="row 50%">
-                        <div class="8u 12u(mobile)">
-                            <button name="SendButton" value="Login" class="form-button-submit button icon fa-male">Login</button>
-                        </div>
-                    </div>
-                    }
-                </section>
-            </div>
-        </div>
-    </div>
+@section content{
+<div id="main">
+    @using (Html.BeginForm("Login", "Manage"))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2><a href="#">Administration Control Panel</a></h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+            </p>
+            <p>
+                 @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="SendButton" value="Login" class="button big">Login</button></li>
+		        </ul>
+            </footer>
+        </article>
+    }
 </div>
 }

@@ -4,196 +4,90 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section features{
-    <!-- Features -->
-    <div id="features-wrapper">
-        <section id="features" class="container">
-            @*						<header>
-                    <h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
-                </header>*@
-            <div class="row">
-                <div class="4u 12u(mobile)">
-
-                    <!-- Feature -->
-                    <section>
-                        <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
-                        <header>
-                            <h3>Software engineer</h3>
-                        </header>
-                        <p>
-                            Mi occupo, da svariati anni, della progettazione e dello sviluppo di sistemi software, complessi e strutturati, integrabili nel workflow aziendale ed a supporto dei processi di business aziendali.
-                            E' il mio lavoro e la mia passione.
-                        </p>
-                    </section>
-
-                </div>
-                <div class="4u 12u(mobile)">
-
-                    <!-- Feature -->
-                    <section>
-                        <a href="#" class="image featured"><img src="/images/pic02.jpg" alt="" /></a>
-                        <header>
-                            <h3>Web developer</h3>
-                        </header>
-                        <p>
-                            Realizzo web application utilizzando, da sempre, tecnolgie solide, robuste ed all'avanguardia. Presentare in modo ottimale il proprio businnes e la propria attività è l'obiettivo principale per incrementare il bacino di utenza raggiunto.
-                        </p>
-                    </section>
-
-                </div>
-                <div class="4u 12u(mobile)">
-
-                    <!-- Feature -->
-                    <section>
-                        <a href="#" class="image featured"><img src="/images/pic03.jpg" alt="" /></a>
-                        <header>
-                            <h3>Consulente IT</h3>
-                        </header>
-                        <p>Supporto aziende, associazioni e clienti privati offrendo consulenza su tutto ciò che riguarda il mondo dell'Information & Communication Technology.</p>
-                    </section>
-
-                </div>
-            </div>
-            <ul class="actions">
-                <li><a href="#" class="button icon fa-file">Guarda alcuni dei miei lavori</a></li>
-            </ul>
-        </section>
-    </div>
+@section content{
+<div id="main">
+     @{
+        if (Model.PostDetail != null && Model.PostDetail.Count > 0)
+        {
+            foreach (var item in Model.PostDetail)
+            {
+                <!-- Post -->
+                <article class="post">
+	                <header>
+		                <div class="title">
+			                <h2><a href="#">@item.Titolo</a></h2>
+		                </div>
+		                <div class="meta">
+			                <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
+			                <a href="#" class="author"><span class="name">@item.Autore</span></a>
+		                </div>
+	                </header>
+	                <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
+	                <p>@item.Testo</p>
+	                <footer>
+		                <ul class="actions">
+			                <li><a href="#" class="button big">Vai all'articolo</a></li>
+		                </ul>
+		                <ul class="stats">
+			                <li><a href="#">@item.Categoria</a></li>
+			                <li><a href="#" class="icon fa-heart">28</a></li>
+			                <li><a href="#" class="icon fa-comment">128</a></li>
+		                </ul>
+	                </footer>
+                </article>
+            }
+        }
+    }
+@*    <ul class="actions pagination">
+		<li><a href="" class="disabled button big previous">Pagina Precedente</a></li>
+		<li><a href="#" class="button big next">Pagina Successiva</a></li>
+	</ul>*@
+</div>
 }
-@section banner{
-	<!-- Banner -->
-	<div id="banner-wrapper">
-		<div class="inner">
-			<section id="banner" class="container">
-				<p>@Model.Aforisma</p>
-			</section>
-		</div>
+
+@section category{
+<section>
+	<div class="mini-posts">
+        @{
+            if (Model.CategoriesPreview != null && Model.CategoriesPreview.Count > 0)
+            {
+                foreach (var item in Model.CategoriesPreview)
+                {
+		            <!-- Mini Post -->
+			        <article class="mini-post">
+				        <header>
+					        <h3><a href="#">@item.CategoryName</a></h3>
+                            <p>@item.CategoryDescription</p>
+				        </header>
+				        <a href="#" class="image"><img src="/images/pic04.jpg" alt="" /></a>
+			        </article>
+                }   
+            }
+        }
 	</div>
+</section>
 }
-@section main{
-	<!-- Main -->
-	<div id="main-wrapper">
-		<div id="main" class="container">
-			<div class="row">
-				<!-- Content -->
-                @{if (Model.PostDetail != null && Model.PostDetail.Count > 0)
-                    {
-					<div id="content" class="8u 12u(mobile)">
-                        @foreach (var item in Model.PostDetail)
-                        {
-							<!-- Post -->
-							<article class="box post">
-								<header>
-                                    @{ if (@item.Id != 0)
-                                        {
-                                            <h2><a href="#">@item.Titolo</a></h2>
-                                        }
-                                        else
-                                        {
-                                            <h2>@item.Titolo</h2>
-                                        }
-                                    }
-								</header>
-								<p>@item.Testo</p>
-								<ul class="actions">
-                                    @{ if (@item.Id != 0)
-                                        {
-									        <li><a href="#" class="button icon fa-file">Vai all'articolo</a></li>
-                                        }
-                                    }
-								</ul>
-							</article>
-                        }
-					</div>
-                    }
+
+@section postpreview{
+<section>
+	<ul class="posts">
+        @{
+            if (Model.PostPreview != null && Model.PostPreview.Count > 0)
+            {
+                foreach (var item in Model.PostPreview)
+                {
+                    <li>
+			            <article>
+				            <header>
+					            <h3><a href="#">@item.Titolo</a></h3>
+					            <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
+				            </header>
+				            <a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>
+			            </article>
+		            </li>
                 }
-
-				<!-- Sidebar -->
-					<div id="sidebar" class="4u 12u(mobile)">
-
-						<!-- Excerpts -->
-                        @{if (Model.PostPreview != null && Model.PostPreview.Count > 0)
-                            {
-							<section>
-                                            
-								<ul class="divided">
-                                    @foreach (var item in Model.PostPreview)
-                                    {
-										<li>
-
-											<!-- Excerpt -->
-												<article class="box excerpt">
-													<header>
-														<span class="date">@item.Data.ToLongDateString()</span>
-														<h3><a href="#">@item.Titolo</a></h3>
-													</header>
-													<p>@item.Testo</p>
-												</article>
-
-										</li>
-                                    }
-									@*<li>
-
-										<!-- Excerpt -->
-											<article class="box excerpt">
-												<header>
-													<span class="date">@Model.PostPreview[1].Data.ToLongDateString()</span>
-													<h3><a href="#">@Model.PostPreview[1].Titolo</a></h3>
-												</header>
-												<p>@Model.PostPreview[1].Testo</p>
-											</article>
-
-									</li>
-									<li>
-
-										<!-- Excerpt -->
-											<article class="box excerpt">
-												<header>
-													<span class="date">@Model.PostPreview[2].Data.ToLongDateString()</span>
-													<h3><a href="#">@Model.PostPreview[2].Titolo</a></h3>
-												</header>
-												<p>@Model.PostPreview[2].Testo</p>
-											</article>
-
-									</li>*@
-								</ul>
-							</section>
-                            }
-                        }
-						<!-- Highlights -->
-                        @{if (Model.CategoriesPreview != null && Model.CategoriesPreview.Count > 0)
-                            {
-							<section>
-								<ul class="divided">
-                                    @foreach (var item in Model.CategoriesPreview)
-                                    {
-									<li>
-
-										<!-- Highlight -->
-											<article class="box highlight">
-												<header>
-													<h3><a href="#">@item.CategoryName</a></h3>
-												</header>
-												@*<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>*@
-												<p>@item.CategoryDescription</p>
-												<ul class="actions">
-													<li><a href="#" class="button icon fa-file">Learn More</a></li>
-												</ul>
-											</article>
-
-									</li>
-                                    }
-								</ul>
-							</section>
-                            }
-                        }
-					</div>
-			</div>
-		</div>
-	</div>
+            }
+        }
+	</ul>
+</section>
 }
-
-@section footMessage{
-    @Html.Partial("../Shared/_Message", new Devevil.Blog.MVC.Client.Models.MessageViewModel())
-}
-							

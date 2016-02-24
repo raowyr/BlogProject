@@ -8,8 +8,21 @@ namespace Devevil.Blog.MVC.Client.Models
     public class PostViewModel
     {
         private int _id;
-
         private string _titolo;
+        private string _autore;
+        private string _categoria;
+
+        public string Categoria
+        {
+            get { return _categoria; }
+            set { _categoria = value; }
+        }
+
+        public string Autore
+        {
+            get { return _autore; }
+            set { _autore = value; }
+        }
 
         public string Titolo
         {

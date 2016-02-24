@@ -25,7 +25,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 {
                     //Carica gli ultimi 5 POST
                     PageRepository pr = new PageRepository(uow.Current);
-                    IList<Page> pages = pr.GetTopPost(5);
+
+                    IList<Page> pages = pr.GetTopPost(10);
                     if (pages != null)
                     {
                         if (pages.Count > 0)
@@ -39,10 +40,10 @@ namespace Devevil.Blog.MVC.Client.Controllers
                                 pTemp.Data = p.Date.Value;
                                 pTemp.Testo = p.BodyText;
                                 pTemp.Titolo = p.Title;
+                                pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
+                                pTemp.Categoria = p.Category.Name;
 
-                                if (k == 0)
-                                    m.PostDetail.Add(pTemp);
-                                else if (k == 1)
+                                if (k < 5)
                                     m.PostDetail.Add(pTemp);
                                 else
                                     m.PostPreview.Add(pTemp);
@@ -56,16 +57,30 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                             pTemp.Id = 0;
                             pTemp.Data = DateTime.Today;
-                            pTemp.Testo = "Non è presente alcun articolo!";
-                            pTemp.Titolo = "Non sono presenti articoli";
+                            pTemp.Titolo = "OOPS...";
+                            pTemp.Testo = "Sembra non siano presenti articoli...";
+                            pTemp.Autore = "Pasquale Garzillo";
 
                             m.PostDetail.Add(pTemp);
                         }
                     }
-                    //Carica le ultime due categoria con maggiori post
+                    else
+                    {
+                        PostViewModel pTemp = new PostViewModel();
+
+                        pTemp.Id = 0;
+                        pTemp.Data = DateTime.Today;
+                        pTemp.Titolo = "OOPS...";
+                        pTemp.Testo = "Sembra non siano presenti articoli...";
+                        pTemp.Autore = "Pasquale Garzillo";
+
+                        m.PostDetail.Add(pTemp);
+                    }
+                   
+                    //Carica le ultime 5 categoria con maggiori post
                     CategoryRepository cr = new CategoryRepository(uow.Current);
-                    IList<Category> tempCats = cr.GetTopCategoryByPostCount(2);
-                    if (tempCats != null && tempCats.Count>0)
+                    IList<Category> tempCats = cr.GetTopCategoryByPostCount(5);
+                    if (tempCats != null && tempCats.Count > 0)
                     {
                         foreach (var c in tempCats)
                         {
@@ -78,28 +93,41 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             m.CategoriesPreview.Add(cvTemp);
                         }
                     }
+                    else
+                    {
+                        CategoryViewModel cvTemp = new CategoryViewModel();
+
+                        cvTemp.Id = 0;
+                        cvTemp.CategoryName = "OOPS...";
+                        cvTemp.CategoryDescription = "Sembra non siano presenti categorie...";
+
+                        m.CategoriesPreview.Add(cvTemp);
+                    }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 //Errore durante recupero dei dati
                 PostViewModel pTemp = new PostViewModel();
 
                 pTemp.Id = 0;
                 pTemp.Data = DateTime.Today;
-                pTemp.Testo = "Non è presente alcun articolo!";
-                pTemp.Titolo = "Non sono presenti articoli";
+                pTemp.Titolo = "OOPS...";
+                pTemp.Testo = "Sembra non siano presenti articoli...";
+                pTemp.Autore = "Pasquale Garzillo";
 
                 m.PostDetail.Add(pTemp);
+
+                CategoryViewModel cvTemp = new CategoryViewModel();
+
+                cvTemp.Id = 0;
+                cvTemp.CategoryName = "OOPS...";
+                cvTemp.CategoryDescription = "Sembra non siano presenti categorie...";
+
+                m.CategoriesPreview.Add(cvTemp);
             }
             
-            m.Aforisma = GetAforismaRandom();
-
             return View(m);
-        }
-
-        private string GetAforismaRandom()
-        {
-            return "Aforsima";
         }
 
     }
