@@ -147,13 +147,19 @@
 				            <li>
 					            <a href="#">
 						            <h3>Gestione tag</h3>
-						            <p>Aggiungi, </p>
+						            <p>Aggiungi, modifica ed elimina tag</p>
 					            </a>
 				            </li>
 				            <li>
 					            <a href="#">
-						            <h3>Etiam sed consequat</h3>
-						            <p>Porta lectus amet ultricies</p>
+						            <h3>Gestione account</h3>
+						            <p>Modifica le informazioni relative all'account</p>
+					            </a>
+				            </li>
+                            <li>
+					            <a href="#">
+						            <h3>Gestione Blog</h3>
+						            <p>Modifica le informazioni relative al Blog</p>
 					            </a>
 				            </li>
 			            </ul>
@@ -161,7 +167,16 @@
                     <!-- Actions -->
                     <section>
 	                    <ul class="actions vertical">
-		                    <li><a href="/Manage/Login" class="button big fit">Log In</a></li>
+                            @{
+                                if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported && Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+                                {
+                                    <li><a href="/Manage/Logout" class="button big fit">Log Out</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Manage/Login" class="button big fit">Log In</a></li>
+                                }
+                            }
 	                    </ul>
                     </section>
                 </section>
