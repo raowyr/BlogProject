@@ -1,26 +1,45 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutAdminLeftSide.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @model IEnumerable<Devevil.Blog.MVC.Client.Models.CategoryViewModel>
 
 @section content{
-<!-- Content -->
-<div id="content" class="8u 12u(mobile)">
-    <div class="row 50%">
-        <div class="8u 12u(mobile)">
-            <h1>Gestione categorie</h1>
-        </div>
-    </div>
-    @foreach (var item in Model) {
-        <div class="row">
-            <div class="8u 12u(mobile)">
-                @item.CategoryName
-            </div>
-            <div class="8u 12u(mobile)">
-                @item.CategoryDescription
-            </div>
-        </div>
-    }
+    <div id="main">
+        @*<div>
+            <h1>Gestione Categorie</h1>
+            <p><button name="NewCategory" value="Crea nuova" class="button big" onclick="location.href = '/Manage/Logout'">Crea nuova</button></p>
+        </div>*@
+        
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2>Gestione Categorie</h2>
+                </div>
+                <div class="meta">
+                    <p><button name="NewCategory" value="Crea nuova" class="button big" onclick="location.href = '/Manage/Logout'">Crea nuova</button></p>
+                </div>
+            </header>
+            <p>
+
+            </p>
+        </article>
+        @if(Model!=null)
+        {
+            foreach (var item in Model)
+            {
+                <article class="post">
+                    <header>
+                        <div class="title">
+                            <h2><a href="#">@item.CategoryName</a></h2>
+                        </div>
+                        <div class="meta">
+                            <p><button name="Modify" value="Modifica" class="button big" onclick="location.href = '/Manage/Logout'">Modifica</button></p>
+                        </div>
+                    </header>
+                    <p>@item.CategoryDescription</p>
+                </article>
+            }
+        }
 </div>
 }

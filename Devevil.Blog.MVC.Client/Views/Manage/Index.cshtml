@@ -1,19 +1,24 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutAdminLeftSide.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @section content{
-<div id="content" class="8u 12u(mobile) important(mobile)">
-<!-- Post -->
-	<article class="box post">
-		<header>
-			<h2>Bentornato!</h2>
-		</header>
-		<h3>Comincia a gestire il blog...</h3>
+<div id="main">
+    <!-- Post -->
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2><a href="#">Backend del Blog</a></h2>
+            </div>
+        </header>
         <p>Oggi è il giorno: @DateTime.Today.ToShortDateString()</p>
         <p>Sono le ore: @DateTime.Now.TimeOfDay.ToString()</p>
-		<p>Scegli dal menù laterale l'operazione da eseguire.</p>
-	</article>
+        <footer>
+            <ul class="actions">
+                <li><button name="Logout" value="Login" class="button big" onclick="location.href = '/Manage/Logout'">Logout</button></li>
+            </ul>
+        </footer>
+    </article>
 
 </div>   
 }

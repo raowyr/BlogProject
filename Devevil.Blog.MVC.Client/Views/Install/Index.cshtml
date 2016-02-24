@@ -4,76 +4,53 @@
 
 @model Devevil.Blog.MVC.Client.Models.SetupViewModel
 
-@section main{
-<!-- Main -->
-<div id="main-wrapper">
-    <div id="main" class="container">
-        <div class="row">
-			<!-- Content -->
-			<div id="content" class="8u 12u(mobile)">
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        <h1>Setup iniziale del BLOG</h1>
+
+@section content{
+    <div id="main">
+        @using (Html.BeginForm("Index", "Install"))
+        {
+        <!-- Post -->
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">Setup iniziale del Blog</a></h2>
                     </div>
-                </div>
-                <!-- FORM SETUP-->
-                <section>
-                @using (Html.BeginForm("Index", "Install"))
-                {
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary()
-                        @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
-                        {
-                            @Model.Message
-                        }
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome Amministratore" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.TextBoxFor(m => m.Cognome, new { placeholder = "Cognome Amministratore" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.TextBoxFor(m => m.Nascita , new { placeholder = "gg/mm/aaaa", @class = "form-control default-date-picker" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.TextBoxFor(m => m.Blog, new { placeholder = "Nome del blog" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        @Html.TextBoxFor(m => m.Descrizione, new { placeholder = "Descrizione del blog" })
-                    </div>
-                </div>
-                <div class="row 50%">
-                    <div class="8u 12u(mobile)">
-                        <button name="SendButton" value="Crea il blog" class="form-button-submit button icon fa-pencil">Crea il blog</button>
-                    </div>
-                </div>
-                }
-                </section>
-            </div>
-        </div>
+                </header>
+                <p>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    @if (Model != null && !String.IsNullOrEmpty(Model.Message))
+                    {
+                        @Model.Message
+                    }
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome Amministratore" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Cognome, new { placeholder = "Cognome Amministratore" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Nascita, new { placeholder = "gg/mm/aaaa", @class = "form-control default-date-picker" })
+                </p>
+                <p>
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Blog, new { placeholder = "Nome del blog" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Descrizione, new { placeholder = "Descrizione del blog" })
+                </p>
+                <footer>
+                    <ul class="actions">
+                        <li><button name="CreaBlog" value="Crea il Blog" class="button big">Crea il Blog</button></li>
+                    </ul>
+                </footer>
+            </article>
+        }
     </div>
-</div>
 }

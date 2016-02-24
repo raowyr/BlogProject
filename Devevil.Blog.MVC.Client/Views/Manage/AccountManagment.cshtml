@@ -1,62 +1,49 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutAdminLeftSide.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 @model Devevil.Blog.MVC.Client.Models.UserViewModel
 
 @section content{
-<!-- Content -->
-<div id="content" class="8u 12u(mobile)">
-    <div class="row 50%">
-        <div class="8u 12u(mobile)">
-            <h1>Gestione account</h1>
-        </div>
+    <div id="main">
+    @using (Html.BeginForm("AccountManagment", "Manage"))
+    {
+        <!-- Post -->
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">Modifica dei dati personali</a></h2>
+                    </div>
+                </header>
+                <p>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    @if (Model != null && !String.IsNullOrEmpty(Model.Message))
+                    {
+                        @Model.Message
+                    }
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Cognome, new { placeholder = "Cognome" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Nascita, new { placeholder = "Data di nascita" })
+                </p>
+                <p>
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+                </p>
+                <p>
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                </p>
+                <footer>
+                    <ul class="actions">
+                        <li><button name="ModifyData" value="Modifica dati" class="button big">Modifica dati</button></li>
+                    </ul>
+                </footer>
+            </article>
+    }
     </div>
-    <!-- FORM SETUP-->
-    <section>
-        @using (Html.BeginForm("AccountManagment", "Manage"))
-        {
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary()
-                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
-                {
-                    @Model.Message
-                }
-            </div>
-        </div>
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome" })
-            </div>
-        </div>
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                @Html.TextBoxFor(m => m.Cognome, new { placeholder = "Cognome" })
-            </div>
-        </div>
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                @Html.TextBoxFor(m => m.Nascita, new { placeholder = "Data di nascita" })
-            </div>
-        </div>
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
-            </div>
-        </div>
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
-            </div>
-        </div>
-        <div class="row 50%">
-            <div class="8u 12u(mobile)">
-                <button name="SendButton" value="Modifica dati" class="form-button-submit button icon fa-male">Modifica dati</button>
-            </div>
-        </div>
-        }
-    </section>
-</div>
 }

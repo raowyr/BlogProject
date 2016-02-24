@@ -19,27 +19,35 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            using (UnitOfWork uow = new UnitOfWork())
+            try
             {
-                BlogRepository br = new BlogRepository(uow.Current);
-                try
+                using (UnitOfWork uow = new UnitOfWork())
                 {
-                    if (br.FindAll().Count > 0)
+                    BlogRepository br = new BlogRepository(uow.Current);
+                    try
                     {
-                        //Vai alla pagina di gestione
-                        return RedirectToAction("Index", "Manage");
+                        if (br.FindAll().Count > 0)
+                        {
+                            //Vai alla pagina di gestione
+                            return RedirectToAction("Index", "Manage");
+                        }
+                        else
+                            return View();
                     }
-                    else
+                    catch (Exception ex)
+                    {
+                        //Il database non esiste, lo inizializzo
+                        SessionManager.Instance.BuildSchema();
                         return View();
-                }
-                catch (Exception ex)
-                {
-                    //Il database non esiste, lo inizializzo
-                    SessionManager.Instance.BuildSchema();
-                    return View();
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                SetupViewModel svm = new SetupViewModel();
+                svm.Message = "Si è verificato un errore...";
+                return View(svm);
+            }
         }
 
         [AllowAnonymous]

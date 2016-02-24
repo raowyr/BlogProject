@@ -62,6 +62,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             pTemp.Autore = "Pasquale Garzillo";
 
                             m.PostDetail.Add(pTemp);
+                            m.PostPreview.Add(pTemp);
                         }
                     }
                     else

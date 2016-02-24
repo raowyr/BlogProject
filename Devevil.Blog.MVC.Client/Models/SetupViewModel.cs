@@ -28,8 +28,8 @@ namespace Devevil.Blog.MVC.Client.Models
         [Required]
         public string Cognome
         {
-            get { return _nome; }
-            set { _nome = value; }
+            get { return _cognome; }
+            set { _cognome = value; }
         }
 
         [Required]

@@ -84,30 +84,37 @@ namespace Devevil.Blog.MVC.Client.Controllers
         public ActionResult AccountManagment()
         {
             UserViewModel uvm = new UserViewModel();
-            if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
+            try
             {
-                string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
-                if (!String.IsNullOrEmpty(username))
+                if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
                 {
-                    using (UnitOfWork uow = new UnitOfWork())
+                    string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+                    if (!String.IsNullOrEmpty(username))
                     {
-                        AuthorRepository ar = new AuthorRepository(uow.Current);
-                        Author au = ar.GetAuthorByEmail(username);
-
-                        if (au != null)
+                        using (UnitOfWork uow = new UnitOfWork())
                         {
-                            uvm.Cognome = au.Surname;
-                            uvm.Email = au.Email;
-                            uvm.Nascita = au.BirthDate.Value;
-                            uvm.Nome = au.Name;
-                            uvm.Password = au.Password;
+                            AuthorRepository ar = new AuthorRepository(uow.Current);
+                            Author au = ar.GetAuthorByEmail(username);
+
+                            if (au != null)
+                            {
+                                uvm.Cognome = au.Surname;
+                                uvm.Email = au.Email;
+                                uvm.Nascita = au.BirthDate.Value;
+                                uvm.Nome = au.Name;
+                                uvm.Password = au.Password;
+                            }
+                            else
+                                uvm.Message = "Si è verificato un problema durante il caricamento dati.";
                         }
-                        else
-                            uvm.Message = "Si è verificato un problema durante il caricamento dati.";
                     }
+                    else
+                        uvm.Message = "Si è verificato un problema durante il caricamento dati.";
                 }
-                else
-                    uvm.Message = "Si è verificato un problema durante il caricamento dati.";
+            }
+            catch (Exception ex)
+            {
+                uvm.Message = "Si è verificato un problema durante il caricamento dati.";
             }
             return View(uvm);
         }
