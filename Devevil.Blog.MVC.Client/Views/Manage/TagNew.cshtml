@@ -2,17 +2,17 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@model Devevil.Blog.MVC.Client.Models.CategoryViewModel
+@model Devevil.Blog.MVC.Client.Models.TagViewModel
 
 @section content{
 <div id="main">
-    @using (Html.BeginForm("CategoryNew", "Manage"))
+    @using (Html.BeginForm("TagNew", "Manage"))
     {
         <!-- Post -->
         <article class="post">
 	        <header>
 		        <div class="title">
-			        <h2>Crea una nuova categoria</h2>
+			        <h2>Crea un nuovo TAG</h2>
 		        </div>
 	        </header>
 	        <p>
@@ -24,10 +24,7 @@
                 }
 	        </p>
             <p>
-                 @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome categoria" })
-            </p>
-            <p>
-                 @Html.TextBoxFor(m => m.Descrizione, new { placeholder = "Descrizione categoria" })
+                 @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome TAG" })
             </p>
             <footer>
                 <ul class="actions">

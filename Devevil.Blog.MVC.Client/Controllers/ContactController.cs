@@ -24,7 +24,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Result = "Grazie per avermi inviato questo messaggio! Ti ricontatterò il prima possibile!";
+                model.Message = "Grazie per avermi inviato questo messaggio! Ti ricontatterò il prima possibile!";
             }
             return View(model);
         }

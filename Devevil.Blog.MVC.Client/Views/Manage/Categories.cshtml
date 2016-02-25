@@ -24,8 +24,8 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.CategoryName</td>
-                        <td>@item.CategoryDescription</td>
+                        <td>@item.Nome</td>
+                        <td>@item.Descrizione</td>
                         <td><button name="Modify" value="Modifica" class="button big" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
                     </tr>
                 }

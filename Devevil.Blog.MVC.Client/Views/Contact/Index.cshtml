@@ -4,16 +4,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section main{
-    <!-- Main -->
-    <div id="main-wrapper">
-        @*<div id="main" class="container">
-            <div class="row">
-            </div>
-        </div>*@
-    </div>
-}         
-
-@section footMessage{
-    @Html.Partial("../Shared/_Message", new Devevil.Blog.MVC.Client.Models.MessageViewModel())
+@section content{
+<div id="main">
+    @using (Html.BeginForm("Index", "Contact"))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>Restiamo in contatto</h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Name, new { placeholder = "Nome del mittente" })
+            </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Email, new { placeholder = "Email mittente" })
+            </p>
+            <p>
+                 @Html.TextAreaFor(m => m.Body, new { placeholder = "Messaggio" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="SendButton" value="Invia" class="button big">Invia</button></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
 }

@@ -22,6 +22,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             return View();
         }
 
+        #region Login
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -78,7 +79,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             return RedirectToAction("Index", "Manage");
         }
+        #endregion
 
+        #region AccountManagment
         //Recupero dei dati relativi all'account correntemente in uso
         [Authorize]
         public ActionResult AccountManagment()
@@ -159,29 +162,44 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             return View(model);
         }
+        #endregion
+
+        #region Categories
 
         //Recupero dei dati relativi alle categorie
         [Authorize]
         public ActionResult Categories()
         {
             IList<CategoryViewModel> categoryList  = null;
-            using (UnitOfWork uow = new UnitOfWork())
+            try
             {
-                CategoryRepository cr = new CategoryRepository(uow.Current);
-                IList<Category> tmpList = cr.FindAll().ToList();
-                if (tmpList != null)
+                using (UnitOfWork uow = new UnitOfWork())
                 {
-                    categoryList = new List<CategoryViewModel>();
-                    foreach (var c in tmpList)
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
+                    IList<Category> tmpList = cr.FindAll().ToList();
+                    if (tmpList != null)
                     {
-                        CategoryViewModel cvm = new CategoryViewModel();
-                        cvm.CategoryDescription = c.Description;
-                        cvm.CategoryName = c.Name;
-                        cvm.Id = c.Id;
+                        categoryList = new List<CategoryViewModel>();
+                        foreach (var c in tmpList)
+                        {
+                            CategoryViewModel cvm = new CategoryViewModel();
+                            cvm.Descrizione = c.Description;
+                            cvm.Nome = c.Name;
+                            cvm.Id = c.Id;
 
-                        categoryList.Add(cvm);
+                            categoryList.Add(cvm);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                CategoryViewModel cvm = new CategoryViewModel();
+                cvm.Descrizione = "Errore durante il caricamento della lista delle categorie presenti...";
+                cvm.Nome = "OOPS...";
+                cvm.Id = 0;
+
+                categoryList.Add(cvm);
             }
             return View(categoryList);
         }
@@ -199,8 +217,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     Category c = cr.GetById(id);
                     if (c != null)
                     {
-                        cvm.CategoryName = c.Name;
-                        cvm.CategoryDescription = c.Description;
+                        cvm.Nome = c.Name;
+                        cvm.Descrizione = c.Description;
                         cvm.Id = c.Id;
                     }
                 }
@@ -229,7 +247,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                         if (c != null)
                         {
-                            c.ModifyCategory(model.CategoryName, model.CategoryDescription);
+                            c.ModifyCategory(model.Nome, model.Descrizione);
 
                             cr.SaveOrUpdate(c);
                             uow.Commit();
@@ -274,7 +292,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     using (UnitOfWork uow = new UnitOfWork())
                     {
                         CategoryRepository cr = new CategoryRepository(uow.Current);
-                        Category c = new Category(model.CategoryName, model.CategoryDescription);
+                        Category c = new Category(model.Nome, model.Descrizione);
 
                         cr.SaveOrUpdate(c);
                         uow.Commit();
@@ -289,5 +307,151 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             return View(model);
         }
+        #endregion
+
+        #region Tags
+
+        //Recupero dei dati relativi alle categorie
+        [Authorize]
+        public ActionResult Tags()
+        {
+            IList<TagViewModel> tagList = null;
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    TagRepository tr = new TagRepository(uow.Current);
+                    IList<Tag> tmpList = tr.FindAll().ToList();
+                    if (tmpList != null)
+                    {
+                        tagList = new List<TagViewModel>();
+                        foreach (var c in tmpList)
+                        {
+                            TagViewModel cvm = new TagViewModel();
+
+                            cvm.Nome = c.Name;
+                            cvm.Id = c.Id;
+
+                            tagList.Add(cvm);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TagViewModel cvm = new TagViewModel();
+
+                cvm.Nome = "OOPS... si è verificato un problema durante il caricamento dei tags!";
+                cvm.Id = 0;
+
+                tagList.Add(cvm);
+            }
+            return View(tagList);
+        }
+
+        //Recupera i dettagli della singola categoria
+        [Authorize]
+        public ActionResult TagDetail(int id)
+        {
+            TagViewModel cvm = new TagViewModel();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    TagRepository tr = new TagRepository(uow.Current);
+                    Tag t = tr.GetById(id);
+                    if (t != null)
+                    {
+                        cvm.Nome = t.Name;
+                        cvm.Id = t.Id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                cvm.Message = "Si è verificato un errore durante il caricamento dati";
+            }
+            return View(cvm);
+        }
+
+        //Modifica i dettagli di una categoria selezionata
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult TagDetail(TagViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        TagRepository tr = new TagRepository(uow.Current);
+                        Tag t = tr.GetById(model.Id);
+
+                        if (t != null)
+                        {
+                            t.ModifyName(model.Nome);
+
+                            tr.SaveOrUpdate(t);
+                            uow.Commit();
+
+                            model.Message = "Modifica eseguita con successo!";
+
+                            return View(model);
+                        }
+                        else
+                        {
+                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
+                            return View(model);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "OOPS... si è verificato un problema!";
+                    return View(model);
+                }
+            }
+            else
+                return View(model);
+        }
+
+        [Authorize]
+        public ActionResult TagNew()
+        {
+            return View();
+        }
+
+        //Salvataggio di una nuova categoria
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult TagNew(TagViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        TagRepository tr = new TagRepository(uow.Current);
+                        Tag t = new Tag(model.Nome);
+
+                        tr.SaveOrUpdate(t);
+                        uow.Commit();
+
+                        model.Message = "Salvataggio eseguito correttamente!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "Errore durante il salavataggio dei dati!";
+                }
+            }
+            return View(model);
+        }
+
+        #endregion
     }
 }

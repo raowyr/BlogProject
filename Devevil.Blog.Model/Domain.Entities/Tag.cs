@@ -23,6 +23,14 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
+        public virtual void ModifyName(string prmName)
+        {
+            _name = prmName;
+
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
+        }
+
         public virtual string Name
         {
             get { return _name; }

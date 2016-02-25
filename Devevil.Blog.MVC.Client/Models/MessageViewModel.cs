@@ -26,19 +26,20 @@ namespace Devevil.Blog.MVC.Client.Models
         }
         private string _message;
 
-        [Required]
+        
         public string Message
         {
             get { return _message; }
             set { _message = value; }
         }
 
-        private string _result;
+        private string _body;
 
-        public string Result
+        [Required]
+        public string Body
         {
-            get { return _result; }
-            set { _result = value; }
+            get { return _body; }
+            set { _body = value; }
         }
     }
 }

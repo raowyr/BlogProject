@@ -109,6 +109,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -118,6 +119,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Models\UserLoginViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
@@ -224,6 +226,10 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Manage\CategoryDetail.cshtml" />
     <Content Include="Views\Manage\CategoryNew.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Manage\Tags.cshtml" />
+    <Content Include="Views\Manage\TagDetail.cshtml" />
+    <Content Include="Views\Manage\TagNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

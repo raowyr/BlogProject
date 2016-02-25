@@ -12,6 +12,13 @@ namespace Devevil.Blog.Model.Domain.Entities
     {
         private string _name;
         private string _description;
+        private string _imagePath;
+
+        public virtual string ImagePath
+        {
+            get { return _imagePath; }
+            set { _imagePath = value; }
+        }
         private IList<Page> _pages;
 
         protected Category() { }
@@ -32,6 +39,11 @@ namespace Devevil.Blog.Model.Domain.Entities
 
             if (!IsValidState())
                 throw new EntityInvalidStateException();
+        }
+
+        public virtual void SetImagePath(string prmPath)
+        {
+            _imagePath = prmPath;
         }
 
         public virtual string Name

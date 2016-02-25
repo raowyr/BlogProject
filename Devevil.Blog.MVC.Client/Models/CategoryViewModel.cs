@@ -9,8 +9,8 @@ namespace Devevil.Blog.MVC.Client.Models
     public class CategoryViewModel
     {
         private int _id;
-        private string categoryName;
-        private string categoryDescription;
+        private string _categoryName;
+        private string _categoryDescription;
 
         private string _message;
 
@@ -21,30 +21,30 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
-        public string CategoryName
+        public string Nome
         {
             get
             {
-                return categoryName;
+                return _categoryName;
             }
 
             set
             {
-                categoryName = value;
+                _categoryName = value;
             }
         }
 
         [Required]
-        public string CategoryDescription
+        public string Descrizione
         {
             get
             {
-                return categoryDescription;
+                return _categoryDescription;
             }
 
             set
             {
-                categoryDescription = value;
+                _categoryDescription = value;
             }
         }
 

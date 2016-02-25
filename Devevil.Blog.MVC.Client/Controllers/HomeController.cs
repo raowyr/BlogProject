@@ -88,8 +88,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             CategoryViewModel cvTemp = new CategoryViewModel();
 
                             cvTemp.Id = c.Id;
-                            cvTemp.CategoryName = c.Name;
-                            cvTemp.CategoryDescription = c.Description;
+                            cvTemp.Nome = c.Name;
+                            cvTemp.Descrizione = c.Description;
 
                             m.CategoriesPreview.Add(cvTemp);
                         }
@@ -99,8 +99,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         CategoryViewModel cvTemp = new CategoryViewModel();
 
                         cvTemp.Id = 0;
-                        cvTemp.CategoryName = "OOPS...";
-                        cvTemp.CategoryDescription = "Sembra non siano presenti categorie...";
+                        cvTemp.Nome = "OOPS...";
+                        cvTemp.Descrizione = "Sembra non siano presenti categorie...";
 
                         m.CategoriesPreview.Add(cvTemp);
                     }
@@ -122,8 +122,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 CategoryViewModel cvTemp = new CategoryViewModel();
 
                 cvTemp.Id = 0;
-                cvTemp.CategoryName = "OOPS...";
-                cvTemp.CategoryDescription = "Sembra non siano presenti categorie...";
+                cvTemp.Nome = "OOPS...";
+                cvTemp.Descrizione = "Sembra non siano presenti categorie...";
 
                 m.CategoriesPreview.Add(cvTemp);
             }

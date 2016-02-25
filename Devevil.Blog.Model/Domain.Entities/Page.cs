@@ -21,6 +21,13 @@ namespace Devevil.Blog.Model.Domain.Entities
         private Category _category;
         private IList<Comment> _comments;
         private bool _isDeleted;
+        private string _imagePath;
+
+        public virtual string ImagePath
+        {
+            get { return _imagePath; }
+            set { _imagePath = value; }
+        }
 
         public virtual bool IsDeleted
         {
@@ -60,6 +67,11 @@ namespace Devevil.Blog.Model.Domain.Entities
 
             if (!IsValidState())
                 throw new EntityInvalidStateException();
+        }
+
+        public virtual void SetImagePath(string prmPath)
+        {
+            _imagePath = prmPath;
         }
 
         public virtual string Title
