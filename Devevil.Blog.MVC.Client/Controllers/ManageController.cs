@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -220,6 +221,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         cvm.Nome = c.Name;
                         cvm.Descrizione = c.Description;
                         cvm.Id = c.Id;
+                        cvm.FileName = c.ImagePath;
                     }
                 }
             }
@@ -242,12 +244,24 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
+                        string fileName = null;
+                        if (model.File != null && model.File.ContentLength > 0)
+                        {
+                            //SALVA IL FILE
+                            fileName = Path.GetFileName(model.File.FileName);
+                            var path = Path.Combine(Server.MapPath("/Uploads"), fileName);
+                            model.File.SaveAs(path);
+                            model.FileName = fileName;
+                        }
                         CategoryRepository cr = new CategoryRepository(uow.Current);
                         Category c = cr.GetById(model.Id);
 
                         if (c != null)
                         {
                             c.ModifyCategory(model.Nome, model.Descrizione);
+
+                            if (!String.IsNullOrEmpty(fileName))
+                                c.SetImagePath(fileName);
 
                             cr.SaveOrUpdate(c);
                             uow.Commit();
@@ -291,8 +305,19 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
+                        string fileName = null;
+                        if (model.File != null && model.File.ContentLength > 0)
+                        {
+                            //SALVA IL FILE
+                            fileName = Path.GetFileName(model.File.FileName);
+                            var path = Path.Combine(Server.MapPath("/Uploads"), fileName);
+                            model.File.SaveAs(path);
+                            model.FileName = fileName;
+                        }
+
                         CategoryRepository cr = new CategoryRepository(uow.Current);
                         Category c = new Category(model.Nome, model.Descrizione);
+                        c.SetImagePath(fileName);
 
                         cr.SaveOrUpdate(c);
                         uow.Commit();

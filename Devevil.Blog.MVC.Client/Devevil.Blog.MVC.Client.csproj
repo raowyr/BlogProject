@@ -233,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -248,6 +249,10 @@
     <ProjectReference Include="..\Devevil.Blog.Model\Devevil.Blog.Model.csproj">
       <Project>{fb550cab-43da-4d4e-82e4-0256a4fa4831}</Project>
       <Name>Devevil.Blog.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Devevil.Blog.MVC.Support\Devevil.Blog.MVC.Support.csproj">
+      <Project>{ee0628c2-3381-4cbb-b8cd-202823cbef15}</Project>
+      <Name>Devevil.Blog.MVC.Support</Name>
     </ProjectReference>
     <ProjectReference Include="..\Devevil.Blog.Nhibernate.DAL\Devevil.Blog.Nhibernate.DAL.csproj">
       <Project>{babfdc92-eec8-424f-b46c-5946de5a08c7}</Project>

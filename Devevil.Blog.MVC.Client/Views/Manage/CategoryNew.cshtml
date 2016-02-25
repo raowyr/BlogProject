@@ -6,7 +6,8 @@
 
 @section content{
 <div id="main">
-    @using (Html.BeginForm("CategoryNew", "Manage"))
+    @using (Html.BeginForm("CategoryNew", "Manage", FormMethod.Post, new 
+                                       { enctype = "multipart/form-data" }))
     {
         <!-- Post -->
         <article class="post">
@@ -29,6 +30,15 @@
             <p>
                  @Html.TextBoxFor(m => m.Descrizione, new { placeholder = "Descrizione categoria" })
             </p>
+            <p>
+                @Html.TextBoxFor(m => m.File, new { type = "file" })
+            </p>
+            @if(Model!=null && !String.IsNullOrEmpty(Model.FileName))
+            {
+                <p>
+                    <img src="/App_Data/Upload/@Model.FileName" alt="" />
+                </p>
+            }
             <footer>
                 <ul class="actions">
                     <li><button name="Create" value="Crea" class="button big">Crea</button></li>
