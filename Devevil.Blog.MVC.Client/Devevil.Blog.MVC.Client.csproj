@@ -222,6 +222,8 @@
     <Content Include="Views\Manage\AccountManagment.cshtml" />
     <Content Include="Views\Manage\Categories.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Manage\CategoryDetail.cshtml" />
+    <Content Include="Views\Manage\CategoryNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

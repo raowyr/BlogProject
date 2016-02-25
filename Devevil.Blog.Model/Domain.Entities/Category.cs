@@ -25,6 +25,15 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
+        public virtual void ModifyCategory(string prmName, string prmDescription)
+        {
+            _name = prmName;
+            _description = prmDescription;
+
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
+        }
+
         public virtual string Name
         {
             get { return _name; }

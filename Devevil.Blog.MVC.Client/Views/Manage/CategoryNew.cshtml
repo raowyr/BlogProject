@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Devevil.Blog.MVC.Client.Models.CategoryViewModel
+
+@section content{
+<div id="main">
+    @using (Html.BeginForm("CategoryNew", "Manage"))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2><a href="#">Crea una nuova categoria</a></h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.CategoryName, new { placeholder = "Nome categoria" })
+            </p>
+            <p>
+                 @Html.TextBoxFor(m => m.CategoryDescription, new { placeholder = "Descrizione categoria" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="Create" value="Crea" class="button big">Crea</button></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
+}

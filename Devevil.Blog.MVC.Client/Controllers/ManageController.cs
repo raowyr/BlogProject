@@ -79,7 +79,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             return RedirectToAction("Index", "Manage");
         }
 
-        //Recupero dei dati
+        //Recupero dei dati relativi all'account correntemente in uso
         [Authorize]
         public ActionResult AccountManagment()
         {
@@ -119,7 +119,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             return View(uvm);
         }
 
-        //Modifica dei dati
+        //Modifica dei dati relativi all'account correntemente in uso
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -127,7 +127,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (FormsAuthentication.IsEnabled)
+                if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
                 {
                     string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
                     if (!String.IsNullOrEmpty(username))
@@ -160,7 +160,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             return View(model);
         }
 
-         //Recupero dei dati
+        //Recupero dei dati relativi alle categorie
         [Authorize]
         public ActionResult Categories()
         {
@@ -184,6 +184,110 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 }
             }
             return View(categoryList);
+        }
+
+        //Recupera i dettagli della singola categoria
+        [Authorize]
+        public ActionResult CategoryDetail(int id)
+        {
+            CategoryViewModel cvm = new CategoryViewModel();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
+                    Category c = cr.GetById(id);
+                    if (c != null)
+                    {
+                        cvm.CategoryName = c.Name;
+                        cvm.CategoryDescription = c.Description;
+                        cvm.Id = c.Id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                cvm.Message = "Si è verificato un errore durante il caricamento dati";
+            }
+            return View(cvm);
+        }
+
+        //Modifica i dettagli di una categoria selezionata
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult CategoryDetail(CategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        CategoryRepository cr = new CategoryRepository(uow.Current);
+                        Category c = cr.GetById(model.Id);
+
+                        if (c != null)
+                        {
+                            c.ModifyCategory(model.CategoryName, model.CategoryDescription);
+
+                            cr.SaveOrUpdate(c);
+                            uow.Commit();
+
+                            model.Message = "Modifica eseguita con successo!";
+
+                            return View(model);
+                        }
+                        else
+                        {
+                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
+                            return View(model);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "OOPS... si è verificato un problema!";
+                    return View(model);
+                }
+            }
+            else
+                return View(model);
+        }
+
+        [Authorize]
+        public ActionResult CategoryNew()
+        {
+            return View();
+        }
+
+        //Salvataggio di una nuova categoria
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult CategoryNew(CategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        CategoryRepository cr = new CategoryRepository(uow.Current);
+                        Category c = new Category(model.CategoryName, model.CategoryDescription);
+
+                        cr.SaveOrUpdate(c);
+                        uow.Commit();
+
+                        model.Message = "Salvataggio eseguito correttamente!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "Errore durante il salavataggio dei dati!";
+                }
+            }
+            return View(model);
         }
     }
 }

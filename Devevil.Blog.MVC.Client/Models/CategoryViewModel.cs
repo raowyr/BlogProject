@@ -12,6 +12,13 @@ namespace Devevil.Blog.MVC.Client.Models
         private string categoryName;
         private string categoryDescription;
 
+        private string _message;
+
+        public string Message
+        {
+            get { return _message; }
+            set { _message = value; }
+        }
 
         [Required]
         public string CategoryName

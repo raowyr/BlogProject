@@ -6,40 +6,30 @@
 
 @section content{
     <div id="main">
-        @*<div>
+        <div class="title">
             <h1>Gestione Categorie</h1>
-            <p><button name="NewCategory" value="Crea nuova" class="button big" onclick="location.href = '/Manage/Logout'">Crea nuova</button></p>
-        </div>*@
-        
-        <article class="post">
-            <header>
-                <div class="title">
-                    <h2>Gestione Categorie</h2>
-                </div>
-                <div class="meta">
-                    <p><button name="NewCategory" value="Crea nuova" class="button big" onclick="location.href = '/Manage/Logout'">Crea nuova</button></p>
-                </div>
-            </header>
-            <p>
+        </div>
+        <div class="meta">
+            <p><button name="NewCategory" value="Crea nuova" class="button big" onclick="location.href = '/Manage/CategoryNew'">Crea nuova categoria</button></p>
+        </div>
+        <table>
+            <tr>
+                <td><strong>Nome categoria</strong></td>
+                <td><strong>Descrizione</strong></td>
+                <td><strong>Azione</strong></td>
+            </tr>
 
-            </p>
-        </article>
-        @if(Model!=null)
-        {
-            foreach (var item in Model)
+            @if(Model!=null)
             {
-                <article class="post">
-                    <header>
-                        <div class="title">
-                            <h2><a href="#">@item.CategoryName</a></h2>
-                        </div>
-                        <div class="meta">
-                            <p><button name="Modify" value="Modifica" class="button big" onclick="location.href = '/Manage/Logout'">Modifica</button></p>
-                        </div>
-                    </header>
-                    <p>@item.CategoryDescription</p>
-                </article>
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CategoryName</td>
+                        <td>@item.CategoryDescription</td>
+                        <td><button name="Modify" value="Modifica" class="button big" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
+                    </tr>
+                }
             }
-        }
-</div>
+        </table>
+    </div>
 }
