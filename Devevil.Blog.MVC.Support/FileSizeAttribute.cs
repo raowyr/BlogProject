@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Devevil.Blog.Support.ValidationAttributes
+namespace Devevil.Blog.MVC.Support
 {
     public class FileSizeAttribute : ValidationAttribute
     {

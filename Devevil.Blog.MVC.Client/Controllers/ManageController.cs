@@ -200,6 +200,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 cvm.Nome = "OOPS...";
                 cvm.Id = 0;
 
+                categoryList = new List<CategoryViewModel>();
                 categoryList.Add(cvm);
             }
             return View(categoryList);
@@ -262,6 +263,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                             if (!String.IsNullOrEmpty(fileName))
                                 c.SetImagePath(fileName);
+                            else
+                                model.FileName = c.ImagePath;
 
                             cr.SaveOrUpdate(c);
                             uow.Commit();
@@ -332,6 +335,47 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             return View(model);
         }
+        [HttpPost]
+        [Authorize]
+        public ActionResult CategoryDetailDeleteImage(CategoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        CategoryRepository cr = new CategoryRepository(uow.Current);
+                        Category c = cr.GetById(model.Id);
+
+                        if (c != null)
+                        {
+                            c.ModifyCategory(model.Nome, model.Descrizione);
+                            c.SetImagePath(null);
+
+                            cr.SaveOrUpdate(c);
+                            uow.Commit();
+
+                            model.Message = "Modifica eseguita con successo!";
+
+                            return View("CategoryDetail", model);
+                        }
+                        else
+                        {
+                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
+                            return View("CategoryDetail", model);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "OOPS... si è verificato un problema!";
+                    return View("CategoryDetail", model);
+                }
+            }
+            else
+                return View("CategoryDetail", model);
+        }
         #endregion
 
         #region Tags
@@ -369,6 +413,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 cvm.Nome = "OOPS... si è verificato un problema durante il caricamento dei tags!";
                 cvm.Id = 0;
 
+                tagList = new List<TagViewModel>();
                 tagList.Add(cvm);
             }
             return View(tagList);

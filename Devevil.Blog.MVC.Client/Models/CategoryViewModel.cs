@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Devevil.Blog.MVC.Support;
-using Devevil.Blog.Support.ValidationAttributes;
 
 namespace Devevil.Blog.MVC.Client.Models
 {

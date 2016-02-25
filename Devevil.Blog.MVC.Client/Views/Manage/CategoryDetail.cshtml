@@ -36,7 +36,7 @@
             @if(Model!=null && !String.IsNullOrEmpty(Model.FileName))
             {
                 <p>
-                    <img src="/Uploads/@Model.FileName" alt="" />
+                    <img src="/Uploads/@Model.FileName" alt="@Model.FileName" />
                 </p>
             }
             <footer>
