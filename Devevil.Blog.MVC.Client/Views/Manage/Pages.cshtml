@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@model IEnumerable<Devevil.Blog.MVC.Client.Models.PostViewModel>
+@model IEnumerable<Devevil.Blog.MVC.Client.Models.PageViewModel>
 
 @section content{
     <div id="main">
@@ -27,8 +27,8 @@
                 {
                     <tr>
                         <td>@item.Titolo</td>
-                        <td>@item.Categoria</td>
-                        <td>@item.Autore</td>
+                        <td></td>
+                        <td></td>
                         <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
                         <td><button name="Delete" value="Elimina" class="button big icon fa-remove" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Elimina</button></td>
                     </tr>

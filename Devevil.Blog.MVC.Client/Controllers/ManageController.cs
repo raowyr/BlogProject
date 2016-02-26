@@ -525,7 +525,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [Authorize]
         public ActionResult Pages()
         {
-            IList<PostViewModel> postList = null;
+            IList<PageViewModel> postList = null;
             try
             {
                 using (UnitOfWork uow = new UnitOfWork())
@@ -534,12 +534,11 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     IList<Page> tmpList = pr.FindAll().ToList();
                     if (tmpList != null)
                     {
-                        postList = new List<PostViewModel>();
+                        postList = new List<PageViewModel>();
                         foreach (var p in tmpList)
                         {
-                            PostViewModel pvm = new PostViewModel();
-                            pvm.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
-                            pvm.Categoria = p.Category.Name;
+                            PageViewModel pvm = new PageViewModel();
+
                             pvm.Id = p.Id;
                             pvm.Data = p.Date.Value;
                             pvm.Titolo = p.Title;
@@ -551,16 +550,43 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             catch (Exception ex)
             {
-                PostViewModel pvm = new PostViewModel();
+                PageViewModel pvm = new PageViewModel();
                 pvm.Titolo = "Errore durante il caricamento della lista delle categorie presenti...";
-                pvm.Categoria = "OOPS...";
+                //pvm.Categoria = "OOPS...";
                 pvm .Id = 0;
 
-                postList = new List<PostViewModel>();
+                postList = new List<PageViewModel>();
                 postList.Add(pvm);
             }
             return View(postList);
         }
+
+        //Recupera i dettagli della singola categoria
+        //[Authorize]
+        //public ActionResult PageDetail(int id)
+        //{
+        //    PageViewModel pvm = new PageViewModel();
+        //    try
+        //    {
+        //        using (UnitOfWork uow = new UnitOfWork())
+        //        {
+        //            PageRepository pr = new PageRepository(uow.Current);
+        //            Page p = pr.GetById(id);
+        //            if (p != null)
+        //            {
+        //                pvm.
+        //                cvm.Descrizione = c.Description;
+        //                cvm.Id = c.Id;
+        //                cvm.FileName = c.ImagePath;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        pvm.Message = "Si è verificato un errore durante il caricamento dati";
+        //    }
+        //    return View(pvm);
+        //}
 
         #endregion
     }
