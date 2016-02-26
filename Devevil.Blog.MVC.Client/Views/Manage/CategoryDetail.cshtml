@@ -35,13 +35,21 @@
             </p>
             @if(Model!=null && !String.IsNullOrEmpty(Model.FileName))
             {
-                <p>
-                    <img src="/Uploads/@Model.FileName" alt="@Model.FileName" />
-                </p>
+                <table>
+                    <tr>
+                        <td><strong>Immagine</strong></td>
+                        <td><strong>Azione</strong></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Uploads/@Model.FileName" alt="@Model.FileName" /></td>
+                        <td><a href="/Manage/CategoryRemoveImage/@Model.Id" class="button big icon fa-remove">Elimina</a></td>
+                    </tr>
+                </table>
             }
             <footer>
                 <ul class="actions">
-                    <li><button name="Modify" value="Modifica" class="button big">Modifica</button></li>
+                    <li><button name="Modify" value="Modifica" class="button big icon fa-pencil">Modifica</button></li>
+                    <li><a href="/Manage/Categories" class="button big icon fa-arrow-circle-left">Torna a gestione categorie</a></li>
 		        </ul>
             </footer>
         </article>

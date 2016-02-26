@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<Devevil.Blog.MVC.Client.Models.PostViewModel>
+
+@section content{
+    <div id="main">
+        <div class="title">
+            <h1>Gestione Pagine</h1>
+        </div>
+        <div class="meta">
+            <p><button name="NewPage" value="Crea nuova" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryNew'">Crea nuova pagina</button></p>
+        </div>
+        <table>
+            <tr>
+                <td><strong>Titolo pagina</strong></td>
+                <td><strong>Categoria</strong></td>
+                <td><strong>Autore</strong></td>
+                <td><strong>Modifica</strong></td>
+                <td><strong>Elimina</strong></td>
+            </tr>
+
+            @if(Model!=null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Titolo</td>
+                        <td>@item.Categoria</td>
+                        <td>@item.Autore</td>
+                        <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
+                        <td><button name="Delete" value="Elimina" class="button big icon fa-remove" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Elimina</button></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+}

@@ -10,7 +10,7 @@
             <h1>Gestione Categorie</h1>
         </div>
         <div class="meta">
-            <p><button name="NewCategory" value="Crea nuova" class="button big" onclick="location.href = '/Manage/CategoryNew'">Crea nuova categoria</button></p>
+            <p><button name="NewCategory" value="Crea nuova" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryNew'">Crea nuova categoria</button></p>
         </div>
         <table>
             <tr>
@@ -26,7 +26,7 @@
                     <tr>
                         <td>@item.Nome</td>
                         <td>@item.Descrizione</td>
-                        <td><button name="Modify" value="Modifica" class="button big" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
+                        <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
                     </tr>
                 }
             }

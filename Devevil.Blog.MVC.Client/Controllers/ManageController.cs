@@ -16,12 +16,13 @@ namespace Devevil.Blog.MVC.Client.Controllers
     {
         //
         // GET: /Manage/
-
+        #region Index
         [Authorize]
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
 
         #region Login
         [AllowAnonymous]
@@ -335,46 +336,40 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             return View(model);
         }
-        [HttpPost]
+
         [Authorize]
-        public ActionResult CategoryDetailDeleteImage(CategoryViewModel model)
+        public ActionResult CategoryRemoveImage(int id)
         {
-            if (ModelState.IsValid)
+            CategoryViewModel cvm = new CategoryViewModel();
+            try
             {
-                try
+
+                using (UnitOfWork uow = new UnitOfWork())
                 {
-                    using (UnitOfWork uow = new UnitOfWork())
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
+                    Category c = cr.GetById(id);
+
+                    if (c != null)
                     {
-                        CategoryRepository cr = new CategoryRepository(uow.Current);
-                        Category c = cr.GetById(model.Id);
+                        c.SetImagePath(null);
 
-                        if (c != null)
-                        {
-                            c.ModifyCategory(model.Nome, model.Descrizione);
-                            c.SetImagePath(null);
+                        cr.SaveOrUpdate(c);
+                        uow.Commit();
 
-                            cr.SaveOrUpdate(c);
-                            uow.Commit();
-
-                            model.Message = "Modifica eseguita con successo!";
-
-                            return View("CategoryDetail", model);
-                        }
-                        else
-                        {
-                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
-                            return View("CategoryDetail", model);
-                        }
+                        return RedirectToAction("CategoryDetail", new { id = c.Id });
+                    }
+                    else
+                    {
+                        cvm.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
+                        return View("CategoryDetail", cvm);
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "OOPS... si è verificato un problema!";
-                    return View("CategoryDetail", model);
-                }
             }
-            else
-                return View("CategoryDetail", model);
+            catch (Exception ex)
+            {
+                cvm.Message = "OOPS... si è verificato un problema!";
+                return View("CategoryDetail", cvm);
+            }
         }
         #endregion
 
@@ -520,6 +515,51 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 }
             }
             return View(model);
+        }
+
+        #endregion
+
+        #region Pages
+
+        //Recupero dei dati relativi alle categorie
+        [Authorize]
+        public ActionResult Pages()
+        {
+            IList<PostViewModel> postList = null;
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    PageRepository pr = new PageRepository(uow.Current);
+                    IList<Page> tmpList = pr.FindAll().ToList();
+                    if (tmpList != null)
+                    {
+                        postList = new List<PostViewModel>();
+                        foreach (var p in tmpList)
+                        {
+                            PostViewModel pvm = new PostViewModel();
+                            pvm.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
+                            pvm.Categoria = p.Category.Name;
+                            pvm.Id = p.Id;
+                            pvm.Data = p.Date.Value;
+                            pvm.Titolo = p.Title;
+
+                            postList.Add(pvm);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                PostViewModel pvm = new PostViewModel();
+                pvm.Titolo = "Errore durante il caricamento della lista delle categorie presenti...";
+                pvm.Categoria = "OOPS...";
+                pvm .Id = 0;
+
+                postList = new List<PostViewModel>();
+                postList.Add(pvm);
+            }
+            return View(postList);
         }
 
         #endregion

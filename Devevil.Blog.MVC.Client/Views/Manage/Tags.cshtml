@@ -10,7 +10,7 @@
             <h1>Gestione Tags</h1>
         </div>
         <div class="meta">
-            <p><button name="NewTag" value="Crea nuovo" class="button big" onclick="location.href = '/Manage/TagNew'">Crea nuovo TAG</button></p>
+            <p><button name="NewTag" value="Crea nuovo" class="button big icon fa-pencil" onclick="location.href = '/Manage/TagNew'">Crea nuovo TAG</button></p>
         </div>
         <table>
             <tr>
@@ -24,7 +24,7 @@
                 {
                     <tr>
                         <td>@item.Nome</td>
-                        <td><button name="Modify" value="Modifica" class="button big" onclick="location.href = '/Manage/TagDetail/@item.Id'">Modifica</button></td>
+                        <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/TagDetail/@item.Id'">Modifica</button></td>
                     </tr>
                 }
             }

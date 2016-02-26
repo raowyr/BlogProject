@@ -230,6 +230,7 @@
     <Content Include="Views\Manage\Tags.cshtml" />
     <Content Include="Views\Manage\TagDetail.cshtml" />
     <Content Include="Views\Manage\TagNew.cshtml" />
+    <Content Include="Views\Manage\Pages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
