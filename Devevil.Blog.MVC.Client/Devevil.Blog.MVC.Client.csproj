@@ -119,6 +119,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Models\UserLoginViewModel.cs" />
@@ -232,6 +233,7 @@
     <Content Include="Views\Manage\TagDetail.cshtml" />
     <Content Include="Views\Manage\TagNew.cshtml" />
     <Content Include="Views\Manage\Pages.cshtml" />
+    <Content Include="Views\Manage\PageDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

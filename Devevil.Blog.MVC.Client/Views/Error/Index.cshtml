@@ -1,17 +1,26 @@
-﻿@{
+﻿@model Devevil.Blog.MVC.Client.Models.ErrorViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section main{
-<!-- Main -->
-<div id="main-wrapper">
-	<div id="main" class="container">
-		<div class="row">
-			<!-- Content -->
-			<div id="content" class="8u 12u(mobile)">
-                <h1>OOPS... Sembra si sia verificato un errore... sono mortificato!</h1>
-            </div>
-        </div>
-    </div>
+@section content{
+<div id="main">
+    <!-- Post -->
+    <article class="post">
+	    <header>
+		    <div class="title">
+			    <h2>OOPS... Questo è imbarazzante...</h2>
+		    </div>
+	    </header>
+        <p>
+                Pare si sia verificato un errore, ma non temere! Appena avrò voglia esaminerò il file di log contenente i dettagli dell'errore e forse, quando avrò tempo, potrei anche risolverlo!
+        </p>
+        <footer>
+            <ul class="actions">
+                <li><button name="Back" value="Invia" class="button big icon fa-arrow-circle-left" onclick="location.href = '@Model.RefferalUrl'">Torna alla pagina da cui provenivi</button></li>
+		    </ul>
+        </footer>
+    </article>
 </div>
 }

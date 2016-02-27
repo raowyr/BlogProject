@@ -69,6 +69,27 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
+        public virtual void Modifypage(string prmTitle, string prmDescription, DateTime? prmDate, string prmBody, Author prmAuthor)
+        {
+            if(!string.IsNullOrEmpty(prmTitle))
+                _title = prmTitle;
+
+            if(!String.IsNullOrEmpty(prmDescription))
+                _description = prmDescription;
+
+            if(prmDate.HasValue)
+                _date = prmDate.Value;
+
+            if(!String.IsNullOrEmpty(prmBody))
+                _bodyText = prmBody;
+
+            if(prmAuthor!=null)
+                _author = prmAuthor;
+
+            if (!IsValidState())
+                throw new EntityInvalidStateException();
+        }
+
         public virtual void SetImagePath(string prmPath)
         {
             _imagePath = prmPath;

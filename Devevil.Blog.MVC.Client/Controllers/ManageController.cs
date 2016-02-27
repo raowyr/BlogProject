@@ -542,6 +542,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             pvm.Id = p.Id;
                             pvm.Data = p.Date.Value;
                             pvm.Titolo = p.Title;
+                            pvm.Autore = p.Author.NameAndSurname;
 
                             postList.Add(pvm);
                         }
@@ -562,31 +563,171 @@ namespace Devevil.Blog.MVC.Client.Controllers
         }
 
         //Recupera i dettagli della singola categoria
-        //[Authorize]
-        //public ActionResult PageDetail(int id)
-        //{
-        //    PageViewModel pvm = new PageViewModel();
-        //    try
-        //    {
-        //        using (UnitOfWork uow = new UnitOfWork())
-        //        {
-        //            PageRepository pr = new PageRepository(uow.Current);
-        //            Page p = pr.GetById(id);
-        //            if (p != null)
-        //            {
-        //                pvm.
-        //                cvm.Descrizione = c.Description;
-        //                cvm.Id = c.Id;
-        //                cvm.FileName = c.ImagePath;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        pvm.Message = "Si è verificato un errore durante il caricamento dati";
-        //    }
-        //    return View(pvm);
-        //}
+        [Authorize]
+        public ActionResult PageDetail(int id)
+        {
+            PageViewModel pvm = new PageViewModel();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    PageRepository pr = new PageRepository(uow.Current);
+                    AuthorRepository ar = new AuthorRepository(uow.Current);
+
+                    Page p = pr.GetById(id);
+                    if (p != null)
+                    {
+                        IList<Author> tmpAuthors = ar.FindAll().ToList();
+                        if (tmpAuthors != null && tmpAuthors.Count > 0)
+                        {
+                            IEnumerable<SelectListItem> tmpAuthorsItems;
+
+                            tmpAuthorsItems =   from s in tmpAuthors
+                                                select new SelectListItem
+                                                {
+                                                    Text = s.NameAndSurname,
+                                                    Value = s.Id.ToString()
+                                                };
+
+                            pvm.Authors = tmpAuthorsItems;
+                            pvm.SelectedAuthor = p.Author.Id.ToString();
+
+                            pvm.Data = p.Date.Value;
+                            pvm.Id = p.Id;
+                            pvm.Testo = p.BodyText;
+                            pvm.Titolo = p.Title;
+                            pvm.Descrizione = p.Description;
+                            pvm.FileName = p.ImagePath;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                pvm.Message = "Si è verificato un errore durante il caricamento dati";
+            }
+            return View(pvm);
+        }
+
+        //Modifica i dettagli di una pagina selezionata
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult PageDetail(PageViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        string fileName = null;
+                        if (model.File != null && model.File.ContentLength > 0)
+                        {
+                            //SALVA IL FILE
+                            fileName = Path.GetFileName(model.File.FileName);
+                            var path = Path.Combine(Server.MapPath("/Uploads"), fileName);
+                            model.File.SaveAs(path);
+                            model.FileName = fileName;
+                        }
+
+                        PageRepository pr = new PageRepository(uow.Current);
+                        AuthorRepository ar = new AuthorRepository(uow.Current);
+
+                        Page p = pr.GetById(model.Id);
+                        if (p != null)
+                        {
+                            //Ricarica la lista autori
+                            IList<Author> tmpAuthors = ar.FindAll().ToList();
+                            if (tmpAuthors != null && tmpAuthors.Count > 0)
+                            {
+                                IEnumerable<SelectListItem> tmpAuthorsItems;
+
+                                tmpAuthorsItems = from s in tmpAuthors
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = s.NameAndSurname,
+                                                      Value = s.Id.ToString()
+                                                  };
+
+                                model.Authors = tmpAuthorsItems;
+                                model.SelectedAuthor = model.SelectedAuthor;
+                            }
+
+                            Author au = ar.GetById(Convert.ToInt32(model.SelectedAuthor));
+                            p.Modifypage(model.Titolo, model.Descrizione, model.Data, model.Testo, au);
+
+                            if (!String.IsNullOrEmpty(fileName))
+                                p.SetImagePath(fileName);
+                            else
+                                model.FileName = p.ImagePath;
+
+
+                            pr.SaveOrUpdate(p);
+                            uow.Commit();
+
+                            model.Message = "Modifica eseguita con successo!";
+
+                            return View(model);
+                        }
+                        else
+                        {
+                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
+                            return View(model);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "OOPS... si è verificato un problema!";
+                    return View(model);
+                }
+            }
+            else
+                return View(model);
+        }
+
+        [Authorize]
+        public ActionResult PageRemoveImage(int id)
+        {
+            try
+            {
+
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    PageRepository pr = new PageRepository(uow.Current);
+
+                    Page p = pr.GetById(id);
+
+                    if (p != null)
+                    {
+                        p.SetImagePath(null);
+
+                        pr.SaveOrUpdate(p);
+                        uow.Commit();
+
+                        return RedirectToAction("PageDetail", new { id = p.Id });
+                    }
+                    else
+                    {
+                        //Da gestire meglio gli errori
+                        //dovrei reindirizzare ad una pagie di errore, con un link alla pagina che ha generato l'errore
+
+                        ErrorViewModel evm = new ErrorViewModel();
+                        evm.RefferalUrl = Request.UrlReferrer.ToString();
+
+                        throw new HttpException(500, "OOPS...");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorViewModel evm = new ErrorViewModel();
+                evm.RefferalUrl = Request.UrlReferrer.ToString();
+
+                return View("/Error/Index", evm);
+            }
+        }
 
         #endregion
     }

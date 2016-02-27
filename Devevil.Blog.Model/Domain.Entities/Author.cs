@@ -209,6 +209,9 @@ namespace Devevil.Blog.Model.Domain.Entities
             return toReturn;
         }
 
-
+        public virtual string NameAndSurname
+        {
+            get{return String.Format("{0} {1}", _name, _surname);}
+        }
     }
 }
