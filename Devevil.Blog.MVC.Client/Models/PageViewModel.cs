@@ -20,6 +20,15 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _selectedAuthor;
         private string _autore;
 
+        private IEnumerable<SelectListItem> _blogs;
+        private string _selectedBlog;
+
+        private IEnumerable<SelectListItem> _categories;
+        private string _selectedCategory;
+        private string _category;
+
+        private string _body;
+
         private HttpPostedFileBase _file;
         private string _fileName;
 
@@ -54,12 +63,6 @@ namespace Devevil.Blog.MVC.Client.Models
             set { _descrizione = value; }
         }
 
-        public string Testo
-        {
-            get { return _testo; }
-            set { _testo = value; }
-        }
-
         [Required]
         public DateTime Data
         {
@@ -80,16 +83,56 @@ namespace Devevil.Blog.MVC.Client.Models
             set { _authors = value; }
         }
 
-        public string Message
-        {
-            get { return _message; }
-            set { _message = value; }
-        }
-
         public string Autore
         {
             get { return _autore; }
             set { _autore = value; }
+        }
+
+        [Required]
+        public string SelectedBlog
+        {
+            get { return _selectedBlog; }
+            set { _selectedBlog = value; }
+        }
+
+        public IEnumerable<SelectListItem> Blogs
+        {
+            get { return _blogs; }
+            set { _blogs = value; }
+        }
+
+        [Required]
+        public string SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set { _selectedCategory = value; }
+        }
+
+        public IEnumerable<SelectListItem> Categories
+        {
+            get { return _categories; }
+            set { _categories = value; }
+        }
+
+        public string Categoria
+        {
+            get { return _category; }
+            set { _category = value; }
+        }
+
+        [Required]
+        [AllowHtml]
+        public string Body
+        {
+            get { return _body; }
+            set { _body = value; }
+        }
+
+        public string Message
+        {
+            get { return _message; }
+            set { _message = value; }
         }
 
         public string FileName

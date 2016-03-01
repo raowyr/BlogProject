@@ -10,7 +10,7 @@
             <h1>Gestione Pagine</h1>
         </div>
         <div class="meta">
-            <p><button name="NewPage" value="Crea nuova" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryNew'">Crea nuova pagina</button></p>
+            <p><button name="NewPage" value="Crea nuova" class="button big icon fa-pencil" onclick="location.href = '/Manage/PageNew'">Crea nuova pagina</button></p>
         </div>
         <table>
             <tr>
@@ -27,7 +27,7 @@
                 {
                     <tr>
                         <td>@item.Titolo</td>
-                        <td></td>
+                        <td>@item.Categoria</td>
                         <td>@item.Autore</td>
                         <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/PageDetail/@item.Id'">Modifica</button></td>
                         <td><button name="Delete" value="Elimina" class="button big icon fa-remove" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Elimina</button></td>

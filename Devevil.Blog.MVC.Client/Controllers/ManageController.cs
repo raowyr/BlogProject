@@ -543,6 +543,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             pvm.Data = p.Date.Value;
                             pvm.Titolo = p.Title;
                             pvm.Autore = p.Author.NameAndSurname;
+                            pvm.Categoria = p.Category.Name;
 
                             postList.Add(pvm);
                         }
@@ -573,6 +574,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 {
                     PageRepository pr = new PageRepository(uow.Current);
                     AuthorRepository ar = new AuthorRepository(uow.Current);
+                    BlogRepository br = new BlogRepository(uow.Current);
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
 
                     Page p = pr.GetById(id);
                     if (p != null)
@@ -591,14 +594,45 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                             pvm.Authors = tmpAuthorsItems;
                             pvm.SelectedAuthor = p.Author.Id.ToString();
-
-                            pvm.Data = p.Date.Value;
-                            pvm.Id = p.Id;
-                            pvm.Testo = p.BodyText;
-                            pvm.Titolo = p.Title;
-                            pvm.Descrizione = p.Description;
-                            pvm.FileName = p.ImagePath;
                         }
+                        IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
+                        if (tmpBlogs != null && tmpBlogs.Count > 0)
+                        {
+                            IEnumerable<SelectListItem> tmpBlogsItems;
+
+                            tmpBlogsItems = from b in tmpBlogs
+                                              select new SelectListItem
+                                              {
+                                                  Text = b.Name,
+                                                  Value = b.Id.ToString()
+                                              };
+
+                            pvm.Blogs = tmpBlogsItems;
+                            pvm.SelectedBlog = p.Blog.Id.ToString();
+                        }
+                        IList<Category> tmpCategories = cr.FindAll().ToList();
+                        if (tmpCategories != null && tmpCategories.Count > 0)
+                        {
+                            IEnumerable<SelectListItem> tmpCategoriesItems;
+
+                            tmpCategoriesItems = from b in tmpCategories
+                                            select new SelectListItem
+                                            {
+                                                Text = b.Name,
+                                                Value = b.Id.ToString()
+                                            };
+
+                            pvm.Categories = tmpCategoriesItems;
+                            pvm.SelectedCategory = p.Category.Id.ToString();
+                        }
+
+                        pvm.Data = p.Date.Value;
+                        pvm.Id = p.Id;
+                        pvm.Titolo = p.Title;
+                        pvm.Descrizione = p.Description;
+                        pvm.FileName = p.ImagePath;
+                        pvm.Body = p.BodyText;
+
                     }
                 }
             }
@@ -633,6 +667,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                         PageRepository pr = new PageRepository(uow.Current);
                         AuthorRepository ar = new AuthorRepository(uow.Current);
+                        BlogRepository br = new BlogRepository(uow.Current);
+                        CategoryRepository cr = new CategoryRepository(uow.Current);
 
                         Page p = pr.GetById(model.Id);
                         if (p != null)
@@ -654,8 +690,42 @@ namespace Devevil.Blog.MVC.Client.Controllers
                                 model.SelectedAuthor = model.SelectedAuthor;
                             }
 
+                            IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
+                            if (tmpBlogs != null && tmpBlogs.Count > 0)
+                            {
+                                IEnumerable<SelectListItem> tmpBlogsItems;
+
+                                tmpBlogsItems = from b in tmpBlogs
+                                                select new SelectListItem
+                                                {
+                                                    Text = b.Name,
+                                                    Value = b.Id.ToString()
+                                                };
+
+                                model.Blogs = tmpBlogsItems;
+                                model.SelectedBlog = model.SelectedBlog;
+                            }
+
+                            IList<Category> tmpCategories = cr.FindAll().ToList();
+                            if (tmpCategories != null && tmpCategories.Count > 0)
+                            {
+                                IEnumerable<SelectListItem> tmpCategoriesItems;
+
+                                tmpCategoriesItems = from b in tmpCategories
+                                                     select new SelectListItem
+                                                     {
+                                                         Text = b.Name,
+                                                         Value = b.Id.ToString()
+                                                     };
+
+                                model.Categories = tmpCategoriesItems;
+                                model.SelectedCategory = model.SelectedCategory;
+                            }
                             Author au = ar.GetById(Convert.ToInt32(model.SelectedAuthor));
-                            p.Modifypage(model.Titolo, model.Descrizione, model.Data, model.Testo, au);
+                            Blog.Model.Domain.Entities.Blog bb = br.GetById(Convert.ToInt32(model.SelectedBlog));
+                            Category cc = cr.GetById(Convert.ToInt32(model.SelectedCategory));
+
+                            p.Modifypage(model.Titolo, model.Descrizione, model.Data, model.Body, au, bb, cc);
 
                             if (!String.IsNullOrEmpty(fileName))
                                 p.SetImagePath(fileName);
@@ -687,6 +757,178 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 return View(model);
         }
 
+        //Modifica i dettagli di una pagina selezionata
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult PageNew(PageViewModel model) 
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (UnitOfWork uow = new UnitOfWork())
+                    {
+                        string fileName = null;
+                        if (model.File != null && model.File.ContentLength > 0)
+                        {
+                            //SALVA IL FILE
+                            fileName = Path.GetFileName(model.File.FileName);
+                            var path = Path.Combine(Server.MapPath("/Uploads"), fileName);
+                            model.File.SaveAs(path);
+                            model.FileName = fileName;
+                        }
+
+                        PageRepository pr = new PageRepository(uow.Current);
+                        AuthorRepository ar = new AuthorRepository(uow.Current);
+                        BlogRepository br = new BlogRepository(uow.Current);
+                        CategoryRepository cr = new CategoryRepository(uow.Current);
+
+                        //Ricarica la lista autori
+                        IList<Author> tmpAuthors = ar.FindAll().ToList();
+                        if (tmpAuthors != null && tmpAuthors.Count > 0)
+                        {
+                            IEnumerable<SelectListItem> tmpAuthorsItems;
+
+                            tmpAuthorsItems = from s in tmpAuthors
+                                                select new SelectListItem
+                                                {
+                                                    Text = s.NameAndSurname,
+                                                    Value = s.Id.ToString()
+                                                };
+
+                            model.Authors = tmpAuthorsItems;
+                            model.SelectedAuthor = model.SelectedAuthor;
+                        }
+
+                        IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
+                        if (tmpBlogs != null && tmpBlogs.Count > 0)
+                        {
+                            IEnumerable<SelectListItem> tmpBlogsItems;
+
+                            tmpBlogsItems = from b in tmpBlogs
+                                            select new SelectListItem
+                                            {
+                                                Text = b.Name,
+                                                Value = b.Id.ToString()
+                                            };
+
+                            model.Blogs = tmpBlogsItems;
+                            model.SelectedBlog = model.SelectedBlog;
+                        }
+
+                        IList<Category> tmpCategories = cr.FindAll().ToList();
+                        if (tmpCategories != null && tmpCategories.Count > 0)
+                        {
+                            IEnumerable<SelectListItem> tmpCategoriesItems;
+
+                            tmpCategoriesItems = from b in tmpCategories
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = b.Name,
+                                                        Value = b.Id.ToString()
+                                                    };
+
+                            model.Categories = tmpCategoriesItems;
+                            model.SelectedCategory = model.SelectedCategory;
+                        }
+                        Author au = ar.GetById(Convert.ToInt32(model.SelectedAuthor));
+                        Blog.Model.Domain.Entities.Blog bb = br.GetById(Convert.ToInt32(model.SelectedBlog));
+                        Category cc = cr.GetById(Convert.ToInt32(model.SelectedCategory));
+
+                        Page p = new Page(model.Titolo, model.Descrizione, model.Data, model.Body, au, bb, cc);
+
+                        if (!String.IsNullOrEmpty(fileName))
+                            p.SetImagePath(fileName);
+                        else
+                            model.FileName = p.ImagePath;
+
+
+                        pr.SaveOrUpdate(p);
+                        uow.Commit();
+
+                        model.Message = "Salvataggio eseguito con successo!";
+
+                        return View(model);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    model.Message = "OOPS... si è verificato un problema!";
+                    return View(model);
+                }
+            }
+            else
+                return View(model);
+        }
+
+        [Authorize]
+        public ActionResult PageNew()
+        {
+            PageViewModel pvm = new PageViewModel();
+            try
+            {
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    AuthorRepository ar = new AuthorRepository(uow.Current);
+                    BlogRepository br = new BlogRepository(uow.Current);
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
+
+                    //Ricarica la lista autori
+                    IList<Author> tmpAuthors = ar.FindAll().ToList();
+                    if (tmpAuthors != null && tmpAuthors.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpAuthorsItems;
+
+                        tmpAuthorsItems = from s in tmpAuthors
+                                          select new SelectListItem
+                                          {
+                                              Text = s.NameAndSurname,
+                                              Value = s.Id.ToString()
+                                          };
+
+                        pvm.Authors = tmpAuthorsItems;
+
+                    }
+
+                    IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
+                    if (tmpBlogs != null && tmpBlogs.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpBlogsItems;
+
+                        tmpBlogsItems = from b in tmpBlogs
+                                        select new SelectListItem
+                                        {
+                                            Text = b.Name,
+                                            Value = b.Id.ToString()
+                                        };
+
+                        pvm.Blogs = tmpBlogsItems;
+                    }
+
+                    IList<Category> tmpCategories = cr.FindAll().ToList();
+                    if (tmpCategories != null && tmpCategories.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpCategoriesItems;
+
+                        tmpCategoriesItems = from b in tmpCategories
+                                             select new SelectListItem
+                                             {
+                                                 Text = b.Name,
+                                                 Value = b.Id.ToString()
+                                             };
+
+                        pvm.Categories = tmpCategoriesItems;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View(pvm);
+        }
+
         [Authorize]
         public ActionResult PageRemoveImage(int id)
         {
@@ -716,7 +958,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         ErrorViewModel evm = new ErrorViewModel();
                         evm.RefferalUrl = Request.UrlReferrer.ToString();
 
-                        throw new HttpException(500, "OOPS...");
+                        return new HttpStatusCodeResult(500);
                     }
                 }
             }

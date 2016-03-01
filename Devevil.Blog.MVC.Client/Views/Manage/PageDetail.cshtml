@@ -4,8 +4,18 @@
 
 @model Devevil.Blog.MVC.Client.Models.PageViewModel
 
+
 @section content{
 <div id="main">
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('#Body').ckeditor();
+        });
+    </script>
+
     @using (Html.BeginForm("PageDetail", "Manage", FormMethod.Post, new 
                                        { enctype = "multipart/form-data" }))
     {
@@ -51,6 +61,15 @@
             </p>
             <p>
                 @Html.DropDownListFor(m => m.SelectedAuthor, Model.Authors)
+            </p>
+            <p>
+                @Html.DropDownListFor(m => m.SelectedBlog, Model.Blogs)
+            </p>
+            <p>
+                @Html.DropDownListFor(m => m.SelectedCategory, Model.Categories)
+            </p>
+            <p>
+                @Html.TextAreaFor(m => m.Body, new { placeholder = "Testo della pagina" })
             </p>
             <footer>
                 <ul class="actions">

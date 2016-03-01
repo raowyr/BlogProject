@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Devevil.Blog.MVC.Client.Models.PageViewModel
+
+
+@section content{
+<div id="main">
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('#Body').ckeditor();
+        });
+    </script>
+
+    @using (Html.BeginForm("PageNew", "Manage", FormMethod.Post, new 
+                                       { enctype = "multipart/form-data" }))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>Gestione pagina</h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Titolo, new { placeholder = "Titolo pagina" })
+            </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Descrizione, new { placeholder = "Descrizione pagina" })
+            </p>
+            <p>
+                @Html.TextBoxFor(m => m.File, new { type = "file" })
+            </p>
+            @if(Model!=null && !String.IsNullOrEmpty(Model.FileName))
+            {
+                <table>
+                    <tr>
+                        <td><strong>Immagine</strong></td>
+                        <td><strong>Azione</strong></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Uploads/@Model.FileName" alt="@Model.FileName" /></td>
+                        <td><a href="/Manage/PageRemoveImage/@Model.Id" class="button big icon fa-remove">Elimina</a></td>
+                    </tr>
+                </table>
+            }
+            <p>
+                 @Html.TextBoxFor(m => m.Data, new { placeholder = "Data creazione Pagina" })
+            </p>
+            <p>
+                @Html.DropDownListFor(m => m.SelectedAuthor, Model.Authors)
+            </p>
+            <p>
+                @Html.DropDownListFor(m => m.SelectedBlog, Model.Blogs)
+            </p>
+            <p>
+                @Html.DropDownListFor(m => m.SelectedCategory, Model.Categories)
+            </p>
+            <p>
+                @Html.TextAreaFor(m => m.Body, new { placeholder = "Testo della pagina" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="New" value="Modifica" class="button big icon fa-pencil">Crea pagina</button></li>
+                    <li><a href="/Manage/Pages" class="button big icon fa-arrow-circle-left">Torna a gestione pagine</a></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
+}

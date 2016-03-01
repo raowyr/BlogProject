@@ -69,7 +69,7 @@ namespace Devevil.Blog.Model.Domain.Entities
                 throw new EntityInvalidStateException();
         }
 
-        public virtual void Modifypage(string prmTitle, string prmDescription, DateTime? prmDate, string prmBody, Author prmAuthor)
+        public virtual void Modifypage(string prmTitle, string prmDescription, DateTime? prmDate, string prmBody, Author prmAuthor, Blog prmBlog, Category prmCategory)
         {
             if(!string.IsNullOrEmpty(prmTitle))
                 _title = prmTitle;
@@ -85,6 +85,12 @@ namespace Devevil.Blog.Model.Domain.Entities
 
             if(prmAuthor!=null)
                 _author = prmAuthor;
+
+            if (prmBlog != null)
+                _blog = prmBlog;
+
+            if (prmCategory != null)
+                _category = prmCategory;
 
             if (!IsValidState())
                 throw new EntityInvalidStateException();
