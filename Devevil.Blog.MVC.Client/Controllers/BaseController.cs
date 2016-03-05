@@ -9,15 +9,18 @@ namespace Devevil.Blog.MVC.Client.Controllers
 {
     public class BaseController : Controller
     {
-        public ViewResult Error(string prmRefferalPath, string prmError)
+        public ViewResult Error(string prmError)
         {
             ErrorViewModel evm = new ErrorViewModel();
+            evm.RefferalUrl = Request.UrlReferrer.ToString();
+            evm.Message = prmError;
             return View("_Error", evm);
         }
 
-        public ViewResult Error(string prmRefferalPath)
+        public ViewResult Error()
         {
             ErrorViewModel evm = new ErrorViewModel();
+            evm.RefferalUrl = Request.UrlReferrer.ToString();
             return View("_Error", evm);
         }
     }

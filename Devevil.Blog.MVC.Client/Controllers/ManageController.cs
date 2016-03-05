@@ -859,7 +859,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             else
             {
-                return Error("");
+                return Error();
             }
         }
 
