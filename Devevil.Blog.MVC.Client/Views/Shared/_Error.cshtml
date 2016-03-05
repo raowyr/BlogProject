@@ -1,0 +1,37 @@
+﻿@model Devevil.Blog.MVC.Client.Models.ErrorViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content{
+<div id="main">
+
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>OOPS... questo è imbarazzante</h2>
+		        </div>
+	        </header>
+	        <p>
+                Sembra si sia verificato un errore... <br />
+                Non temere! I dettagli dell'errore sono stati loggati e, quando avrò tempo e voglia, provvederò a risolvere l'errore... forse...
+	        </p>
+            @{
+                if(Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    <p>@Model.Message</p>
+                }
+            }
+            @{
+                if(Model!=null && !String.IsNullOrEmpty(Model.RefferalUrl)){
+                <footer>
+                    <ul class="actions">
+                        <li><button name="SendButton" value="Invia" class="button big icon fa-mail-forward">Invia</button></li>
+		            </ul>
+                </footer>
+                }
+            }
+        </article>
+</div>
+}

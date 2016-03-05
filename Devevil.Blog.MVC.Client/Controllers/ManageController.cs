@@ -12,7 +12,7 @@ using Devevil.Blog.Nhibernate.DAL.Repositories;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
 
         #region Index
@@ -859,7 +859,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             else
             {
-                return View(model);
+                return Error("");
             }
         }
 
