@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class SetupViewModel
+    public class SetupViewModel : BaseViewModel
     {
         private string _nome;
         private string _cognome;
@@ -17,7 +17,6 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _blog;
         private string _descrizione;
 
-        private string _message;
         [Required]
         public string Nome
         {
@@ -75,17 +74,5 @@ namespace Devevil.Blog.MVC.Client.Models
             }
         }
 
-        public string Message
-        {
-            get
-            {
-                return _message;
-            }
-
-            set
-            {
-                _message = value;
-            }
-        }
     }
 }

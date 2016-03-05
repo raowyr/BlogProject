@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class HomePageViewModel
+    public class HomePageViewModel : BaseViewModel
     {
         private IList<PostViewModel> _postPreview;
         private IList<PostViewModel> _postDetail;
@@ -18,8 +18,6 @@ namespace Devevil.Blog.MVC.Client.Models
             get { return _page; }
             set { _page = value; }
         }
-
-        private MessageViewModel _message;
 
         public HomePageViewModel()
         {
@@ -38,12 +36,6 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _postDetail; }
             set { _postDetail = value; }
-        }
-
-        public MessageViewModel Message
-        {
-            get { return _message; }
-            set { _message = value; }
         }
 
         public IList<CategoryViewModel> CategoriesPreview

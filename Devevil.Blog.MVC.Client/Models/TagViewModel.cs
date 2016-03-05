@@ -6,18 +6,10 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class TagViewModel
+    public class TagViewModel : BaseViewModel
     {
         private int _id;
         private string _tagName;
-
-        private string _message;
-
-        public string Message
-        {
-            get { return _message; }
-            set { _message = value; }
-        }
 
         [Required]
         public string Nome

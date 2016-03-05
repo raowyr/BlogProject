@@ -57,7 +57,7 @@
                 </table>
             }
             <p>
-                 @Html.TextBoxFor(m => m.Data, new { placeholder = "Data creazione Pagina" })
+                 @Html.TextBoxFor(m => m.Data, "{0:MM/dd/yyyy}", new { placeholder = "Data creazione Pagina" })
             </p>
             <p>
                 @Html.DropDownListFor(m => m.SelectedAuthor, Model.Authors)

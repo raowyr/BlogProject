@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class ErrorViewModel
+    public class ErrorViewModel : BaseViewModel
     {
         private string _refferalUrl;
 

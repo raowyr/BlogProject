@@ -7,7 +7,7 @@ using Devevil.Blog.MVC.Support;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class CategoryViewModel
+    public class CategoryViewModel : BaseViewModel
     {
         private int _id;
         private string _categoryName;
@@ -27,14 +27,6 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _file; }
             set { _file = value; }
-        }
-
-        private string _message;
-
-        public string Message
-        {
-            get { return _message; }
-            set { _message = value; }
         }
 
         [Required]

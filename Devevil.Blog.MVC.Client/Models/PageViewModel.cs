@@ -8,12 +8,11 @@ using Devevil.Blog.MVC.Support;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class PageViewModel
+    public class PageViewModel : BaseViewModel
     {
         private int _id;
         private string _titolo;
         private string _descrizione;
-        private string _testo;
         private DateTime _data;
 
         private IEnumerable<SelectListItem> _authors;
@@ -31,10 +30,6 @@ namespace Devevil.Blog.MVC.Client.Models
 
         private HttpPostedFileBase _file;
         private string _fileName;
-
-        private string _message;
-
-
 
         public int Id
         {
@@ -63,6 +58,8 @@ namespace Devevil.Blog.MVC.Client.Models
             set { _descrizione = value; }
         }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime Data
         {
@@ -127,12 +124,6 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _body; }
             set { _body = value; }
-        }
-
-        public string Message
-        {
-            get { return _message; }
-            set { _message = value; }
         }
 
         public string FileName

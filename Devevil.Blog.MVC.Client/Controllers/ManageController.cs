@@ -14,8 +14,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
 {
     public class ManageController : Controller
     {
-        //
-        // GET: /Manage/
+
         #region Index
         [Authorize]
         public ActionResult Index()
@@ -791,11 +790,11 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             IEnumerable<SelectListItem> tmpAuthorsItems;
 
                             tmpAuthorsItems = from s in tmpAuthors
-                                                select new SelectListItem
-                                                {
-                                                    Text = s.NameAndSurname,
-                                                    Value = s.Id.ToString()
-                                                };
+                                              select new SelectListItem
+                                              {
+                                                  Text = s.NameAndSurname,
+                                                  Value = s.Id.ToString()
+                                              };
 
                             model.Authors = tmpAuthorsItems;
                             model.SelectedAuthor = model.SelectedAuthor;
@@ -823,11 +822,11 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             IEnumerable<SelectListItem> tmpCategoriesItems;
 
                             tmpCategoriesItems = from b in tmpCategories
-                                                    select new SelectListItem
-                                                    {
-                                                        Text = b.Name,
-                                                        Value = b.Id.ToString()
-                                                    };
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = b.Name,
+                                                     Value = b.Id.ToString()
+                                                 };
 
                             model.Categories = tmpCategoriesItems;
                             model.SelectedCategory = model.SelectedCategory;
@@ -859,7 +858,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 }
             }
             else
+            {
                 return View(model);
+            }
         }
 
         [Authorize]
@@ -920,6 +921,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                         pvm.Categories = tmpCategoriesItems;
                     }
+
+                    pvm.Data = DateTime.Today.Date;
                 }
             }
             catch (Exception ex)

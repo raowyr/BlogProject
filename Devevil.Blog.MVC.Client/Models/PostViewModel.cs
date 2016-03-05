@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class PostViewModel
+    public class PostViewModel : BaseViewModel
     {
         private int _id;
         private string _titolo;

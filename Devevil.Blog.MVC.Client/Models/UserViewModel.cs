@@ -6,23 +6,13 @@ using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
-    public class UserViewModel
+    public class UserViewModel : BaseViewModel
     {
         private string _email;
         private string _password;
         private string _nome;
         private string _cognome;
         private DateTime _nascita;
-
-
-
-        private string _message;
-
-        public string Message
-        {
-            get { return _message; }
-            set { _message = value; }
-        }
 
         [Required]
         public string Nome
