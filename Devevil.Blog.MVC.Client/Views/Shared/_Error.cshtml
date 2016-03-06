@@ -10,16 +10,18 @@
         <article class="post">
 	        <header>
 		        <div class="title">
-			        <h2>OOPS... questo è imbarazzante</h2>
+			        <h2>OOPS... questo è imbarazzante (ma neanche tanto)</h2>
 		        </div>
 	        </header>
 	        <p>
                 Sembra si sia verificato un errore... <br />
-                Non temere! I dettagli dell'errore sono stati loggati e, quando avrò tempo e voglia, provvederò a risolvere l'errore... forse...
+                Non temere! I dettagli dell'errore sono stati loggati e, quando avrò tempo e voglia, provvederò a risolvere l'errore...<br />
+                Forse...
 	        </p>
             @{
                 if(Model!=null && !String.IsNullOrEmpty(Model.Message))
                 {
+                    <p><h2>Dettagli del misfatto (probabilmente non ci capirai nulla, ma fa figo mostrarlo):</h2></p>
                     <p>@Model.Message</p>
                 }
             }
@@ -27,7 +29,7 @@
                 if(Model!=null && !String.IsNullOrEmpty(Model.RefferalUrl)){
                 <footer>
                     <ul class="actions">
-                        <li><button name="Back" value="Back" class="button big icon fa-arrow-circle-left" onclick="location.href='@Model.RefferalUrl'">Torna alla pagina da cui provenivi</button></li>
+                        <li><button name="Back" value="Back" class="button big icon fa-arrow-circle-left" onclick="location.href='@Model.RefferalUrl'">Torna indietro</button></li>
 		            </ul>
                 </footer>
                 }

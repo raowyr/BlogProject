@@ -7,7 +7,7 @@ using Devevil.Blog.MVC.Client.Models;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseController
     {
         //
         // GET: /Contact/
@@ -22,11 +22,18 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(MessageViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                model.Message = "Grazie per avermi inviato questo messaggio! Ti ricontatterò il prima possibile!";
+                if (ModelState.IsValid)
+                {
+                    model.Message = "Grazie per avermi inviato questo messaggio! Ti ricontatterò il prima possibile!";
+                }
+                return View(model);
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
     }

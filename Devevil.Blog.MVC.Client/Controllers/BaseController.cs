@@ -12,7 +12,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
         public ViewResult Error(string prmError)
         {
             ErrorViewModel evm = new ErrorViewModel();
-            evm.RefferalUrl = Request.UrlReferrer.ToString();
+            if(Request!=null && Request.Url!=null)
+                evm.RefferalUrl = Request.Url.ToString();
             evm.Message = prmError;
             return View("_Error", evm);
         }
@@ -20,7 +21,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
         public ViewResult Error()
         {
             ErrorViewModel evm = new ErrorViewModel();
-            evm.RefferalUrl = Request.UrlReferrer.ToString();
+            if (Request != null && Request.Url != null)
+                evm.RefferalUrl = Request.UrlReferrer.ToString();
             return View("_Error", evm);
         }
     }

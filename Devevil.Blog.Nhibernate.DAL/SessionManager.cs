@@ -239,7 +239,12 @@ namespace Devevil.Blog.Nhibernate.DAL
         {
             ISession session = SessionFactory.OpenSession();
             if (IsWeb)
-                HttpContext.Current.Items.Add(SESSIONKEY, session);
+            {
+                if (!HttpContext.Current.Items.Contains(SESSIONKEY))
+                    HttpContext.Current.Items.Add(SESSIONKEY, session);
+                else
+                    HttpContext.Current.Items[SESSIONKEY] = session;
+            }
             else
                 _Session = session;
             return session;

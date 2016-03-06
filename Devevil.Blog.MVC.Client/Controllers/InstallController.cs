@@ -11,7 +11,7 @@ using Devevil.Blog.Model.Domain.Entities;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
-    public class InstallController : Controller
+    public class InstallController : BaseController
     {
         //
         // GET: /Install/
@@ -44,9 +44,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             catch (Exception ex)
             {
-                SetupViewModel svm = new SetupViewModel();
-                svm.Message = "Si è verificato un errore...";
-                return View(svm);
+                return Error(ex.Message);
             }
         }
 
@@ -55,9 +53,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(SetupViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     Model.Domain.Entities.Blog b = new Model.Domain.Entities.Blog(model.Blog,
                         model.Descrizione);
@@ -84,20 +82,16 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                         uow.Commit();
                     }
-
-                    //In realtà devo gestire il reindirizzamento alla pagina di gestione!!!
                     //Vai alla pagina di gestione
                     return RedirectToAction("Index", "Manage");
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "Si è verificato un errore durante il salvataggio dei dati. Controlla i dati inseriti!";
+                else
                     return View(model);
-                }
-
             }
-            else
-                return View(model);
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
     }
 }

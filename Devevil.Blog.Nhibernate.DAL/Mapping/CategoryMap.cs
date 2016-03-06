@@ -15,7 +15,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.Name).Length(255).Not.Nullable();
             Map(x => x.Description).Length(255).Not.Nullable();
-            Map(x => x.ImagePath).Length(255);
+            Map(x => x.ImageName).Length(255);
             HasMany(x => x.Pages).Inverse();
         }
     }

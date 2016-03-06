@@ -10,59 +10,42 @@ using Devevil.Blog.Nhibernate.DAL.Repositories;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
         [AllowAnonymous]
         public ActionResult Index()
         {
-            HomePageViewModel m = new HomePageViewModel();
-
             try 
             {
+                HomePageViewModel m = new HomePageViewModel();
                 using (UnitOfWork uow = new UnitOfWork())
                 {
-                    //Carica gli ultimi 5 POST
+                    //Carica gli ultimi 10 POST
                     PageRepository pr = new PageRepository(uow.Current);
 
                     IList<Page> pages = pr.GetTopPost(10);
-                    if (pages != null)
+                    if (pages != null && pages.Count>0)
                     {
-                        if (pages.Count > 0)
-                        {
-                            int k = 0;
-                            foreach (var p in pages)
-                            {
-                                PostViewModel pTemp = new PostViewModel();
-
-                                pTemp.Id = p.Id;
-                                pTemp.Data = p.Date.Value;
-                                pTemp.Testo = p.BodyText;
-                                pTemp.Titolo = p.Title;
-                                pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
-                                pTemp.Categoria = p.Category.Name;
-
-                                if (k < 5)
-                                    m.PostDetail.Add(pTemp);
-                                else
-                                    m.PostPreview.Add(pTemp);
-
-                                k++;
-                            }
-                        }
-                        else
+                        int k = 0;
+                        foreach (var p in pages)
                         {
                             PostViewModel pTemp = new PostViewModel();
 
-                            pTemp.Id = 0;
-                            pTemp.Data = DateTime.Today;
-                            pTemp.Titolo = "OOPS...";
-                            pTemp.Testo = "Sembra non siano presenti articoli...";
-                            pTemp.Autore = "Pasquale Garzillo";
+                            pTemp.Id = p.Id;
+                            pTemp.Data = p.Date.Value;
+                            pTemp.Testo = p.BodyText;
+                            pTemp.Titolo = p.Title;
+                            pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
+                            pTemp.Categoria = p.Category.Name;
 
-                            m.PostDetail.Add(pTemp);
-                            m.PostPreview.Add(pTemp);
+                            if (k < 5)
+                                m.PostDetail.Add(pTemp);
+                            else
+                                m.PostPreview.Add(pTemp);
+
+                            k++;
                         }
                     }
                     else
@@ -76,6 +59,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pTemp.Autore = "Pasquale Garzillo";
 
                         m.PostDetail.Add(pTemp);
+                        m.PostPreview.Add(pTemp);
                     }
                    
                     //Carica le ultime 5 categoria con maggiori post
@@ -105,31 +89,31 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         m.CategoriesPreview.Add(cvTemp);
                     }
                 }
+                return View(m);
             }
             catch (Exception ex)
             {
                 //Errore durante recupero dei dati
-                PostViewModel pTemp = new PostViewModel();
+                //Errore gestibile, non è necessario reindirizzare alla pagine di errore
+                //PostViewModel pTemp = new PostViewModel();
 
-                pTemp.Id = 0;
-                pTemp.Data = DateTime.Today;
-                pTemp.Titolo = "OOPS...";
-                pTemp.Testo = "Sembra non siano presenti articoli...";
-                pTemp.Autore = "Pasquale Garzillo";
+                //pTemp.Id = 0;
+                //pTemp.Data = DateTime.Today;
+                //pTemp.Titolo = "OOPS...";
+                //pTemp.Testo = "Sembra non siano presenti articoli...";
+                //pTemp.Autore = "Pasquale Garzillo";
 
-                m.PostDetail.Add(pTemp);
+                //m.PostDetail.Add(pTemp);
 
-                CategoryViewModel cvTemp = new CategoryViewModel();
+                //CategoryViewModel cvTemp = new CategoryViewModel();
 
-                cvTemp.Id = 0;
-                cvTemp.Nome = "OOPS...";
-                cvTemp.Descrizione = "Sembra non siano presenti categorie...";
+                //cvTemp.Id = 0;
+                //cvTemp.Nome = "OOPS...";
+                //cvTemp.Descrizione = "Sembra non siano presenti categorie...";
 
-                m.CategoriesPreview.Add(cvTemp);
+                //m.CategoriesPreview.Add(cvTemp);
+                return Error(ex.Message);
             }
-            
-            return View(m);
         }
-
     }
 }

@@ -38,43 +38,42 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(UserLoginViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
                         AuthorRepository ar = new AuthorRepository(uow.Current);
                         Author au = ar.GetAuthorByEmail(model.Email);
 
-                        if (au != null && au.ValidatePassword(model.Password))
+                        if (au != null && au.ValidatePassword(model.Password) && au.IsAdministrator)
                         {
                             //Login OK
-                            if (FormsAuthentication.IsEnabled)
+                            if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
                                 FormsAuthentication.SetAuthCookie(model.Email, true);
                             return RedirectToAction("Index", "Manage");
                         }
                         else
                         {
-                            model.Message = "Email e/o password errate!";
+                            model.Message = "Email e/o password errate, oppure non hai i diritti per accedere!";
                             return View(model);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "OOPS... si è verificato un problema!";
+                else
                     return View(model);
-                }
             }
-            else
-                return View(model);
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
         [Authorize]
         public ActionResult Logout()
         {
-            if (FormsAuthentication.IsEnabled)
+            if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported && Request.Cookies[FormsAuthentication.FormsCookieName] != null)
             {
                 FormsAuthentication.SignOut();
             }
@@ -87,10 +86,10 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [Authorize]
         public ActionResult AccountManagment()
         {
-            UserViewModel uvm = new UserViewModel();
             try
             {
-                if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
+                UserViewModel uvm = new UserViewModel();
+                if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported && Request.Cookies[FormsAuthentication.FormsCookieName] != null)
                 {
                     string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
                     if (!String.IsNullOrEmpty(username))
@@ -114,13 +113,20 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     }
                     else
                         uvm.Message = "Si è verificato un problema durante il caricamento dati.";
+
+                    return View(uvm);
+                }
+                else
+                {
+                    uvm.Message = "Sessione utente probabilmente scaduta! Riprova a fare il login e assicurati di avere i cookie abilitati!";
+                    return View(uvm);
                 }
             }
             catch (Exception ex)
             {
-                uvm.Message = "Si è verificato un problema durante il caricamento dati.";
+                return Error(ex.Message);
             }
-            return View(uvm);
+            
         }
 
         //Modifica dei dati relativi all'account correntemente in uso
@@ -129,17 +135,18 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AccountManagment(UserViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
+                if (ModelState.IsValid)
                 {
-                    string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
-                    if (!String.IsNullOrEmpty(username))
+                    if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported)
                     {
-                        using (UnitOfWork uow = new UnitOfWork())
+                        string username = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+                        if (!String.IsNullOrEmpty(username))
                         {
-                            try
+                            using (UnitOfWork uow = new UnitOfWork())
                             {
+
                                 AuthorRepository ar = new AuthorRepository(uow.Current);
                                 Author au = ar.GetAuthorByEmail(username);
 
@@ -151,17 +158,19 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                                 model.Message = "Modifica dei dati eseguita con successo!";
                             }
-                            catch (Exception ex)
-                            {
-                                model.Message = "Si è verificato un problema durante il salvataggio dei dati.";
-                            }
                         }
+                        else
+                            model.Message = "Si è verificato un problema durante il recupero dei dati. Non è stato possibile apportare le modifiche richieste!";
                     }
-                    else
-                        model.Message = "Si è verificato un problema durante il salvataggio dei dati.";
+                    return View(model);
                 }
+                else
+                    return View(model);
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
         #endregion
 
@@ -171,9 +180,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [Authorize]
         public ActionResult Categories()
         {
-            IList<CategoryViewModel> categoryList  = null;
             try
             {
+                IList<CategoryViewModel> categoryList = null;
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     CategoryRepository cr = new CategoryRepository(uow.Current);
@@ -192,27 +201,21 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         }
                     }
                 }
+                return View(categoryList);
             }
             catch (Exception ex)
             {
-                CategoryViewModel cvm = new CategoryViewModel();
-                cvm.Descrizione = "Errore durante il caricamento della lista delle categorie presenti...";
-                cvm.Nome = "OOPS...";
-                cvm.Id = 0;
-
-                categoryList = new List<CategoryViewModel>();
-                categoryList.Add(cvm);
+                return Error(ex.Message);
             }
-            return View(categoryList);
         }
 
         //Recupera i dettagli della singola categoria
         [Authorize]
         public ActionResult CategoryDetail(int id)
         {
-            CategoryViewModel cvm = new CategoryViewModel();
             try
             {
+                CategoryViewModel cvm = new CategoryViewModel();
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     CategoryRepository cr = new CategoryRepository(uow.Current);
@@ -222,15 +225,15 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         cvm.Nome = c.Name;
                         cvm.Descrizione = c.Description;
                         cvm.Id = c.Id;
-                        cvm.FileName = c.ImagePath;
+                        cvm.FileName = c.ImageName;
                     }
                 }
+                return View(cvm);
             }
             catch (Exception ex)
             {
-                cvm.Message = "Si è verificato un errore durante il caricamento dati";
+                return Error(ex.Message);
             }
-            return View(cvm);
         }
 
         //Modifica i dettagli di una categoria selezionata
@@ -239,9 +242,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CategoryDetail(CategoryViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
@@ -264,30 +267,23 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             if (!String.IsNullOrEmpty(fileName))
                                 c.SetImagePath(fileName);
                             else
-                                model.FileName = c.ImagePath;
+                                model.FileName = c.ImageName;
 
                             cr.SaveOrUpdate(c);
                             uow.Commit();
 
                             model.Message = "Modifica eseguita con successo!";
-
-                            return View(model);
                         }
                         else
-                        {
-                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
-                            return View(model);
-                        }
+                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati! Recupero dell'entità da modificare non avvenuto!";
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "OOPS... si è verificato un problema!";
-                    return View(model);
-                }
-            }
-            else
                 return View(model);
+            }
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
         [Authorize]
@@ -302,9 +298,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CategoryNew(CategoryViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
@@ -328,21 +324,20 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         model.Message = "Salvataggio eseguito correttamente!";
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "Errore durante il salavataggio dei dati!";
-                }
+                return View(model);
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
         [Authorize]
         public ActionResult CategoryRemoveImage(int id)
         {
-            CategoryViewModel cvm = new CategoryViewModel();
             try
             {
-
+                CategoryViewModel cvm = new CategoryViewModel();
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     CategoryRepository cr = new CategoryRepository(uow.Current);
@@ -359,15 +354,13 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     }
                     else
                     {
-                        cvm.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
-                        return View("CategoryDetail", cvm);
+                        return Error("Si è verificato un errore durante la rimozione dell'immagine");
                     }
                 }
             }
             catch (Exception ex)
             {
-                cvm.Message = "OOPS... si è verificato un problema!";
-                return View("CategoryDetail", cvm);
+                return Error(ex.Message);
             }
         }
         #endregion
@@ -378,9 +371,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [Authorize]
         public ActionResult Tags()
         {
-            IList<TagViewModel> tagList = null;
             try
             {
+                IList<TagViewModel> tagList = null;
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     TagRepository tr = new TagRepository(uow.Current);
@@ -399,27 +392,21 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         }
                     }
                 }
+                return View(tagList);
             }
             catch (Exception ex)
             {
-                TagViewModel cvm = new TagViewModel();
-
-                cvm.Nome = "OOPS... si è verificato un problema durante il caricamento dei tags!";
-                cvm.Id = 0;
-
-                tagList = new List<TagViewModel>();
-                tagList.Add(cvm);
+                return Error(ex.Message);
             }
-            return View(tagList);
         }
 
         //Recupera i dettagli della singola categoria
         [Authorize]
         public ActionResult TagDetail(int id)
         {
-            TagViewModel cvm = new TagViewModel();
             try
             {
+                TagViewModel cvm = new TagViewModel();
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     TagRepository tr = new TagRepository(uow.Current);
@@ -430,12 +417,12 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         cvm.Id = t.Id;
                     }
                 }
+                return View(cvm);
             }
             catch (Exception ex)
             {
-                cvm.Message = "Si è verificato un errore durante il caricamento dati";
+                return Error(ex.Message);
             }
-            return View(cvm);
         }
 
         //Modifica i dettagli di una categoria selezionata
@@ -444,9 +431,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TagDetail(TagViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
@@ -461,24 +448,17 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             uow.Commit();
 
                             model.Message = "Modifica eseguita con successo!";
-
-                            return View(model);
                         }
                         else
-                        {
-                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
-                            return View(model);
-                        }
+                            model.Message = "Si è verificato un errore durante l'aggiornamento dei dati! Recupero entità da modifica non avvenuto con successo!";
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "OOPS... si è verificato un problema!";
-                    return View(model);
-                }
-            }
-            else
                 return View(model);
+            }
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
         [Authorize]
@@ -493,10 +473,11 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TagNew(TagViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
+
                     using (UnitOfWork uow = new UnitOfWork())
                     {
                         TagRepository tr = new TagRepository(uow.Current);
@@ -508,12 +489,12 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         model.Message = "Salvataggio eseguito correttamente!";
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "Errore durante il salavataggio dei dati!";
-                }
+                return View(model);
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
         #endregion
@@ -524,9 +505,9 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [Authorize]
         public ActionResult Pages()
         {
-            IList<PageViewModel> postList = null;
             try
             {
+                IList<PageViewModel> postList = null;
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     PageRepository pr = new PageRepository(uow.Current);
@@ -548,27 +529,21 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         }
                     }
                 }
+                return View(postList);
             }
             catch (Exception ex)
             {
-                PageViewModel pvm = new PageViewModel();
-                pvm.Titolo = "Errore durante il caricamento della lista delle categorie presenti...";
-                //pvm.Categoria = "OOPS...";
-                pvm .Id = 0;
-
-                postList = new List<PageViewModel>();
-                postList.Add(pvm);
+                return Error(ex.Message);
             }
-            return View(postList);
         }
 
         //Recupera i dettagli della singola categoria
         [Authorize]
         public ActionResult PageDetail(int id)
         {
-            PageViewModel pvm = new PageViewModel();
             try
             {
+                PageViewModel pvm = new PageViewModel();
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     PageRepository pr = new PageRepository(uow.Current);
@@ -629,17 +604,17 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pvm.Id = p.Id;
                         pvm.Titolo = p.Title;
                         pvm.Descrizione = p.Description;
-                        pvm.FileName = p.ImagePath;
+                        pvm.FileName = p.ImageName;
                         pvm.Body = p.BodyText;
 
                     }
                 }
+                return View(pvm);
             }
             catch (Exception ex)
             {
-                pvm.Message = "Si è verificato un errore durante il caricamento dati";
+                return Error(ex.Message);
             }
-            return View(pvm);
         }
 
         //Modifica i dettagli di una pagina selezionata
@@ -648,9 +623,62 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PageDetail(PageViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                //Carica tutti gli elementi necessari a video
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    AuthorRepository ar = new AuthorRepository(uow.Current);
+                    BlogRepository br = new BlogRepository(uow.Current);
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
+
+                    //Ricarica la lista autori
+                    IList<Author> tmpAuthors = ar.FindAll().ToList();
+                    if (tmpAuthors != null && tmpAuthors.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpAuthorsItems;
+
+                        tmpAuthorsItems = from s in tmpAuthors
+                                          select new SelectListItem
+                                          {
+                                              Text = s.NameAndSurname,
+                                              Value = s.Id.ToString()
+                                          };
+
+                        model.Authors = tmpAuthorsItems;
+                    }
+
+                    IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
+                    if (tmpBlogs != null && tmpBlogs.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpBlogsItems;
+
+                        tmpBlogsItems = from b in tmpBlogs
+                                        select new SelectListItem
+                                        {
+                                            Text = b.Name,
+                                            Value = b.Id.ToString()
+                                        };
+
+                        model.Blogs = tmpBlogsItems;
+                    }
+
+                    IList<Category> tmpCategories = cr.FindAll().ToList();
+                    if (tmpCategories != null && tmpCategories.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpCategoriesItems;
+
+                        tmpCategoriesItems = from b in tmpCategories
+                                             select new SelectListItem
+                                             {
+                                                 Text = b.Name,
+                                                 Value = b.Id.ToString()
+                                             };
+
+                        model.Categories = tmpCategoriesItems;
+                    }
+                }
+                if (ModelState.IsValid)
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
@@ -663,6 +691,10 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             model.File.SaveAs(path);
                             model.FileName = fileName;
                         }
+
+                        model.SelectedAuthor = model.SelectedAuthor;
+                        model.SelectedBlog = model.SelectedBlog;
+                        model.SelectedCategory = model.SelectedCategory;
 
                         PageRepository pr = new PageRepository(uow.Current);
                         AuthorRepository ar = new AuthorRepository(uow.Current);
@@ -672,54 +704,6 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         Page p = pr.GetById(model.Id);
                         if (p != null)
                         {
-                            //Ricarica la lista autori
-                            IList<Author> tmpAuthors = ar.FindAll().ToList();
-                            if (tmpAuthors != null && tmpAuthors.Count > 0)
-                            {
-                                IEnumerable<SelectListItem> tmpAuthorsItems;
-
-                                tmpAuthorsItems = from s in tmpAuthors
-                                                  select new SelectListItem
-                                                  {
-                                                      Text = s.NameAndSurname,
-                                                      Value = s.Id.ToString()
-                                                  };
-
-                                model.Authors = tmpAuthorsItems;
-                                model.SelectedAuthor = model.SelectedAuthor;
-                            }
-
-                            IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
-                            if (tmpBlogs != null && tmpBlogs.Count > 0)
-                            {
-                                IEnumerable<SelectListItem> tmpBlogsItems;
-
-                                tmpBlogsItems = from b in tmpBlogs
-                                                select new SelectListItem
-                                                {
-                                                    Text = b.Name,
-                                                    Value = b.Id.ToString()
-                                                };
-
-                                model.Blogs = tmpBlogsItems;
-                                model.SelectedBlog = model.SelectedBlog;
-                            }
-
-                            IList<Category> tmpCategories = cr.FindAll().ToList();
-                            if (tmpCategories != null && tmpCategories.Count > 0)
-                            {
-                                IEnumerable<SelectListItem> tmpCategoriesItems;
-
-                                tmpCategoriesItems = from b in tmpCategories
-                                                     select new SelectListItem
-                                                     {
-                                                         Text = b.Name,
-                                                         Value = b.Id.ToString()
-                                                     };
-
-                                model.Categories = tmpCategoriesItems;
-                                model.SelectedCategory = model.SelectedCategory;
-                            }
                             Author au = ar.GetById(Convert.ToInt32(model.SelectedAuthor));
                             Blog.Model.Domain.Entities.Blog bb = br.GetById(Convert.ToInt32(model.SelectedBlog));
                             Category cc = cr.GetById(Convert.ToInt32(model.SelectedCategory));
@@ -729,31 +713,24 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             if (!String.IsNullOrEmpty(fileName))
                                 p.SetImagePath(fileName);
                             else
-                                model.FileName = p.ImagePath;
+                                model.FileName = p.ImageName;
 
 
                             pr.SaveOrUpdate(p);
                             uow.Commit();
 
                             model.Message = "Modifica eseguita con successo!";
-
-                            return View(model);
                         }
                         else
-                        {
                             model.Message = "Si è verificato un errore durante l'aggiornamento dei dati!";
-                            return View(model);
-                        }
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "OOPS... si è verificato un problema!";
-                    return View(model);
-                }
-            }
-            else
                 return View(model);
+            }
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
         }
 
         //Modifica i dettagli di una pagina selezionata
@@ -762,9 +739,63 @@ namespace Devevil.Blog.MVC.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PageNew(PageViewModel model) 
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                //Carica tutti gli elementi necessari a video
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    AuthorRepository ar = new AuthorRepository(uow.Current);
+                    BlogRepository br = new BlogRepository(uow.Current);
+                    CategoryRepository cr = new CategoryRepository(uow.Current);
+
+                    //Ricarica la lista autori
+                    IList<Author> tmpAuthors = ar.FindAll().ToList();
+                    if (tmpAuthors != null && tmpAuthors.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpAuthorsItems;
+
+                        tmpAuthorsItems = from s in tmpAuthors
+                                          select new SelectListItem
+                                          {
+                                              Text = s.NameAndSurname,
+                                              Value = s.Id.ToString()
+                                          };
+
+                        model.Authors = tmpAuthorsItems;
+                    }
+
+                    IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
+                    if (tmpBlogs != null && tmpBlogs.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpBlogsItems;
+
+                        tmpBlogsItems = from b in tmpBlogs
+                                        select new SelectListItem
+                                        {
+                                            Text = b.Name,
+                                            Value = b.Id.ToString()
+                                        };
+
+                        model.Blogs = tmpBlogsItems;
+                    }
+
+                    IList<Category> tmpCategories = cr.FindAll().ToList();
+                    if (tmpCategories != null && tmpCategories.Count > 0)
+                    {
+                        IEnumerable<SelectListItem> tmpCategoriesItems;
+
+                        tmpCategoriesItems = from b in tmpCategories
+                                             select new SelectListItem
+                                             {
+                                                 Text = b.Name,
+                                                 Value = b.Id.ToString()
+                                             };
+
+                        model.Categories = tmpCategoriesItems;
+                    }
+                }
+
+                if (ModelState.IsValid)
                 {
                     using (UnitOfWork uow = new UnitOfWork())
                     {
@@ -778,59 +809,15 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             model.FileName = fileName;
                         }
 
+                        model.SelectedAuthor = model.SelectedAuthor;
+                        model.SelectedBlog = model.SelectedBlog;
+                        model.SelectedCategory = model.SelectedCategory;
+
                         PageRepository pr = new PageRepository(uow.Current);
                         AuthorRepository ar = new AuthorRepository(uow.Current);
                         BlogRepository br = new BlogRepository(uow.Current);
                         CategoryRepository cr = new CategoryRepository(uow.Current);
-
-                        //Ricarica la lista autori
-                        IList<Author> tmpAuthors = ar.FindAll().ToList();
-                        if (tmpAuthors != null && tmpAuthors.Count > 0)
-                        {
-                            IEnumerable<SelectListItem> tmpAuthorsItems;
-
-                            tmpAuthorsItems = from s in tmpAuthors
-                                              select new SelectListItem
-                                              {
-                                                  Text = s.NameAndSurname,
-                                                  Value = s.Id.ToString()
-                                              };
-
-                            model.Authors = tmpAuthorsItems;
-                            model.SelectedAuthor = model.SelectedAuthor;
-                        }
-
-                        IList<Blog.Model.Domain.Entities.Blog> tmpBlogs = br.FindAll().ToList();
-                        if (tmpBlogs != null && tmpBlogs.Count > 0)
-                        {
-                            IEnumerable<SelectListItem> tmpBlogsItems;
-
-                            tmpBlogsItems = from b in tmpBlogs
-                                            select new SelectListItem
-                                            {
-                                                Text = b.Name,
-                                                Value = b.Id.ToString()
-                                            };
-
-                            model.Blogs = tmpBlogsItems;
-                            model.SelectedBlog = model.SelectedBlog;
-                        }
-
-                        IList<Category> tmpCategories = cr.FindAll().ToList();
-                        if (tmpCategories != null && tmpCategories.Count > 0)
-                        {
-                            IEnumerable<SelectListItem> tmpCategoriesItems;
-
-                            tmpCategoriesItems = from b in tmpCategories
-                                                 select new SelectListItem
-                                                 {
-                                                     Text = b.Name,
-                                                     Value = b.Id.ToString()
-                                                 };
-
-                            model.Categories = tmpCategoriesItems;
-                            model.SelectedCategory = model.SelectedCategory;
-                        }
+  
                         Author au = ar.GetById(Convert.ToInt32(model.SelectedAuthor));
                         Blog.Model.Domain.Entities.Blog bb = br.GetById(Convert.ToInt32(model.SelectedBlog));
                         Category cc = cr.GetById(Convert.ToInt32(model.SelectedCategory));
@@ -840,35 +827,28 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         if (!String.IsNullOrEmpty(fileName))
                             p.SetImagePath(fileName);
                         else
-                            model.FileName = p.ImagePath;
-
+                            model.FileName = p.ImageName;
 
                         pr.SaveOrUpdate(p);
                         uow.Commit();
 
                         model.Message = "Salvataggio eseguito con successo!";
-
-                        return View(model);
                     }
                 }
-                catch (Exception ex)
-                {
-                    model.Message = "OOPS... si è verificato un problema!";
-                    return View(model);
-                }
+                return View(model);
             }
-            else
+            catch (Exception ex)
             {
-                return Error();
+                return Error(ex.Message);
             }
         }
 
         [Authorize]
         public ActionResult PageNew()
         {
-            PageViewModel pvm = new PageViewModel();
             try
             {
+                PageViewModel pvm = new PageViewModel();
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     AuthorRepository ar = new AuthorRepository(uow.Current);
@@ -924,12 +904,12 @@ namespace Devevil.Blog.MVC.Client.Controllers
 
                     pvm.Data = DateTime.Today.Date;
                 }
+                return View(pvm);
             }
             catch (Exception ex)
             {
-
+                return Error(ex.Message);
             }
-            return View(pvm);
         }
 
         [Authorize]
@@ -937,7 +917,6 @@ namespace Devevil.Blog.MVC.Client.Controllers
         {
             try
             {
-
                 using (UnitOfWork uow = new UnitOfWork())
                 {
                     PageRepository pr = new PageRepository(uow.Current);
@@ -955,22 +934,13 @@ namespace Devevil.Blog.MVC.Client.Controllers
                     }
                     else
                     {
-                        //Da gestire meglio gli errori
-                        //dovrei reindirizzare ad una pagie di errore, con un link alla pagina che ha generato l'errore
-
-                        ErrorViewModel evm = new ErrorViewModel();
-                        evm.RefferalUrl = Request.UrlReferrer.ToString();
-
-                        return new HttpStatusCodeResult(500);
+                        return Error("Si è verificato un errore durante la rimozione dell'immagine");
                     }
                 }
             }
             catch (Exception ex)
             {
-                ErrorViewModel evm = new ErrorViewModel();
-                evm.RefferalUrl = Request.UrlReferrer.ToString();
-
-                return View("/Error/Index", evm);
+                return Error(ex.Message);
             }
         }
 

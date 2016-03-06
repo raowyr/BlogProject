@@ -12,12 +12,12 @@ namespace Devevil.Blog.Model.Domain.Entities
     {
         private string _name;
         private string _description;
-        private string _imagePath;
+        private string _imageName;
 
-        public virtual string ImagePath
+        public virtual string ImageName
         {
-            get { return _imagePath; }
-            set { _imagePath = value; }
+            get { return _imageName; }
+            set { _imageName = value; }
         }
         private IList<Page> _pages;
 
@@ -43,7 +43,7 @@ namespace Devevil.Blog.Model.Domain.Entities
 
         public virtual void SetImagePath(string prmPath)
         {
-            _imagePath = prmPath;
+            _imageName = prmPath;
         }
 
         public virtual string Name

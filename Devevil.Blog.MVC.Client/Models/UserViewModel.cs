@@ -42,6 +42,8 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Nascita
         {
             get { return _nascita; }

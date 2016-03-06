@@ -18,6 +18,7 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _descrizione;
 
         [Required]
+        [Display(Name ="Nome amministratore")]
         public string Nome
         {
             get { return _nome; }
@@ -25,6 +26,7 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
+        [Display(Name = "Cognome amministratore")]
         public string Cognome
         {
             get { return _cognome; }
@@ -32,6 +34,7 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
+        [Display(Name = "Password account")]
         public string Password
         {
             get { return _password; }
@@ -39,6 +42,7 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required, EmailAddress]
+        [Display(Name = "Email (username account)")]
         public string Email
         {
             get { return _email; }
@@ -46,6 +50,7 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
+        [Display(Name = "Nome del Blog")]
         public string Blog
         {
             get { return _blog; }
@@ -53,6 +58,7 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
+        [Display(Name = "Descrizione breve del Blog")]
         public string Descrizione
         {
             get { return _descrizione; }
@@ -60,7 +66,9 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data di nascita dell' amministratore")]
         public DateTime Nascita
         {
             get
