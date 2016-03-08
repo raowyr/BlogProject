@@ -944,6 +944,60 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
         }
 
+        //[HttpGet]
+        //public ActionResult LookupTags(string q, int limit)
+        //{
+        //    // We can get a list of tags from the database, but 
+        //    // for this example, I will populate a list with values.
+        //    List<string> tags = new List<string>();
+        //    tags.Add("asp");
+        //    tags.Add("mvc");
+        //    tags.Add("microsoft");
+        //    tags.Add("sql server");
+        //    tags.Add("jQuery");
+        //    tags.Add("ajax");
+  
+        //    // Select the tags that match the query, and get the 
+        //    // number or tags specified by the limit.
+        //    var retValue = tags
+        //        .Where(x => x.StartsWith(q))
+        //        .OrderBy(x => x)
+        //        .Take(limit)
+        //        .Select(r => new { Tag = r
+        //    });
+
+        //    // Return the result set as JSON
+        //    return Json(retValue);
+        //}
+
+        [HttpGet]
+        public ActionResult LookupTags(string term)
+        {
+            try
+            {
+                IList<string> retValue = null;
+
+                using (UnitOfWork uow = new UnitOfWork())
+                {
+                    TagRepository tr = new TagRepository(uow.Current);
+
+                    retValue = tr.FindAll().Where(x => x.Name.StartsWith(term))
+                    .OrderBy(x => x)
+                    //.Take(limit)
+                    .Select(r => r.Name).ToList();
+                }
+
+                // Return the result set as JSON
+                return Json(retValue, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Error(ex.Message);
+            }
+
+            
+        }
+
         #endregion
     }
 }

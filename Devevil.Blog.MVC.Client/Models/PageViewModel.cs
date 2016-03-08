@@ -28,6 +28,8 @@ namespace Devevil.Blog.MVC.Client.Models
 
         private string _body;
 
+        private string _tags;
+
         private HttpPostedFileBase _file;
         private string _fileName;
 
@@ -138,6 +140,19 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _file; }
             set { _file = value; }
+        }
+
+        public string Tags
+        {
+            get
+            {
+                return _tags;
+            }
+
+            set
+            {
+                _tags = value;
+            }
         }
     }
 }

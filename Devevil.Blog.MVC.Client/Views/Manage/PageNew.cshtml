@@ -4,11 +4,10 @@
 
 @model Devevil.Blog.MVC.Client.Models.PageViewModel
 
-
 @section content{
 <div id="main">
-    <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/ckeditor/adapters/jquery.js"></script>
+    <script src="/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="/Scripts/ckeditor/adapters/jquery.js"></script>
 
     <script>
         $(function () {
@@ -16,7 +15,88 @@
         });
     </script>
 
-    @using (Html.BeginForm("PageNew", "Manage", FormMethod.Post, new 
+    @*<script type="text/javascript">
+        $(document).ready(function()
+        {
+            $("#Tags").autocomplete(
+            {
+                source: '@Url.Action("LookupTags","Manage")',
+                dataType: 'json',
+                parse: function(data)
+                {
+                    var rows = new Array();
+                    for (var i = 0; i < data.length; i++)
+                    {
+                        rows[i] = { data: data[i], value: data[i].Tag, result: data[i].Tag };
+                    }
+                    return rows;
+                },
+                formatItem: function(row, i, max)
+                {
+                    return row.Tag;
+                },
+                width: 300,
+                height: 300,
+                highlight: false,
+                multiple: true,
+                multipleSeparator: ","
+            });
+        });
+    </script>*@
+
+    <script type="text/javascript">
+        $(function () {
+            $("#Tags")
+                .bind("keydown", function (event) {
+                    if (event.keyCode === $.ui.keyCode.TAB &&
+                    $(this).data("ui-autocomplete").menu.active) {
+                        event.preventDefault();
+                    }
+                })
+                .autocomplete({
+                    minLength: 2,
+                    source: function( request, response ) {
+                        $.getJSON("/Manage/LookUpTags", {
+                            term: extractLast( request.term )
+                        }, response );
+                    },
+                    search: function () {
+                        // custom minLength
+                        var term = extractLast(this.value);
+                        if (term.length < 2) {
+                            return false;
+                        }
+                    },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    var usersIdVal = $("#hiddenTags").val();
+                    usersIdVal += ", " + ui.item.userId;
+                    $("#hiddenTags").val(usersIdVal)
+
+                    var terms = split(this.value);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(ui.item.value);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    this.value = terms.join(", ");
+                    return false;
+                }
+            });
+        });
+        function split(val) {
+            return val.split(/,\s*/);
+        }
+        function extractLast(term) {
+            return split(term).pop();
+        }
+    </script>
+
+    @using (Html.BeginForm("PageNew", "Manage", FormMethod.Post, new
                                        { enctype = "multipart/form-data" }))
     {
         <!-- Post -->
@@ -67,6 +147,10 @@
             </p>
             <p>
                 @Html.DropDownListFor(m => m.SelectedCategory, Model.Categories)
+            </p>
+            <p>
+                @Html.TextBoxFor(m => m.Tags, new { placeholder = "Tags" })
+                @Html.Hidden("hiddenTags")
             </p>
             <p>
                 @Html.TextAreaFor(m => m.Body, new { placeholder = "Testo della pagina" })
