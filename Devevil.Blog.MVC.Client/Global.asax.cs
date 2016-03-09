@@ -26,6 +26,8 @@ namespace Devevil.Blog.MVC.Client
             {
                 //configura Nhibernate
                 SessionManager.Instance.Configure();
+                //Confgurazione log4net
+                log4net.Config.XmlConfigurator.Configure();
             }
             catch (Exception ex)
             {

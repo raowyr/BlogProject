@@ -607,6 +607,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pvm.FileName = p.ImageName;
                         pvm.Body = p.BodyText;
 
+                        if (p.Tags != null && p.Tags.Count > 0)
+                            pvm.Tags = String.Join(", ", p.Tags.Select(x=>x.Name));
                     }
                 }
                 return View(pvm);
@@ -700,6 +702,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         AuthorRepository ar = new AuthorRepository(uow.Current);
                         BlogRepository br = new BlogRepository(uow.Current);
                         CategoryRepository cr = new CategoryRepository(uow.Current);
+                        TagRepository tr = new TagRepository(uow.Current);
 
                         Page p = pr.GetById(model.Id);
                         if (p != null)
@@ -715,6 +718,25 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             else
                                 model.FileName = p.ImageName;
 
+                            if (!String.IsNullOrEmpty(model.Tags))
+                            {
+                                foreach (var t in model.Tags.Split(','))
+                                {
+                                    if (!String.IsNullOrEmpty(t))
+                                    {
+                                        Tag tg = tr.GetTagByName(t.TrimStart().TrimEnd());
+                                        if (tg != null)
+                                        {
+                                            p.AddTag(tg);
+                                        }
+                                        else
+                                        {
+                                            Tag tempTag = new Tag(t.TrimStart().TrimEnd());
+                                            p.AddTag(tempTag);
+                                        }
+                                    }
+                                }
+                            }
 
                             pr.SaveOrUpdate(p);
                             uow.Commit();
@@ -817,12 +839,33 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         AuthorRepository ar = new AuthorRepository(uow.Current);
                         BlogRepository br = new BlogRepository(uow.Current);
                         CategoryRepository cr = new CategoryRepository(uow.Current);
-  
+                        TagRepository tr = new TagRepository(uow.Current);
+
                         Author au = ar.GetById(Convert.ToInt32(model.SelectedAuthor));
                         Blog.Model.Domain.Entities.Blog bb = br.GetById(Convert.ToInt32(model.SelectedBlog));
                         Category cc = cr.GetById(Convert.ToInt32(model.SelectedCategory));
 
                         Page p = new Page(model.Titolo, model.Descrizione, model.Data, model.Body, au, bb, cc);
+
+                        if (!String.IsNullOrEmpty(model.Tags))
+                        {
+                            foreach(var t in model.Tags.Split(','))
+                            {
+                                if (!String.IsNullOrEmpty(t))
+                                {
+                                    Tag tg = tr.GetTagByName(t.TrimStart().TrimEnd());
+                                    if (tg != null)
+                                    {
+                                        p.AddTag(tg);
+                                    }
+                                    else
+                                    {
+                                        Tag tempTag = new Tag(t.TrimStart().TrimEnd());
+                                        p.AddTag(tempTag);
+                                    }
+                                }
+                            }
+                        }
 
                         if (!String.IsNullOrEmpty(fileName))
                             p.SetImagePath(fileName);
