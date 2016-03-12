@@ -16,7 +16,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
             Map(x => x.Title).Length(255).Not.Nullable();
             Map(x => x.Description).Length(255).Not.Nullable();
             Map(x => x.Date).Not.Nullable();
-            Map(x => x.BodyText).Not.Nullable();
+            Map(x => x.BodyText).Not.Nullable().CustomType("StringClob").CustomSqlType("nvarchar(max)");
             Map(x => x.IsDeleted).Not.Nullable();
             Map(x => x.ImageName).Length(255);
             References(x => x.Author).Column("AuthorId").Cascade.SaveUpdate();

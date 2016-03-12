@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Devevil.Blog.MVC.Client.Models
@@ -11,6 +12,20 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _titolo;
         private string _autore;
         private string _categoria;
+        private int _idCategoria;
+        private IList<string> _tags;
+
+        public IList<string> Tags
+        {
+            get { return _tags; }
+            set { _tags = value; }
+        }
+
+        public int IdCategoria
+        {
+            get { return _idCategoria; }
+            set { _idCategoria = value; }
+        }
 
         public string Categoria
         {
@@ -28,6 +43,15 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get { return _titolo; }
             set { _titolo = value; }
+        }
+
+        public string TitoloURLFirendly
+        {
+            get
+            {
+                Regex rgx = new Regex("[^a-zA-Z0-9]");
+                return rgx.Replace(_titolo, "-");
+            }
         }
 
         private string _testo;
