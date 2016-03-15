@@ -1,0 +1,405 @@
+[Header]\r\n2016-03-15 10:27:57,411 [7] INFO  NHibernate.Hql.Ast.ANTLR.Tree.FromElement handling property dereference [Devevil.Blog.Model.Domain.Entities.Page (pag) -> Date (Class)]
+2016-03-15 10:27:57,634 [7] INFO  NHibernate.Loader.Loader select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+2016-03-15 10:27:58,728 [7] INFO  NHibernate.Loader.Loader SELECT author0_.Id as Id0_0_, author0_.Name as Name0_0_, author0_.Surname as Surname0_0_, author0_.Email as Email0_0_, author0_.BirthDate as BirthDate0_0_, author0_.IsAdministrator as IsAdmini6_0_0_, author0_.Password as Password0_0_, author0_.IsDeleted as IsDeleted0_0_, author0_.BlogId as BlogId0_0_ FROM [Author] author0_ WHERE author0_.Id=@p0
+2016-03-15 10:27:58,779 [7] INFO  NHibernate.Loader.Loader SELECT category0_.Id as Id2_0_, category0_.Name as Name2_0_, category0_.Description as Descript3_2_0_, category0_.ImageName as ImageName2_0_ FROM [Category] category0_ WHERE category0_.Id=@p0
+2016-03-15 10:27:58,811 [7] INFO  NHibernate.Hql.Ast.ANTLR.Tree.FromElement handling property dereference [Devevil.Blog.Model.Domain.Entities.Category (cat) -> Pages (Class)]
+2016-03-15 10:27:58,831 [7] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:27:58,834 [7] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:27:58,835 [7] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:27:58,835 [7] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:27:58,836 [7] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:27:58,839 [7] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:27:58,840 [7] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:27:58,840 [7] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:27:58,841 [7] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:27:58,841 [7] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:27:58,841 [7] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:27:58,842 [7] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:27:58,858 [7] INFO  NHibernate.Loader.Loader select TOP (@p0) category0_.Id as Id2_, category0_.Name as Name2_, category0_.Description as Descript3_2_, category0_.ImageName as ImageName2_ from [Category] category0_ order by (select cast(count(*) as INT) from [Page] pages1_ where category0_.Id=pages1_.CategoryId) desc
+2016-03-15 10:28:10,575 [13] INFO  NHibernate.Loader.Loader select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+2016-03-15 10:28:10,578 [13] INFO  NHibernate.Loader.Loader SELECT author0_.Id as Id0_0_, author0_.Name as Name0_0_, author0_.Surname as Surname0_0_, author0_.Email as Email0_0_, author0_.BirthDate as BirthDate0_0_, author0_.IsAdministrator as IsAdmini6_0_0_, author0_.Password as Password0_0_, author0_.IsDeleted as IsDeleted0_0_, author0_.BlogId as BlogId0_0_ FROM [Author] author0_ WHERE author0_.Id=@p0
+2016-03-15 10:28:10,580 [13] INFO  NHibernate.Loader.Loader SELECT category0_.Id as Id2_0_, category0_.Name as Name2_0_, category0_.Description as Descript3_2_0_, category0_.ImageName as ImageName2_0_ FROM [Category] category0_ WHERE category0_.Id=@p0
+2016-03-15 10:28:10,588 [13] INFO  NHibernate.Loader.Loader SELECT tags0_.Page_id as Page1_1_, tags0_.Tag_id as Tag2_1_, tag1_.Id as Id6_0_, tag1_.Name as Name6_0_ FROM PagesTags tags0_ left outer join [Tag] tag1_ on tags0_.Tag_id=tag1_.Id WHERE tags0_.Page_id=@p0
+2016-03-15 10:28:10,632 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:10,633 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:10,634 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:10,635 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:10,635 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:10,636 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:10,637 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:10,637 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:10,638 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:10,639 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:10,639 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:10,640 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:10,640 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:10,641 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:10,642 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:10,642 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:10,643 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:10,643 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:10,644 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:10,644 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:10,646 [13] INFO  NHibernate.Loader.Loader select TOP (@p0) category0_.Id as Id2_, category0_.Name as Name2_, category0_.Description as Descript3_2_, category0_.ImageName as ImageName2_ from [Category] category0_ order by (select cast(count(*) as INT) from [Page] pages1_ where category0_.Id=pages1_.CategoryId) desc
+2016-03-15 10:28:21,570 [13] INFO  NHibernate.Loader.Loader select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+2016-03-15 10:28:21,573 [13] INFO  NHibernate.Loader.Loader SELECT author0_.Id as Id0_0_, author0_.Name as Name0_0_, author0_.Surname as Surname0_0_, author0_.Email as Email0_0_, author0_.BirthDate as BirthDate0_0_, author0_.IsAdministrator as IsAdmini6_0_0_, author0_.Password as Password0_0_, author0_.IsDeleted as IsDeleted0_0_, author0_.BlogId as BlogId0_0_ FROM [Author] author0_ WHERE author0_.Id=@p0
+2016-03-15 10:28:21,576 [13] INFO  NHibernate.Loader.Loader SELECT category0_.Id as Id2_0_, category0_.Name as Name2_0_, category0_.Description as Descript3_2_0_, category0_.ImageName as ImageName2_0_ FROM [Category] category0_ WHERE category0_.Id=@p0
+2016-03-15 10:28:21,577 [13] INFO  NHibernate.Loader.Loader SELECT tags0_.Page_id as Page1_1_, tags0_.Tag_id as Tag2_1_, tag1_.Id as Id6_0_, tag1_.Name as Name6_0_ FROM PagesTags tags0_ left outer join [Tag] tag1_ on tags0_.Tag_id=tag1_.Id WHERE tags0_.Page_id=@p0
+2016-03-15 10:28:21,579 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:21,579 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:21,580 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:21,580 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:21,580 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:21,580 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:21,580 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:21,581 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:21,581 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Tags
+2016-03-15 10:28:21,581 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:21,581 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Page.Comments
+2016-03-15 10:28:21,581 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Page
+2016-03-15 10:28:21,582 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:21,582 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:21,582 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:21,582 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:21,582 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:21,582 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:21,583 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:21,583 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:21,583 [13] INFO  NHibernate.Engine.Cascade processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:21,583 [13] INFO  NHibernate.Engine.Cascade cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:21,583 [13] INFO  NHibernate.Engine.Cascade done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: Devevil.Blog.Model.Domain.Entities.Tag.Pages
+2016-03-15 10:28:21,584 [13] INFO  NHibernate.Engine.Cascade done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: Devevil.Blog.Model.Domain.Entities.Tag
+2016-03-15 10:28:21,584 [13] INFO  NHibernate.Loader.Loader select TOP (@p0) category0_.Id as Id2_, category0_.Name as Name2_, category0_.Description as Descript3_2_, category0_.ImageName as ImageName2_ from [Category] category0_ order by (select cast(count(*) as INT) from [Page] pages1_ where category0_.Id=pages1_.CategoryId) desc
+2016-03-15 10:28:47,285 [9] INFO  NHibernate.Hql.Ast.ANTLR.Tree.FromElement handling property dereference [Devevil.Blog.Model.Domain.Entities.Author (aa) -> Email (Class)]
+2016-03-15 10:28:47,290 [9] INFO  NHibernate.Loader.Loader select TOP (1) author0_.Id as Id0_, author0_.Name as Name0_, author0_.Surname as Surname0_, author0_.Email as Email0_, author0_.BirthDate as BirthDate0_, author0_.IsAdministrator as IsAdmini6_0_, author0_.Password as Password0_, author0_.IsDeleted as IsDeleted0_, author0_.BlogId as BlogId0_ from [Author] author0_ where author0_.Email=@p0
+2016-03-15 10:28:57,793 [9] INFO  NHibernate.Loader.Loader SELECT this_.Id as Id4_0_, this_.Title as Title4_0_, this_.Description as Descript3_4_0_, this_.Date as Date4_0_, this_.BodyText as BodyText4_0_, this_.IsDeleted as IsDeleted4_0_, this_.ImageName as ImageName4_0_, this_.AuthorId as AuthorId4_0_, this_.BlogId as BlogId4_0_, this_.CategoryId as CategoryId4_0_ FROM [Page] this_
+2016-03-15 10:28:57,810 [9] INFO  NHibernate.Loader.Loader SELECT author0_.Id as Id0_0_, author0_.Name as Name0_0_, author0_.Surname as Surname0_0_, author0_.Email as Email0_0_, author0_.BirthDate as BirthDate0_0_, author0_.IsAdministrator as IsAdmini6_0_0_, author0_.Password as Password0_0_, author0_.IsDeleted as IsDeleted0_0_, author0_.BlogId as BlogId0_0_ FROM [Author] author0_ WHERE author0_.Id=@p0
+2016-03-15 10:28:57,813 [9] INFO  NHibernate.Loader.Loader SELECT category0_.Id as Id2_0_, category0_.Name as Name2_0_, category0_.Description as Descript3_2_0_, category0_.ImageName as ImageName2_0_ FROM [Category] category0_ WHERE category0_.Id=@p0
+2016-03-15 10:29:00,096 [9] INFO  NHibernate.Loader.Loader SELECT category0_.Id as Id2_0_, category0_.Name as Name2_0_, category0_.Description as Descript3_2_0_, category0_.ImageName as ImageName2_0_ FROM [Category] category0_ WHERE category0_.Id=@p0
+2016-03-15 10:29:04,220 [9] INFO  NHibernate.Loader.Loader SELECT this_.Id as Id2_0_, this_.Name as Name2_0_, this_.Description as Descript3_2_0_, this_.ImageName as ImageName2_0_ FROM [Category] this_
+2016-03-15 10:29:54,708 [5] INFO  NHibernate.Loader.Loader select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+2016-03-15 10:29:54,849 [5] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:505b24d9-ec38-4edd-b14d-d403a8f6a864
+Error Number:208,State:1,Class:16
+2016-03-15 10:29:54,878 [5] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:505b24d9-ec38-4edd-b14d-d403a8f6a864
+Error Number:208,State:1,Class:16
+2016-03-15 10:29:54,881 [5] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-03-15 10:29:54,896 [5] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:505b24d9-ec38-4edd-b14d-d403a8f6a864
+Error Number:208,State:1,Class:16
+2016-03-15 10:29:54,899 [5] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-03-15 10:29:54,901 [5] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:505b24d9-ec38-4edd-b14d-d403a8f6a864
+Error Number:208,State:1,Class:16
+2016-03-15 10:29:54,904 [5] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-03-15 10:29:54,936 [5] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController could not execute query
+[ select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc ]
+  Name:p1 - Value:10
+[SQL: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc]
+[Footer]\r\n[Header]\r\n2016-03-15 10:32:33,971 [9] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:32:34,003 [9] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:32:34,004 [9] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-03-15 10:32:34,020 [9] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:32:34,021 [9] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-03-15 10:32:34,023 [9] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:32:34,023 [9] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-03-15 10:32:34,058 [9] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController could not execute query
+[ select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc ]
+  Name:p1 - Value:10
+[SQL: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc]
+2016-03-15 10:33:27,106 [5] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: SELECT this_.Id as Id1_0_, this_.Name as Name1_0_, this_.Description as Descript3_1_0_, this_.IsDeleted as IsDeleted1_0_ FROM [Blog] this_
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:33:27,118 [5] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:33:27,119 [5] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Blog'.
+2016-03-15 10:33:27,130 [5] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:33:27,131 [5] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Blog'.
+2016-03-15 10:33:27,131 [5] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:beff057c-de09-406f-8e12-6cc545a8e535
+Error Number:208,State:1,Class:16
+2016-03-15 10:33:27,132 [5] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Blog'.
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-15 10:50:45,325 [29] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.InvalidOperationException: Rilevato riferimento circolare durante la serializzazione di un oggetto di tipo 'NHibernate.Collection.Generic.PersistentGenericBag`1[[Devevil.Blog.Model.Domain.Entities.Tag, Devevil.Blog.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 78
+2016-03-15 10:51:02,264 [25] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.InvalidOperationException: Rilevato riferimento circolare durante la serializzazione di un oggetto di tipo 'NHibernate.Collection.Generic.PersistentGenericBag`1[[Devevil.Blog.Model.Domain.Entities.Tag, Devevil.Blog.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeCustomObject(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeEnumerable(IEnumerable enumerable, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValueInternal(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.SerializeValue(Object o, StringBuilder sb, Int32 depth, Hashtable objectsInUse, SerializationFormat serializationFormat, MemberInfo currentMember)
+   in System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, StringBuilder output, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj, SerializationFormat serializationFormat)
+   in System.Web.Script.Serialization.JavaScriptSerializer.Serialize(Object obj)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 78
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-15 11:10:05,842 [8] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+2016-03-15 11:10:48,836 [8] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-15 11:27:43,914 [5] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+[Footer]\r\n[Header]\r\n2016-03-15 11:28:07,718 [37] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+2016-03-15 11:28:31,486 [5] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+[Footer]\r\n[Header]\r\n2016-03-15 11:28:49,317 [9] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+2016-03-15 11:28:59,062 [9] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.FormatException: Formato della stringa di input non corretto.
+   in System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   in System.String.Format(String format, Object arg0)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n

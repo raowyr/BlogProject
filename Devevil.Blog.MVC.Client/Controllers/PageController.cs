@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Devevil.Blog.Model.Domain.Entities;
 using Devevil.Blog.MVC.Client.Models;
 using Devevil.Blog.Nhibernate.DAL.Base;
@@ -73,6 +74,18 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pTemp.IdCategoria = p.Category.Id;
                         pTemp.Tags = p.Tags!=null && p.Tags.Count>0 ? p.Tags.Select(x => x.Name).ToList() : null;
 
+                        if (pTemp.Tags != null && pTemp.Tags.Count > 0)
+                        {
+                            //pTemp.TagCloud += "[";
+                            foreach (var t in pTemp.Tags)
+                            {
+                                pTemp.TagCloud += String.Format("{{text: \"{0}\", weight: 13}},", t);
+                            }
+
+                            pTemp.TagCloud = pTemp.TagCloud.Remove(pTemp.TagCloud.Length - 1);
+                            //pTemp.TagCloud += "]";
+                        }
+
                         m.DetailedPost = pTemp;
                     }
                    
@@ -107,7 +120,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             catch (Exception ex)
             {
-                return Error(ex.Message);
+                return Error(ex);
             }
         }
 

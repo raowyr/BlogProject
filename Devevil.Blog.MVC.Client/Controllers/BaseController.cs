@@ -9,21 +9,41 @@ namespace Devevil.Blog.MVC.Client.Controllers
 {
     public class BaseController : Controller
     {
-        public ViewResult Error(string prmError)
+        public BaseController()
+        {
+            Logger.Log4Net.Logger<BaseController>.Configure();
+        }
+
+        public ViewResult Error(Exception prmError)
         {
             ErrorViewModel evm = new ErrorViewModel();
             if(Request!=null && Request.Url!=null)
                 evm.RefferalUrl = Request.Url.ToString();
-            evm.Message = prmError;
+            evm.Message = prmError.Message;
+
+            Logger.Log4Net.Logger<BaseController>.Error(prmError);
+
             return View("_Error", evm);
         }
 
-        public ViewResult Error()
+        public ViewResult Error(string prmError)
         {
             ErrorViewModel evm = new ErrorViewModel();
             if (Request != null && Request.Url != null)
-                evm.RefferalUrl = Request.UrlReferrer.ToString();
+                evm.RefferalUrl = Request.Url.ToString();
+            evm.Message = prmError;
+
+            Logger.Log4Net.Logger<BaseController>.Error(prmError);
+
             return View("_Error", evm);
         }
+
+        //public ViewResult Error()
+        //{
+        //    ErrorViewModel evm = new ErrorViewModel();
+        //    if (Request != null && Request.Url != null)
+        //        evm.RefferalUrl = Request.UrlReferrer.ToString();
+        //    return View("_Error", evm);
+        //}
     }
 }

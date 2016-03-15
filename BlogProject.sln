@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devevil.Blog.MVC.Client", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devevil.Blog.MVC.Support", "Devevil.Blog.MVC.Support\Devevil.Blog.MVC.Support.csproj", "{EE0628C2-3381-4CBB-B8CD-202823CBEF15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devevil.Blog.Logger.Log4Net", "Devevil.Blog.Logger.Log4Net\Devevil.Blog.Logger.Log4Net.csproj", "{C54346E4-037D-4DC1-9F8E-CF3CEAB97CC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{EE0628C2-3381-4CBB-B8CD-202823CBEF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE0628C2-3381-4CBB-B8CD-202823CBEF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE0628C2-3381-4CBB-B8CD-202823CBEF15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54346E4-037D-4DC1-9F8E-CF3CEAB97CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54346E4-037D-4DC1-9F8E-CF3CEAB97CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54346E4-037D-4DC1-9F8E-CF3CEAB97CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54346E4-037D-4DC1-9F8E-CF3CEAB97CC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

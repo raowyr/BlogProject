@@ -594,6 +594,8 @@
     <Content Include="images\pic10.jpg" />
     <Content Include="images\pic11.jpg" />
     <Content Include="images\pic12.jpg" />
+    <Content Include="Scripts\jqcloud\jqcloud.min.css" />
+    <Content Include="Scripts\jqcloud\jqcloud.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.custom\external\jquery\jquery.js" />
@@ -667,6 +669,10 @@
     <ProjectReference Include="..\Devevil.Blog.Infrastructure.Core\Devevil.Blog.Infrastructure.Core.csproj">
       <Project>{47a7d8fb-0da5-4c9f-8506-906c92060a22}</Project>
       <Name>Devevil.Blog.Infrastructure.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Devevil.Blog.Logger.Log4Net\Devevil.Blog.Logger.Log4Net.csproj">
+      <Project>{c54346e4-037d-4dc1-9f8e-cf3ceab97cc1}</Project>
+      <Name>Devevil.Blog.Logger.Log4Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\Devevil.Blog.Model\Devevil.Blog.Model.csproj">
       <Project>{fb550cab-43da-4d4e-82e4-0256a4fa4831}</Project>

@@ -14,6 +14,13 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _categoria;
         private int _idCategoria;
         private IList<string> _tags;
+        private string _tagCloud;
+
+        public string TagCloud
+        {
+            get { return _tagCloud; }
+            set { _tagCloud = value; }
+        }
 
         public IList<string> Tags
         {
