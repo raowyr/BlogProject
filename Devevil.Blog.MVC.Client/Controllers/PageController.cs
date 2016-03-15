@@ -8,6 +8,7 @@ using Devevil.Blog.Model.Domain.Entities;
 using Devevil.Blog.MVC.Client.Models;
 using Devevil.Blog.Nhibernate.DAL.Base;
 using Devevil.Blog.Nhibernate.DAL.Repositories;
+using Sparc.TagCloud;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
@@ -74,17 +75,10 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pTemp.IdCategoria = p.Category.Id;
                         pTemp.Tags = p.Tags!=null && p.Tags.Count>0 ? p.Tags.Select(x => x.Name).ToList() : null;
 
-                        if (pTemp.Tags != null && pTemp.Tags.Count > 0)
-                        {
-                            //pTemp.TagCloud += "[";
-                            foreach (var t in pTemp.Tags)
-                            {
-                                pTemp.TagCloud += String.Format("{{text: \"{0}\", weight: 13}},", t);
-                            }
 
-                            pTemp.TagCloud = pTemp.TagCloud.Remove(pTemp.TagCloud.Length - 1);
-                            //pTemp.TagCloud += "]";
-                        }
+                        var tags = new TagCloudAnalyzer()
+                                 .ComputeTagCloud(pTemp.Tags);
+                       pTemp.TagCloud = tags;
 
                         m.DetailedPost = pTemp;
                     }

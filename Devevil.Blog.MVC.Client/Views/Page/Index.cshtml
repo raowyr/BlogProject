@@ -6,6 +6,22 @@
 
 @section content{
 <div id="main">
+    <script type="text/javascript">
+        /*
+          This is not necessary, but gives the tag-cloud a nice fade-in effect. 
+        */
+        $(document).ready(function onPageLoad() {
+            var animatedProperties = {
+                paddingLeft: '50px',
+                paddingTop: '75px',
+                paddingBottom: '125px',
+                paddingRight: '150px',
+                opacity: 1
+            };
+
+            $('.tag-cloud').animate(animatedProperties, 500);
+        });
+    </script>
      @{
         if (Model.DetailedPost != null)
         {
@@ -22,20 +38,18 @@
 	            </header>
 	            <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
 	            <p>@Html.Raw(Model.DetailedPost.Testo)</p>
-                <div id="tagCloud"></div>
+
+                <div class="tag-cloud">
+                  @foreach (var tag in Model.DetailedPost.TagCloud) {
+                    <span class="tag kind-@tag.Category">@tag.Text</span>
+                  }
+                </div>
+
 	            <footer>
 @*		            <ul class="actions">
 			            <li><a href="#" class="button big">Vai all'articolo</a></li>
 		            </ul>*@
 		            <ul class="stats">
-                        <li>Tags:</li>
-                        @if (Model.DetailedPost.Tags!=null && Model.DetailedPost.Tags.Count>0)
-                        {
-                            foreach(var t in Model.DetailedPost.Tags){
-                                <li>@t</li>
-                            }
-                        }
-                        <li></li>
 			            <li><a href="#">Categoria: @Model.DetailedPost.Categoria</a></li>
 			            <li><a href="#" class="icon fa-heart">28</a></li>
 			            <li><a href="#" class="icon fa-comment">128</a></li>
@@ -97,8 +111,4 @@
         }
 	</ul>
 </section>
-
-        <script>
-            $('#tagCloud').jQCloud(@Html.Raw(Model.DetailedPost.TagCloud));
-    </script>
 }

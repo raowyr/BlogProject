@@ -402,4 +402,34 @@ Error Number:208,State:1,Class:16
    in System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
    in System.String.Format(String format, Object arg0)
    in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 82
-[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-15 14:03:51,531 [117] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.TypeInitializationException: L'inizializzatore di tipo di 'Sparc.TagCloud.TagCloudSetting' ha generato un'eccezione. ---> System.IO.FileNotFoundException: Impossibile caricare il file o l'assembly 'LemmaSharpPrebuiltCompact, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' o una delle relative dipendenze. Impossibile trovare il file specificato.
+   in Sparc.TagCloud.TagCloudSetting..cctor()
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in Sparc.TagCloud.TagCloudSetting..ctor()
+   in Sparc.TagCloud.TagCloudAnalyzer..ctor(TagCloudSetting setting)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-15 14:04:11,030 [114] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.TypeInitializationException: L'inizializzatore di tipo di 'Sparc.TagCloud.TagCloudSetting' ha generato un'eccezione. ---> System.IO.FileNotFoundException: Impossibile caricare il file o l'assembly 'LemmaSharpPrebuiltCompact, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' o una delle relative dipendenze. Impossibile trovare il file specificato.
+   in Sparc.TagCloud.TagCloudSetting..cctor()
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in Sparc.TagCloud.TagCloudSetting..ctor()
+   in Sparc.TagCloud.TagCloudAnalyzer..ctor(TagCloudSetting setting)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-15 14:04:12,616 [118] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.TypeInitializationException: L'inizializzatore di tipo di 'Sparc.TagCloud.TagCloudSetting' ha generato un'eccezione. ---> System.IO.FileNotFoundException: Impossibile caricare il file o l'assembly 'LemmaSharpPrebuiltCompact, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' o una delle relative dipendenze. Impossibile trovare il file specificato.
+   in Sparc.TagCloud.TagCloudSetting..cctor()
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in Sparc.TagCloud.TagCloudSetting..ctor()
+   in Sparc.TagCloud.TagCloudAnalyzer..ctor(TagCloudSetting setting)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-15 14:05:34,142 [121] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.TypeInitializationException: L'inizializzatore di tipo di 'Sparc.TagCloud.TagCloudSetting' ha generato un'eccezione. ---> System.IO.FileNotFoundException: Impossibile caricare il file o l'assembly 'LemmaSharpPrebuiltCompact, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' o una delle relative dipendenze. Impossibile trovare il file specificato.
+   in Sparc.TagCloud.TagCloudSetting..cctor()
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in Sparc.TagCloud.TagCloudSetting..ctor()
+   in Sparc.TagCloud.TagCloudAnalyzer..ctor(TagCloudSetting setting)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-15 14:06:02,533 [121] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.TypeInitializationException: L'inizializzatore di tipo di 'Sparc.TagCloud.TagCloudSetting' ha generato un'eccezione. ---> System.IO.FileNotFoundException: Impossibile caricare il file o l'assembly 'LemmaSharpPrebuiltCompact, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' o una delle relative dipendenze. Impossibile trovare il file specificato.
+   in Sparc.TagCloud.TagCloudSetting..cctor()
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in Sparc.TagCloud.TagCloudSetting..ctor()
+   in Sparc.TagCloud.TagCloudAnalyzer..ctor(TagCloudSetting setting)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n

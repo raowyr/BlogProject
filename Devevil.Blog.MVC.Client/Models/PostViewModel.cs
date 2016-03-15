@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using Sparc.TagCloud;
 
 namespace Devevil.Blog.MVC.Client.Models
 {
@@ -14,9 +15,9 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _categoria;
         private int _idCategoria;
         private IList<string> _tags;
-        private string _tagCloud;
+        private IEnumerable<TagCloudTag> _tagCloud;
 
-        public string TagCloud
+        public IEnumerable<TagCloudTag> TagCloud
         {
             get { return _tagCloud; }
             set { _tagCloud = value; }
