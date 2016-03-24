@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\ListCategoryViewModel.cs" />
     <Compile Include="Models\DetailPageViewModel.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\PageViewModel.cs" />
