@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using Devevil.Blog.MVC.Support;
 
@@ -67,6 +68,15 @@ namespace Devevil.Blog.MVC.Client.Models
             set
             {
                 _id = value;
+            }
+        }
+
+        public string NomeCategoriaURLFirendly
+        {
+            get
+            {
+                Regex rgx = new Regex("[^a-zA-Z0-9]");
+                return rgx.Replace(_categoryName, "-");
             }
         }
     }

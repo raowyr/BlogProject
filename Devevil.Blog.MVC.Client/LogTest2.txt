@@ -432,4 +432,11 @@ Error Number:208,State:1,Class:16
    in Sparc.TagCloud.TagCloudSetting..ctor()
    in Sparc.TagCloud.TagCloudAnalyzer..ctor(TagCloudSetting setting)
    in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
-[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-25 10:08:44,896 [15] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Devevil.Blog.MVC.Client.Controllers.PageController.List(String category, Int32 idCategory, Int32 page) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 210
+2016-03-25 10:08:56,807 [23] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Devevil.Blog.MVC.Client.Controllers.PageController.List(String category, Int32 idCategory, Int32 page) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 210
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-25 11:33:35,574 [16] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79

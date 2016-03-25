@@ -68,6 +68,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             cvm.Descrizione = c.Description;
                             cvm.Nome = c.Name;
                             cvm.FileName = c.ImageName;
+                            cvm.Id = c.Id;
 
                             m.Categories.Add(cvm);
                         }

@@ -64,7 +64,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                    
                     //Carica le ultime 5 categoria con maggiori post
                     CategoryRepository cr = new CategoryRepository(uow.Current);
-                    IList<Category> tempCats = cr.GetTopCategoryByPostCount(5);
+                    IList<Category> tempCats = cr.GetTopCategoryByPostCount(3);
                     if (tempCats != null && tempCats.Count > 0)
                     {
                         foreach (var c in tempCats)

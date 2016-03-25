@@ -1,4 +1,4 @@
-﻿@model Devevil.Blog.MVC.Client.Models.ListCategoryViewModel
+﻿@model Devevil.Blog.MVC.Client.Models.ListPageViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,43 +6,60 @@
 
 @section content{
 <div id="main">
+    
      @{
-        if (Model.Categories != null && Model.Categories.Count>0)
+        if (Model!=null && Model.Posts != null && Model.Posts.Count>0)
         {
-            foreach (var item in Model.Categories)
+            foreach(var p in Model.Posts)
             {
                 <!-- Post -->
                 <article class="post">
 	                <header>
 		                <div class="title">
-			                <h2><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1">@item.Nome</a></h2>
+			                <h2><a href="#">@p.Titolo</a></h2>
 		                </div>
-@*		                <div class="meta">
-			                <time class="published" datetime="@Model.DetailedPost.Data.ToShortDateString()">@Model.DetailedPost.Data.ToShortDateString()</time>
-			                <a href="#" class="author"><span class="name">@Model.DetailedPost.Autore</span></a>
-		                </div>*@
+		                <div class="meta">
+			                <time class="published" datetime="@p.Data.ToShortDateString()">@p.Data.ToShortDateString()</time>
+			                <a href="#" class="author"><span class="name">@p.Autore</span></a>
+		                </div>
 	                </header>
 	                <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
-	                <p>@item.Descrizione</p>
 
 	                <footer>
     		            <ul class="actions">
-			                <li><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="button big">Vai alla categoria</a></li>
+			                <li><a href="#" class="button big">Vai all'articolo</a></li>
+		                </ul>
+		                <ul class="stats">
+			                <li><a href="#">Categoria: @p.Categoria</a></li>
 		                </ul>
 	                </footer>
                 </article>
             }
         }
     }
-@*    <ul class="actions pagination">
-		<li><a href="" class="disabled button big previous">Pagina Precedente</a></li>
-		<li><a href="#" class="button big next">Pagina Successiva</a></li>
-	</ul>*@
+    <ul class="actions pagination">
+        @if(Model!=null && Model.Page==1)
+        {
+		    <li><a href="#" class="disabled button big previous">Pagina Precedente</a></li>
+        }
+        else
+        {
+            <li><a href="/List/@Model.CategoryName/@Model.IdCategory/@((Model.Page - 1).ToString())" class="button big previous">Pagina Precedente</a></li>
+        }
+        @if(Model!=null && Model.Page < (double)Model.TotalPages/10)
+        {
+		    <li><a href="/List/@Model.CategoryName/@Model.IdCategory/@((Model.Page + 1).ToString())" class="button big next">Pagina Successiva</a></li>
+        }
+        else
+        {
+            <li><a href="#" class="disabled button big next">Pagina Successiva</a></li>
+        }
+	</ul>
 </div>
 
 }
 
-@*@section category{
+@section category{
 <section>
 	<div class="mini-posts">
         @{
@@ -63,7 +80,7 @@
         }
 	</div>
 </section>
-}*@
+}
 
 @section postpreview{
 <section>

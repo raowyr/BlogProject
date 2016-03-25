@@ -20,6 +20,28 @@ namespace Devevil.Blog.Nhibernate.DAL.Repositories
                         orderby pag.Date descending
                         select pag)
                         .Take(prmNPost);
+                    
+            return linq.ToList();
+        }
+
+        public int GetNumberOfPagesByCategory(int prmIdCategory)
+        {
+            var linq = (from pag in Session.Query<Page>()
+                        where pag.Category.Id == prmIdCategory
+                        select pag).Count();
+
+            return linq;
+        }
+
+        public IList<Page> GetPostByCategoryOrderedAndPaginated(int prmIdCategory, int prmStartRow, int prmPageSize)
+        {
+            var linq = (from pag in Session.Query<Page>()
+                        where pag.Category.Id == prmIdCategory
+                        orderby pag.Date descending
+                        select pag)
+                        .Skip((prmStartRow - 1) * prmPageSize)
+                        .Take(prmPageSize);
+
             return linq.ToList();
         }
     }
