@@ -7,10 +7,21 @@
 
 @section content{
 <div id="main">
-    <script>
+    <script type="text/javascript">
         $(function () {
-            $('#Body').ckeditor();
+            //$('#Body').ckeditor();
+            CKEDITOR.replace('Body', {
+                filebrowserImageBrowseUrl: '/Manage/UploadPartial',
+                filebrowserImageUploadUrl: '/Manage/UploadNow'
+            });
         });
+
+        function updateValue(id, value) {
+            // this gets called from the popup window and updates the field with a new value 
+            // this gets called from the popup window and updates the field with a new value 
+            var dialog = CKEDITOR.dialog.getCurrent();
+            dialog.setValueOf('info', 'txtUrl', value);
+        }
     </script>
 
     <script type="text/javascript">

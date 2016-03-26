@@ -39,11 +39,14 @@
 	            <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
 	            <p>@Html.Raw(Model.DetailedPost.Testo)</p>
 
-                <div class="tag-cloud">
-                  @foreach (var tag in Model.DetailedPost.TagCloud) {
-                    <span class="tag kind-@tag.Category">@tag.Text</span>
-                  }
-                </div>
+                @if(Model!=null && Model.DetailedPost.TagCloud!=null && Model.DetailedPost.TagCloud.Count()>0)
+                {
+                    <div class="tag-cloud">
+                      @foreach (var tag in Model.DetailedPost.TagCloud) {
+                        <span class="tag kind-@tag.Category">@tag.Text</span>
+                      }
+                    </div>
+                }
 
 	            <footer>
 @*		            <ul class="actions">

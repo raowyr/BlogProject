@@ -1042,5 +1042,27 @@ namespace Devevil.Blog.MVC.Client.Controllers
         }
 
         #endregion
+
+        public ActionResult UploadPartial()
+        {
+            var appData = Server.MapPath("~/Uploads");
+            var images = Directory.GetFiles(appData).Select(x => new ImagesViewModel
+            {
+                Url = Url.Content("/Uploads/" + Path.GetFileName(x))
+            });
+            return View(images);
+        }
+
+        public void UploadNow(HttpPostedFileWrapper upload)
+        {
+            if (upload != null)
+            {
+                string ImageName = upload.FileName;
+                string path = System.IO.Path.Combine(Server.MapPath("~/Uploads"), ImageName);
+                upload.SaveAs(path);
+            }
+
+        }
+
     }
 }

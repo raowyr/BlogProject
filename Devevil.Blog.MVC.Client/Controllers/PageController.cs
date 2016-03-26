@@ -75,10 +75,12 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pTemp.IdCategoria = p.Category.Id;
                         pTemp.Tags = p.Tags!=null && p.Tags.Count>0 ? p.Tags.Select(x => x.Name).ToList() : null;
 
-
-                        var tags = new TagCloudAnalyzer()
-                                 .ComputeTagCloud(pTemp.Tags);
-                       pTemp.TagCloud = tags;
+                        if (pTemp.Tags != null && pTemp.Tags.Count > 0)
+                        {
+                            var tags = new TagCloudAnalyzer()
+                                     .ComputeTagCloud(pTemp.Tags);
+                            pTemp.TagCloud = tags;
+                        }
 
                         m.DetailedPost = pTemp;
                     }

@@ -75,8 +75,7 @@ namespace Devevil.Blog.MVC.Client.Models
         {
             get
             {
-                Regex rgx = new Regex("[^a-zA-Z0-9]");
-                return rgx.Replace(_categoryName, "-");
+                return FriendlyURL(_categoryName);
             }
         }
     }

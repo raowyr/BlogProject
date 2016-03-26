@@ -440,3 +440,28 @@ Error Number:208,State:1,Class:16
    in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
    in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
    in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+[Header]\r\n[Footer]\r\n[Header]\r\n2016-03-26 09:29:12,145 [79] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+[Footer]\r\n[Header]\r\n2016-03-26 09:31:25,496 [87] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-26 09:31:27,921 [78] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-26 09:32:25,812 [78] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-26 09:33:39,882 [78] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+2016-03-26 09:33:59,802 [80] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NullReferenceException: Riferimento a un oggetto non impostato su un'istanza di oggetto.
+   in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
+   in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
+[Footer]\r\n

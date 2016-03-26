@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\ImagesViewModel.cs" />
     <Compile Include="Models\ListPageViewModel.cs" />
     <Compile Include="Models\ListCategoryViewModel.cs" />
     <Compile Include="Models\DetailPageViewModel.cs" />
@@ -673,6 +674,7 @@
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Page\List.cshtml" />
+    <Content Include="Views\Manage\UploadPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
