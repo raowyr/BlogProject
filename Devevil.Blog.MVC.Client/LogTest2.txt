@@ -464,4 +464,4 @@ Error Number:208,State:1,Class:16
    in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
    in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
    in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
-[Footer]\r\n
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n

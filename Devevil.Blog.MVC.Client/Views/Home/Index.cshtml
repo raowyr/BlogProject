@@ -19,17 +19,19 @@
 		                </div>
 		                <div class="meta">
 			                <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
-			                <a href="#" class="author"><span class="name">@item.Autore</span></a>
+			                <span class="name">@item.Autore</span>
 		                </div>
 	                </header>
-	                <a href="/Archive/@item.TitoloURLFirendly/@item.Id" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
-	                @*<p>@item.Testo</p>*@
+                    @if(!String.IsNullOrEmpty(item.ImageName))
+                    {
+	                    <a href="/Archive/@item.TitoloURLFirendly/@item.Id" class="image featured"><img src="/Uploads/@item.ImageName" alt="" /></a>
+	                }
 	                <footer>
 		                <ul class="actions">
 			                <li><a href="/Archive/@item.TitoloURLFirendly/@item.Id" class="button big">Vai all'articolo</a></li>
 		                </ul>
 		                <ul class="stats">
-			                <li><a href="#">@item.Categoria</a></li>
+			                <li><a href="/List/@item.NomeCategoriaURLFirendly/@item.IdCategoria/1">@item.Categoria</a></li>
 			                <li><a href="#" class="icon fa-heart">28</a></li>
 			                <li><a href="#" class="icon fa-comment">128</a></li>
 		                </ul>
@@ -56,10 +58,13 @@
 		            <!-- Mini Post -->
 			        <article class="mini-post">
 				        <header>
-					        <h3><a href="#">@item.Nome</a></h3>
+					        <h3><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1">@item.Nome</a></h3>
                             <p>@item.Descrizione</p>
 				        </header>
-				        <a href="#" class="image"><img src="/images/pic04.jpg" alt="" /></a>
+                        @if(!String.IsNullOrEmpty(item.FileName))
+                        {
+				            <a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="image"><img src="/Uploads/@item.FileName" alt="@item.Nome" /></a>
+                        }
 			        </article>
                 }   
             }
@@ -82,7 +87,7 @@
 					            <h3><a href="/Archive/@item.TitoloURLFirendly/@item.Id">@item.Titolo</a></h3>
 					            <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
 				            </header>
-				            <a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>
+@*				            <a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>*@
 			            </article>
 		            </li>
                 }

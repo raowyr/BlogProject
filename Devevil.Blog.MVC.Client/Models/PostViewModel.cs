@@ -14,6 +14,13 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _autore;
         private string _categoria;
         private int _idCategoria;
+        private string _imageName;
+
+        public string ImageName
+        {
+            get { return _imageName; }
+            set { _imageName = value; }
+        }
         private IList<string> _tags;
         private IEnumerable<TagCloudTag> _tagCloud;
 
@@ -86,6 +93,14 @@ namespace Devevil.Blog.MVC.Client.Models
             set
             {
                 _id = value;
+            }
+        }
+
+        public string NomeCategoriaURLFirendly
+        {
+            get
+            {
+                return FriendlyURL(_categoria);
             }
         }
     }

@@ -22,7 +22,10 @@
 			                <a href="#" class="author"><span class="name">@Model.DetailedPost.Autore</span></a>
 		                </div>*@
 	                </header>
-	                <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
+                    @if(!String.IsNullOrEmpty(item.FileName))
+                    {
+	                    <a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="image featured"><img src="/Uploads/@item.FileName" alt="" /></a>
+                    }
 	                <p>@item.Descrizione</p>
 
 	                <footer>
@@ -79,7 +82,7 @@
 					            <h3><a href="/Archive/@item.TitoloURLFirendly/@item.Id">@item.Titolo</a></h3>
 					            <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
 				            </header>
-				            <a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>
+				            @*<a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>*@
 			            </article>
 		            </li>
                 }

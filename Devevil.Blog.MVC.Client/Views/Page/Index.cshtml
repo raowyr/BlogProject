@@ -29,14 +29,17 @@
             <article class="post">
 	            <header>
 		            <div class="title">
-			            <h2><a href="#">@Model.DetailedPost.Titolo</a></h2>
+			            <h2>@Model.DetailedPost.Titolo</h2>
 		            </div>
 		            <div class="meta">
 			            <time class="published" datetime="@Model.DetailedPost.Data.ToShortDateString()">@Model.DetailedPost.Data.ToShortDateString()</time>
-			            <a href="#" class="author"><span class="name">@Model.DetailedPost.Autore</span></a>
+			            <span class="name">@Model.DetailedPost.Autore</span>
 		            </div>
 	            </header>
-	            <a href="#" class="image featured"><img src="/images/pic01.jpg" alt="" /></a>
+                @if(!String.IsNullOrEmpty(Model.DetailedPost.ImageName))
+                {
+	                <img src="/Uploads/@Model.DetailedPost.ImageName" alt="@Model.DetailedPost.Titolo" />
+                }
 	            <p>@Html.Raw(Model.DetailedPost.Testo)</p>
 
                 @if(Model!=null && Model.DetailedPost.TagCloud!=null && Model.DetailedPost.TagCloud.Count()>0)
@@ -53,7 +56,7 @@
 			            <li><a href="#" class="button big">Vai all'articolo</a></li>
 		            </ul>*@
 		            <ul class="stats">
-			            <li><a href="#">Categoria: @Model.DetailedPost.Categoria</a></li>
+			            <li><a href="/List/@Model.DetailedPost.NomeCategoriaURLFirendly/@Model.DetailedPost.IdCategoria/1">Categoria: @Model.DetailedPost.Categoria</a></li>
 			            <li><a href="#" class="icon fa-heart">28</a></li>
 			            <li><a href="#" class="icon fa-comment">128</a></li>
 		            </ul>
@@ -80,10 +83,13 @@
 		            <!-- Mini Post -->
 			        <article class="mini-post">
 				        <header>
-					        <h3><a href="#">@item.Nome</a></h3>
+					        <h3><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1">@item.Nome</a></h3>
                             <p>@item.Descrizione</p>
 				        </header>
-				        <a href="#" class="image"><img src="/images/pic04.jpg" alt="" /></a>
+                        @if(!String.IsNullOrEmpty(item.FileName))
+                        {
+				            <a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="image"><img src="/Uploads/@item.FileName" alt="@item.Nome" /></a>
+                        }
 			        </article>
                 }   
             }
@@ -106,7 +112,7 @@
 					            <h3><a href="/Archive/@item.TitoloURLFirendly/@item.Id">@item.Titolo</a></h3>
 					            <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
 				            </header>
-				            <a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>
+				            @*<a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>*@
 			            </article>
 		            </li>
                 }

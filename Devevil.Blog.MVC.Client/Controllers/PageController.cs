@@ -41,6 +41,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             pTemp.Titolo = p.Title;
                             pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
                             pTemp.Categoria = p.Category.Name;
+                            pTemp.IdCategoria = p.Category.Id;
+                            pTemp.ImageName = p.ImageName;
 
                             m.PostPreview.Add(pTemp);
 
@@ -73,6 +75,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                         pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
                         pTemp.Categoria = p.Category.Name;
                         pTemp.IdCategoria = p.Category.Id;
+                        pTemp.ImageName = p.ImageName;
                         pTemp.Tags = p.Tags!=null && p.Tags.Count>0 ? p.Tags.Select(x => x.Name).ToList() : null;
 
                         if (pTemp.Tags != null && pTemp.Tags.Count > 0)
@@ -97,6 +100,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             cvTemp.Id = c.Id;
                             cvTemp.Nome = c.Name;
                             cvTemp.Descrizione = c.Description;
+                            cvTemp.FileName = c.ImageName;
 
                             m.CategoriesPreview.Add(cvTemp);
                         }
@@ -150,6 +154,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                                 pTemp.Titolo = p.Title;
                                 pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
                                 pTemp.Categoria = p.Category.Name;
+                                pTemp.IdCategoria = p.Category.Id;
+                                pTemp.ImageName = p.ImageName;
 
                                 m.PostPreview.Add(pTemp);
 
@@ -181,6 +187,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                                 cvTemp.Id = c.Id;
                                 cvTemp.Nome = c.Name;
                                 cvTemp.Descrizione = c.Description;
+                                cvTemp.FileName = c.ImageName;
 
                                 m.CategoriesPreview.Add(cvTemp);
                             }
@@ -212,6 +219,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                                 pTemp.Titolo = p.Title;
                                 pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
                                 pTemp.Categoria = p.Category.Name;
+                                pTemp.IdCategoria = p.Category.Id;
+                                pTemp.ImageName = p.ImageName;
 
                                 m.Posts.Add(pTemp);
                             }
