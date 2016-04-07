@@ -498,4 +498,4 @@ Error Number:208,State:1,Class:16
    in NHibernate.Transaction.AdoTransaction.Commit()
    in Devevil.Blog.Nhibernate.DAL.Base.UnitOfWork.Commit() in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Base\UnitOfWork.cs:riga 48
    in Devevil.Blog.MVC.Client.Controllers.PageController.PostComment(DetailPageViewModel model, FormCollection collection) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 276
-[Footer]\r\n
+[Footer]\r\n[Header]\r\n[Footer]\r\n

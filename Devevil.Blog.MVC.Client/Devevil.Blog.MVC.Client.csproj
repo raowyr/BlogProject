@@ -677,6 +677,7 @@
     <Content Include="Views\Page\List.cshtml" />
     <Content Include="Views\Manage\UploadPartial.cshtml" />
     <Content Include="Views\Page\PostComment.cshtml" />
+    <Content Include="Views\Page\ListTopPages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

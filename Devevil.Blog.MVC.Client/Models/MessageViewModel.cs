@@ -10,7 +10,7 @@ namespace Devevil.Blog.MVC.Client.Models
     {
         private string _name;
 
-        [Required]
+        [Required(ErrorMessage="Il nome del mittente è obbligatorio!")]
         public string Name
         {
             get { return _name; }
@@ -18,7 +18,7 @@ namespace Devevil.Blog.MVC.Client.Models
         }
         private string _email;
 
-        [Required, EmailAddress]
+        [Required(ErrorMessage="La mail del mittente è obbligatoria!"), EmailAddress]
         public string Email
         {
             get { return _email; }
@@ -35,7 +35,7 @@ namespace Devevil.Blog.MVC.Client.Models
 
         private string _body;
 
-        [Required]
+        [Required(ErrorMessage="Il messaggio è obbligatorio!")]
         public string Body
         {
             get { return _body; }

@@ -14,6 +14,12 @@ namespace Devevil.Blog.MVC.Client
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+              name: "ListTopRoute",
+              url: "ListTop/{page}",
+              defaults: new { controller = "Page", action = "ListTopPages", page = UrlParameter.Optional }
+          );
+
+            routes.MapRoute(
               name: "ListRoute",
               url: "List/{category}/{idCategory}/{page}",
               defaults: new { controller = "Page", action = "List", category = UrlParameter.Optional, idCategory = UrlParameter.Optional, page = UrlParameter.Optional }
