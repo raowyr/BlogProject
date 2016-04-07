@@ -40,6 +40,8 @@ namespace Devevil.Blog.MVC.Client.Controllers
                             pTemp.Autore = String.Format("{0} {1}", p.Author.Name, p.Author.Surname);
                             pTemp.Categoria = p.Category.Name;
                             pTemp.IdCategoria = p.Category.Id;
+                            pTemp.Visualizzazioni = p.Views;
+                            pTemp.NumComments = p.Comments.Count;
 
                             if (k < 5)
                                 m.PostDetail.Add(pTemp);

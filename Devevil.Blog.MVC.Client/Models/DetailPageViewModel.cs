@@ -9,8 +9,8 @@ namespace Devevil.Blog.MVC.Client.Models
     {
         private IList<PostViewModel> _postPreview;
         private IList<CategoryViewModel> _categoriesPreview;
-        private PostViewModel _detailedPost;
 
+        private PostViewModel _detailedPost;
         public PostViewModel DetailedPost
         {
             get { return _detailedPost; }
@@ -18,7 +18,6 @@ namespace Devevil.Blog.MVC.Client.Models
         }
 
         private int _page;
-
         public int Page
         {
             get { return _page; }
@@ -48,6 +47,13 @@ namespace Devevil.Blog.MVC.Client.Models
             {
                 _categoriesPreview = value;
             }
+        }
+
+        private CommentViewModel _comment;
+        public CommentViewModel Comment
+        {
+            get { return _comment; }
+            set { _comment = value; }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Devevil.Blog.Model.Domain.Entities
         private IList<Comment> _comments;
         private bool _isDeleted;
         private string _imageName;
+        private int _views;
 
         public virtual string ImageName
         {
@@ -212,6 +213,16 @@ namespace Devevil.Blog.Model.Domain.Entities
         public virtual void DeletePage()
         {
             _isDeleted = true;
+        }
+
+        public virtual int Views
+        {
+            get { return _views; }
+        }
+
+        public virtual void AddView()
+        {
+            _views = _views + 1;
         }
 
         protected override bool IsValidState()

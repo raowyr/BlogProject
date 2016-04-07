@@ -15,6 +15,28 @@ namespace Devevil.Blog.MVC.Client.Models
         private string _categoria;
         private int _idCategoria;
         private string _imageName;
+        private int _visualizzazioni;
+        private int _numComments;
+
+        public int NumComments
+        {
+            get { return _numComments; }
+            set { _numComments = value; }
+        }
+
+        private IList<CommentViewModel> _comments;
+
+        public IList<CommentViewModel> Comments
+        {
+            get { return _comments; }
+            set { _comments = value; }
+        }
+
+        public int Visualizzazioni
+        {
+            get { return _visualizzazioni; }
+            set { _visualizzazioni = value; }
+        }
 
         public string ImageName
         {

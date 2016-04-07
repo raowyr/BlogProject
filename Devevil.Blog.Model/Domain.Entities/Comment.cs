@@ -23,10 +23,13 @@ namespace Devevil.Blog.Model.Domain.Entities
         {
             _userName = prmUsername;
 
-            if (StringValidator.CheckIsValidMail(prmUserMail))
-                _userMail = prmUserMail;
-            else
-                throw new UserBadMailException();
+            if (!String.IsNullOrEmpty(prmUserMail))
+            {
+                if (StringValidator.CheckIsValidMail(prmUserMail))
+                    _userMail = prmUserMail;
+                else
+                    throw new UserBadMailException();
+            }
 
             _textComment = prmText;
 
@@ -79,11 +82,11 @@ namespace Devevil.Blog.Model.Domain.Entities
                 toReturn = false;
                 AddWrongState("Username dell'utente obbligatorio");
             }
-            if (String.IsNullOrEmpty(_userMail))
-            {
-                toReturn = false;
-                AddWrongState("Email dell'utente obbligatoria");
-            }
+            //if (String.IsNullOrEmpty(_userMail))
+            //{
+            //    toReturn = false;
+            //    AddWrongState("Email dell'utente obbligatoria");
+            //}
             if (String.IsNullOrEmpty(_textComment))
             {
                 toReturn = false;

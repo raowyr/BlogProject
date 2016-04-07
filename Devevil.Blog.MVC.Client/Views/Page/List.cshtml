@@ -33,6 +33,8 @@
 		                </ul>
 		                <ul class="stats">
 			                <li><a href="/List/@Model.CategoryName/@Model.IdCategory/1">Categoria: @p.Categoria</a></li>
+                            <li><a href="/Archive/@p.TitoloURLFirendly/@p.Id" class="icon fa-heart">@p.Visualizzazioni.ToString()</a></li>
+                            <li><a href="/Archive/@p.TitoloURLFirendly/@p.Id" class="icon fa-comment">@p.NumComments.ToString()</a></li>
 		                </ul>
 	                </footer>
                 </article>

@@ -464,4 +464,38 @@ Error Number:208,State:1,Class:16
    in Sparc.TagCloud.TagCloudAnalyzer.ExtractAndCountWords(IEnumerable`1 phrases, Dictionary`2 dict)
    in Sparc.TagCloud.TagCloudAnalyzer.ComputeTagCloud(IEnumerable`1 phrases)
    in Devevil.Blog.MVC.Client.Controllers.PageController.Index(String page, Int32 id) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 79
-[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-04-07 10:35:53,664 [26] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController Devevil.Blog.Model.Domain.Exceptions.UserBadMailException: Generata eccezione di tipo 'Devevil.Blog.Model.Domain.Exceptions.UserBadMailException'.
+   in Devevil.Blog.Model.Domain.Entities.Comment..ctor(String prmUsername, String prmUserMail, String prmText, Page prmPage) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Model\Domain.Entities\Comment.cs:riga 29
+   in Devevil.Blog.MVC.Client.Controllers.PageController.NewComment(DetailPageViewModel model, FormCollection collection) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 275
+[Footer]\r\n[Header]\r\n2016-04-07 10:46:16,902 [40] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController Devevil.Blog.Model.Domain.Exceptions.UserBadMailException: Generata eccezione di tipo 'Devevil.Blog.Model.Domain.Exceptions.UserBadMailException'.
+   in Devevil.Blog.Model.Domain.Entities.Comment..ctor(String prmUsername, String prmUserMail, String prmText, Page prmPage) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Model\Domain.Entities\Comment.cs:riga 29
+   in Devevil.Blog.MVC.Client.Controllers.PageController.PostComment(DetailPageViewModel model, FormCollection collection) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 274
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-04-07 10:49:24,530 [40] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController NHibernate.PropertyValueException: not-null property references a null or transient value Devevil.Blog.Model.Domain.Entities.Comment.UserMail
+   in NHibernate.Engine.Nullability.CheckNullability(Object[] values, IEntityPersister persister, Boolean isUpdate)
+   in NHibernate.Event.Default.AbstractSaveEventListener.PerformSaveOrReplicate(Object entity, EntityKey key, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   in NHibernate.Event.Default.AbstractSaveEventListener.PerformSave(Object entity, Object id, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   in NHibernate.Event.Default.AbstractSaveEventListener.SaveWithGeneratedId(Object entity, String entityName, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   in NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.SaveWithGeneratedOrRequestedId(SaveOrUpdateEvent event)
+   in NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.EntityIsTransient(SaveOrUpdateEvent event)
+   in NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.PerformSaveOrUpdate(SaveOrUpdateEvent event)
+   in NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.OnSaveOrUpdate(SaveOrUpdateEvent event)
+   in NHibernate.Impl.SessionImpl.FireSaveOrUpdate(SaveOrUpdateEvent event)
+   in NHibernate.Impl.SessionImpl.SaveOrUpdate(String entityName, Object obj)
+   in NHibernate.Engine.CascadingAction.SaveUpdateCascadingAction.Cascade(IEventSource session, Object child, String entityName, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeToOne(Object parent, Object child, IType type, CascadeStyle style, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeAssociation(Object parent, Object child, IType type, CascadeStyle style, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeProperty(Object parent, Object child, IType type, CascadeStyle style, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeCollectionElements(Object parent, Object child, CollectionType collectionType, CascadeStyle style, IType elemType, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeCollection(Object parent, Object child, CascadeStyle style, Object anything, CollectionType type)
+   in NHibernate.Engine.Cascade.CascadeAssociation(Object parent, Object child, IType type, CascadeStyle style, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeProperty(Object parent, Object child, IType type, CascadeStyle style, Object anything, Boolean isCascadeDeleteEnabled)
+   in NHibernate.Engine.Cascade.CascadeOn(IEntityPersister persister, Object parent, Object anything)
+   in NHibernate.Event.Default.AbstractFlushingEventListener.CascadeOnFlush(IEventSource session, IEntityPersister persister, Object key, Object anything)
+   in NHibernate.Event.Default.AbstractFlushingEventListener.PrepareEntityFlushes(IEventSource session)
+   in NHibernate.Event.Default.AbstractFlushingEventListener.FlushEverythingToExecutions(FlushEvent event)
+   in NHibernate.Event.Default.DefaultFlushEventListener.OnFlush(FlushEvent event)
+   in NHibernate.Impl.SessionImpl.Flush()
+   in NHibernate.Transaction.AdoTransaction.Commit()
+   in Devevil.Blog.Nhibernate.DAL.Base.UnitOfWork.Commit() in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Base\UnitOfWork.cs:riga 48
+   in Devevil.Blog.MVC.Client.Controllers.PageController.PostComment(DetailPageViewModel model, FormCollection collection) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 276
+[Footer]\r\n

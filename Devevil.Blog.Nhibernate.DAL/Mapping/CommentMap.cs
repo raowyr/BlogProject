@@ -14,7 +14,7 @@ namespace Devevil.Blog.Nhibernate.DAL.Mapping
         {
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.UserName).Length(255).Not.Nullable();
-            Map(x => x.UserMail).Length(255).Not.Nullable();
+            Map(x => x.UserMail).Length(255);
             Map(x => x.TextComment).Not.Nullable();
             References(x => x.Page).Not.Nullable();
         }
