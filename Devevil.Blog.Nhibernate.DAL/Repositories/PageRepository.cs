@@ -63,5 +63,30 @@ namespace Devevil.Blog.Nhibernate.DAL.Repositories
 
             return linq.ToList();
         }
+
+        public IList<Page> GetPostByQueryFind(string prmQuery)
+        {
+            IList<Page> toReturn = null;
+
+            if (!String.IsNullOrEmpty(prmQuery))
+            {
+                foreach (var q in prmQuery.Split(' '))
+                {
+                    if (toReturn == null)
+                        toReturn = new List<Page>();
+
+                    if (!String.IsNullOrEmpty(q))
+                    {
+                        toReturn = toReturn.Union(from pag in Session.Query<Page>()
+                                                  where pag.Title.Contains(q)
+                                                  orderby pag.Views descending
+                                                  select pag).ToList<Page>();
+                    }
+                }
+            }
+
+            return toReturn;
+        }
+
     }
 }

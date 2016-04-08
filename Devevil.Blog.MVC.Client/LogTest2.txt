@@ -498,4 +498,89 @@ Error Number:208,State:1,Class:16
    in NHibernate.Transaction.AdoTransaction.Commit()
    in Devevil.Blog.Nhibernate.DAL.Base.UnitOfWork.Commit() in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Base\UnitOfWork.cs:riga 48
    in Devevil.Blog.MVC.Client.Controllers.PageController.PostComment(DetailPageViewModel model, FormCollection collection) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 276
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-04-08 11:25:19,362 [30] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NotSupportedException: Specificato metodo non supportato.
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.GetClassName(IASTNode querySource)
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.Process(IASTNode tree)
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process()
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process(IASTNode ast, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan.CreateTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan..ctor(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters)
+   in NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow)
+   in NHibernate.Impl.AbstractSessionImpl.CreateQuery(IQueryExpression queryExpression)
+   in NHibernate.Linq.DefaultQueryProvider.PrepareQuery(Expression expression, IQuery& query, NhLinqExpression& nhQuery)
+   in NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression)
+   in NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression)
+   in Remotion.Linq.QueryableBase`1.GetEnumerator()
+   in System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   in System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetPostByQueryFind(String prmQuery) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 74
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Find(String query) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 585
+2016-04-08 11:25:53,596 [30] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NotSupportedException: Specificato metodo non supportato.
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.GetClassName(IASTNode querySource)
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.Process(IASTNode tree)
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process()
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process(IASTNode ast, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan.CreateTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan..ctor(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters)
+   in NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow)
+   in NHibernate.Impl.AbstractSessionImpl.CreateQuery(IQueryExpression queryExpression)
+   in NHibernate.Linq.DefaultQueryProvider.PrepareQuery(Expression expression, IQuery& query, NhLinqExpression& nhQuery)
+   in NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression)
+   in NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression)
+   in Remotion.Linq.QueryableBase`1.GetEnumerator()
+   in System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   in System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetPostByQueryFind(String prmQuery) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 74
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Find(String query) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 585
+2016-04-08 11:32:28,938 [30] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NotSupportedException: Specificato metodo non supportato.
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.GetClassName(IASTNode querySource)
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.Process(IASTNode tree)
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process()
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process(IASTNode ast, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan.CreateTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan..ctor(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters)
+   in NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow)
+   in NHibernate.Impl.AbstractSessionImpl.CreateQuery(IQueryExpression queryExpression)
+   in NHibernate.Linq.DefaultQueryProvider.PrepareQuery(Expression expression, IQuery& query, NhLinqExpression& nhQuery)
+   in NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression)
+   in NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression)
+   in Remotion.Linq.QueryableBase`1.GetEnumerator()
+   in System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   in System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetPostByQueryFind(String prmQuery) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 74
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Find(String query) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 585
+[Footer]\r\n[Header]\r\n2016-04-08 12:08:01,499 [41] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.NotSupportedException: Specificato metodo non supportato.
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.GetClassName(IASTNode querySource)
+   in NHibernate.Hql.Ast.ANTLR.PolymorphicQuerySourceDetector.Process(IASTNode tree)
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process()
+   in NHibernate.Hql.Ast.ANTLR.AstPolymorphicProcessor.Process(IASTNode ast, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IASTNode ast, String queryIdentifier, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory.CreateQueryTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 filters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan.CreateTranslators(IQueryExpression queryExpression, String collectionRole, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryExpressionPlan..ctor(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters, ISessionFactoryImplementor factory)
+   in NHibernate.Engine.Query.QueryPlanCache.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow, IDictionary`2 enabledFilters)
+   in NHibernate.Impl.AbstractSessionImpl.GetHQLQueryPlan(IQueryExpression queryExpression, Boolean shallow)
+   in NHibernate.Impl.AbstractSessionImpl.CreateQuery(IQueryExpression queryExpression)
+   in NHibernate.Linq.DefaultQueryProvider.PrepareQuery(Expression expression, IQuery& query, NhLinqExpression& nhQuery)
+   in NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression)
+   in NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression)
+   in Remotion.Linq.QueryableBase`1.GetEnumerator()
+   in System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   in System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetPostByQueryFind(String prmQuery) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 74
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Find(String query) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 585
+[Footer]\r\n[Header]\r\n2016-04-08 12:11:44,650 [9] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController System.ArgumentNullException: Il valore non può essere null.
+Nome parametro: first
+   in System.Linq.Enumerable.Union[TSource](IEnumerable`1 first, IEnumerable`1 second)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetPostByQueryFind(String prmQuery) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 76
+   in Devevil.Blog.MVC.Client.Controllers.PageController.Find(String query) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 585
 [Footer]\r\n[Header]\r\n[Footer]\r\n
