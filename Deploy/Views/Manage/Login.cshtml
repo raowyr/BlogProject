@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Devevil.Blog.MVC.Client.Models.UserLoginViewModel
+
+@section content{
+<div id="main">
+    @using (Html.BeginForm("Login", "Manage"))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>Administration Control Panel</h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+            </p>
+            <p>
+                 @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="SendButton" value="Login" class="button big">Login</button></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
+}

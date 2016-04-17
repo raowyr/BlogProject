@@ -583,4 +583,580 @@ Nome parametro: first
    in System.Linq.Enumerable.Union[TSource](IEnumerable`1 first, IEnumerable`1 second)
    in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetPostByQueryFind(String prmQuery) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 76
    in Devevil.Blog.MVC.Client.Controllers.PageController.Find(String query) in c:\Users\pgarzillo\Desktop\Progetti Visual Studio di Esempio\ISW\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 585
-[Footer]\r\n[Header]\r\n[Footer]\r\n
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-04-17 08:21:26,812 [10] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:26,885 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:26,888 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:26,893 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:26,894 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:26,896 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:26,897 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:27,052 [10] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController could not execute query
+[ select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc ]
+  Name:p1 - Value:10
+[SQL: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc]
+2016-04-17 08:21:44,450 [10] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:44,451 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:44,452 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:44,453 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:44,454 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:44,455 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:44,456 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:44,509 [10] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController NHibernate.Exceptions.GenericADOException: could not execute query
+[ select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc ]
+  Name:p1 - Value:5
+[SQL: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc] ---> System.Data.SqlClient.SqlException: Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Loader.Loader.List(ISessionImplementor session, QueryParameters queryParameters, ISet`1 querySpaces, IType[] resultTypes)
+   in NHibernate.Loader.Hql.QueryLoader.List(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.List(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Engine.Query.HQLQueryPlan.PerformList(QueryParameters queryParameters, ISessionImplementor session, IList results)
+   in NHibernate.Impl.SessionImpl.List(IQueryExpression queryExpression, QueryParameters queryParameters, IList results)
+   in NHibernate.Impl.AbstractSessionImpl.List(IQueryExpression queryExpression, QueryParameters parameters)
+   in NHibernate.Impl.AbstractQueryImpl2.List()
+   in NHibernate.Linq.DefaultQueryProvider.ExecuteQuery(NhLinqExpression nhLinqExpression, IQuery query, NhLinqExpression nhQuery)
+   in NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression)
+   in NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression)
+   in Remotion.Linq.QueryableBase`1.GetEnumerator()
+   in System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   in System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetTopPost(Int32 prmNPost) in D:\PROGETTI\Progetti C#\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 24
+   in Devevil.Blog.MVC.Client.Controllers.CategoryController.Index() in D:\PROGETTI\Progetti C#\BlogProject\Devevil.Blog.MVC.Client\Controllers\CategoryController.cs:riga 29
+2016-04-17 08:21:47,230 [10] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:47,232 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:47,234 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:47,235 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:47,236 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:47,237 [10] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:21:47,239 [10] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Page' non è valido.
+2016-04-17 08:21:47,280 [10] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController NHibernate.Exceptions.GenericADOException: could not execute query
+[ select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc ]
+  Name:p1 - Value:5
+[SQL: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc] ---> System.Data.SqlClient.SqlException: Il nome di oggetto 'Page' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+   --- Fine della traccia dello stack dell'eccezione interna ---
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Loader.Loader.List(ISessionImplementor session, QueryParameters queryParameters, ISet`1 querySpaces, IType[] resultTypes)
+   in NHibernate.Loader.Hql.QueryLoader.List(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl.List(ISessionImplementor session, QueryParameters queryParameters)
+   in NHibernate.Engine.Query.HQLQueryPlan.PerformList(QueryParameters queryParameters, ISessionImplementor session, IList results)
+   in NHibernate.Impl.SessionImpl.List(IQueryExpression queryExpression, QueryParameters queryParameters, IList results)
+   in NHibernate.Impl.AbstractSessionImpl.List(IQueryExpression queryExpression, QueryParameters parameters)
+   in NHibernate.Impl.AbstractQueryImpl2.List()
+   in NHibernate.Linq.DefaultQueryProvider.ExecuteQuery(NhLinqExpression nhLinqExpression, IQuery query, NhLinqExpression nhQuery)
+   in NHibernate.Linq.DefaultQueryProvider.Execute(Expression expression)
+   in NHibernate.Linq.DefaultQueryProvider.Execute[TResult](Expression expression)
+   in Remotion.Linq.QueryableBase`1.GetEnumerator()
+   in System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   in System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   in Devevil.Blog.Nhibernate.DAL.Repositories.PageRepository.GetTopPost(Int32 prmNPost) in D:\PROGETTI\Progetti C#\BlogProject\Devevil.Blog.Nhibernate.DAL\Repositories\PageRepository.cs:riga 24
+   in Devevil.Blog.MVC.Client.Controllers.PageController.ListTopPages(Int32 page) in D:\PROGETTI\Progetti C#\BlogProject\Devevil.Blog.MVC.Client\Controllers\PageController.cs:riga 272
+2016-04-17 08:22:39,430 [11] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: SELECT this_.Id as Id1_0_, this_.Name as Name1_0_, this_.Description as Descript3_1_0_, this_.IsDeleted as IsDeleted1_0_ FROM [Blog] this_
+System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Blog' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:22:39,431 [11] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Blog' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:22:39,433 [11] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Blog' non è valido.
+2016-04-17 08:22:39,434 [11] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Blog' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:22:39,436 [11] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Blog' non è valido.
+2016-04-17 08:22:39,437 [11] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Il nome di oggetto 'Blog' non è valido.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:3ada7dc2-2e4f-4f6d-bc65-2dc0d4e14853
+Error Number:208,State:1,Class:16
+2016-04-17 08:22:39,440 [11] ERROR NHibernate.Util.ADOExceptionReporter Il nome di oggetto 'Blog' non è valido.
+[Footer]\r\n[Header]\r\n[Footer]\r\n[Header]\r\n2016-04-17 08:52:07,697 [47] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:07,706 [47] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:07,708 [47] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-04-17 08:52:07,713 [47] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:07,715 [47] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-04-17 08:52:07,717 [47] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Page'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:07,718 [47] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Page'.
+2016-04-17 08:52:08,052 [47] ERROR Devevil.Blog.MVC.Client.Controllers.BaseController could not execute query
+[ select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc ]
+  Name:p1 - Value:10
+[SQL: select TOP (@p0) page0_.Id as Id4_, page0_.Title as Title4_, page0_.Description as Descript3_4_, page0_.Date as Date4_, page0_.BodyText as BodyText4_, page0_.IsDeleted as IsDeleted4_, page0_.ImageName as ImageName4_, page0_.Views as Views4_, page0_.AuthorId as AuthorId4_, page0_.BlogId as BlogId4_, page0_.CategoryId as CategoryId4_ from [Page] page0_ order by page0_.Date desc]
+2016-04-17 08:52:18,020 [49] ERROR NHibernate.AdoNet.AbstractBatcher Could not execute query: SELECT this_.Id as Id1_0_, this_.Name as Name1_0_, this_.Description as Descript3_1_0_, this_.IsDeleted as IsDeleted1_0_ FROM [Blog] this_
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:18,022 [49] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:18,025 [49] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Blog'.
+2016-04-17 08:52:18,026 [49] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:18,028 [49] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Blog'.
+2016-04-17 08:52:18,029 [49] WARN  NHibernate.Util.ADOExceptionReporter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Blog'.
+   in System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   in System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   in System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   in System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   in System.Data.SqlClient.SqlDataReader.get_MetaData()
+   in System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   in System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   in System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   in System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   in NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   in NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   in NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer)
+   in NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters, IResultTransformer forcedResultTransformer)
+ClientConnectionId:57f7b6d8-9c31-4e92-b518-8fa5cc20421f
+Error Number:208,State:1,Class:16
+2016-04-17 08:52:18,032 [49] ERROR NHibernate.Util.ADOExceptionReporter Invalid object name 'Blog'.
+[Footer]\r\n

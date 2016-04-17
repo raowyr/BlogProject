@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<Devevil.Blog.MVC.Client.Models.TagViewModel>
+
+@section content{
+    <div id="main">
+        <div class="title">
+            <h1>Gestione Tags</h1>
+        </div>
+        <div class="meta">
+            <p><button name="NewTag" value="Crea nuovo" class="button big icon fa-pencil" onclick="location.href = '/Manage/TagNew'">Crea nuovo TAG</button></p>
+        </div>
+        <table>
+            <tr>
+                <td><strong>Nome Tag</strong></td>
+                <td><strong>Azione</strong></td>
+            </tr>
+
+            @if(Model!=null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/TagDetail/@item.Id'">Modifica</button></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+}

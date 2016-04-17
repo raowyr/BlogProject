@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Devevil.Blog.MVC.Client.Models.TagViewModel
+
+@section content{
+<div id="main">
+    @using (Html.BeginForm("TagDetail", "Manage"))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>Gestione dettagli tag</h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome tag" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="Modify" value="Modifica" class="button big icon fa-pencil">Modifica</button></li>
+                    <li><a href="/Manage/Tags" class="button big icon fa-arrow-circle-left">Torna a gestione TAG</a></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
+}

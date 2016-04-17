@@ -44,7 +44,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             }
             catch (Exception ex)
             {
-                return Error(ex.Message);
+                return Error(ex);
             }
         }
 

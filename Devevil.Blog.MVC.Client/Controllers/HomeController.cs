@@ -116,7 +116,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
                 //cvTemp.Descrizione = "Sembra non siano presenti categorie...";
 
                 //m.CategoriesPreview.Add(cvTemp);
-                return Error(ex.Message);
+                return Error(ex);
             }
         }
     }

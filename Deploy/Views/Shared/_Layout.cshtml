@@ -1,0 +1,128 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>DOTNET CORNER - Articoli, tutorial tips & tricks relativi al mondo del .NET e dell'ingegneria del software</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+
+        <!-- Scripts -->
+        <script src="~/Scripts/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+		@*<script src="/assets/js/jquery.min.js"></script>*@
+		<script src="/assets/js/skel.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="/assets/js/main.js"></script>
+
+        <link href="~/assets/css/tag_cloud.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/Home/Index">DOTNET CORNER</a></h1>
+						<nav class="links">
+						<ul>
+							<li><a href="/Category/Index">Categorie</a></li>
+							<li><a href="/ListTop/1">Pagine più visitate</a></li>
+							<li><a href="/About/Index">About me</a></li>
+							<li><a href="/Contact/Index">Contattami</a></li>
+						</ul>
+					</nav>
+					<nav class="main">
+						<ul>
+							<li class="search">
+								<a class="fa-search" href="#search">Ricerca</a>
+                                 @using (Html.BeginForm("Find", "Page", FormMethod.Post, new { id = "search"}))
+                                 {
+                                     @Html.TextBox("query")
+                                 }
+							</li>
+							<li class="menu">
+								<a class="fa-bars" href="#menu">Menu</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+				<!-- Menu -->
+                <section id="menu">
+	                <!-- Search -->
+		            <section>
+                        @using (Html.BeginForm("Find", "Page", FormMethod.Post, new { id = "search"}))
+                        {
+                            @Html.TextBox("query")
+                        }
+		            </section>
+				    <section>
+			            <ul class="links">
+                            <li><a href="/Category/Index"><h3>Categorie</h3><p>Consulta la lista delle categorie del Blog</p></a></li>
+                            <li><a href="/ListTop/1"><h3>Pagine più visitate</h3><p>Accedi alle pagine più visitate</p></a></li>
+                            <li><a href="/About/Index"><h3>About me</h3><p>Info sull'autore del Blog</p></a></li>
+                            <li><a href="/Contact/Index"><h3>Contattami</h3><p>Contatta l'autore</p></a></li>
+			            </ul>
+		            </section>
+                    <!-- Actions -->
+
+                    <section>
+	                    <ul class="actions vertical">
+                        @{
+                            if (FormsAuthentication.IsEnabled && FormsAuthentication.CookiesSupported && Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+                            {
+		                        <li><a href="/Manage/Index" class="button big fit">Control Panel</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Manage/Login" class="button big fit">Log In</a></li>
+                            }
+                        }
+	                    </ul>
+                    </section>
+                </section>
+
+				<!-- Main -->
+                @RenderSection("content", required: false)
+
+				<!-- Sidebar -->
+                <section id="sidebar">
+                    <!-- Intro -->
+                    <section id="intro">
+	                    @*<a href="/Home/Index" class="logo"><img src="/images/logo.jpg" alt="" /></a>*@
+	                    <header>
+		                    <h2>DOTNET CORNER</h2>
+		                    <p style="text-align:justify">Articoli, tutorial tips & tricks relativi al mondo del .NET e dell'ingegneria del software</p>
+	                    </header>
+                    </section>
+				    <!-- Mini Posts -->
+                    @RenderSection("category", required: false)
+
+                    <!-- Posts List -->
+                    @RenderSection("postpreview", required: false)
+                    
+                    <!-- About -->
+                    <section class="blurb">
+	                    <h2>About</h2>
+	                    <p style="text-align:justify">Il mio nome è Pasquale Garzillo e da sempre ho la passione per tutto ciò che riguarda il mondo IT. Mi piace in particolare approfondire gli aspetti legati all'ingegneria del software, la progettazione di sistemi informativi complessi e strutturati e lo sviluppo attraverso le tecnologie Microsoft, in particolare il framework .NET</p>
+	                    <ul class="actions">
+		                    <li><a href="/About/Index" class="button">Maggiori informazioni</a></li>
+	                    </ul>
+                    </section>
+
+                    <!-- Footer -->
+                    <section id="footer">
+	                    <ul class="icons">
+		                    <li><a href="https://plus.google.com/u/0/+PasqualeGarzillo87" class="fa-google"><span class="label">G+</span></a></li>
+		                    <li><a href="http://it.linkedin.com/in/pgarzillo" class="fa-linkedin"><span class="label">Linkedin</span></a></li>
+		                    <li><a href="skype:pgarzillo" class="fa-skype"><span class="label">Skype</span></a></li>
+		                    <li><a href="/Rss/Index" class="fa-rss"><span class="label">RSS</span></a></li>
+		                    <li><a href="/Contact/Index" class="fa-envelope"><span class="label">Email</span></a></li>
+	                    </ul>
+	                    <p class="copyright">&copy; DOTNETCORNER. Pasquale Garzillo.</p>
+                    </section>
+                </section>
+			</div>
+	</body>
+</html>

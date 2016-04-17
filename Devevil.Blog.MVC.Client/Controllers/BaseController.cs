@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Devevil.Blog.MVC.Client.Models;
+using Devevil.Blog.Logger.Log4Net;
 
 namespace Devevil.Blog.MVC.Client.Controllers
 {
@@ -11,7 +12,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
     {
         public BaseController()
         {
-            Logger.Log4Net.Logger<BaseController>.Configure();
+            Logger<BaseController>.Configure();
         }
 
         public ViewResult Error(Exception prmError)
@@ -19,7 +20,7 @@ namespace Devevil.Blog.MVC.Client.Controllers
             ErrorViewModel evm = new ErrorViewModel();
             if(Request!=null && Request.Url!=null)
                 evm.RefferalUrl = Request.Url.ToString();
-            evm.Message = prmError.Message;
+            evm.Message = prmError.Message + "/" + prmError.Source + "/" + prmError.StackTrace;
 
             Logger.Log4Net.Logger<BaseController>.Error(prmError);
 

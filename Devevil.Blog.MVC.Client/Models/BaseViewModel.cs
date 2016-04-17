@@ -19,8 +19,13 @@ namespace Devevil.Blog.MVC.Client.Models
 
         public string FriendlyURL(string prmInputString)
         {
-            Regex rgx = new Regex("[^a-zA-Z0-9]");
-            return rgx.Replace(prmInputString, "-");
+            if (!String.IsNullOrEmpty(prmInputString))
+            {
+                Regex rgx = new Regex("[^a-zA-Z0-9]");
+                return rgx.Replace(prmInputString, "-");
+            }
+            else
+                return prmInputString;
         }
     }
 }

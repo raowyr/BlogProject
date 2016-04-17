@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content{
+<div id="main">
+    <!-- Post -->
+    <article class="post">
+	    <header>
+		    <div class="title">
+			    <h2>About me</h2>
+		    </div>
+	    </header>
+        <p style="text-align:justify;">Il mio nome è Pasquale Garzillo e da sempre ho la passione per tutto ciò che riguarda il mondo IT. Mi piace in particolare approfondire gli aspetti legati all'ingegneria del software, la progettazione di sistemi informativi complessi e strutturati e lo sviluppo attraverso le tecnologie Microsoft, in particolare il framework .NET.
+            <br />Dal 2010 ho conseguito la Laurea in Informatica presso l'Università degli studi di Napoli Federico II e da allora ho trasformato questa passione in un mestiere.
+            Per maggiori informazioni, consulta i link proposti qui di seguito:
+        </p>
+        <p><a href="#">Visualizza il mio profilo professionale su LinkedIn</a></p>
+        <p><a href="#">Scarica il mio Curriculum Vitae</a></p>
+        <p>@Html.ActionLink("Contattami","Index","Contact") per maggiori informazioni</p>
+    </article>
+</div>
+}

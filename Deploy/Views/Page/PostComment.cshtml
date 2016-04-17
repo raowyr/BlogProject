@@ -1,0 +1,174 @@
+﻿@model Devevil.Blog.MVC.Client.Models.DetailPageViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content{
+<div id="main">
+    <script type="text/javascript">
+        /*
+          This is not necessary, but gives the tag-cloud a nice fade-in effect. 
+        */
+        $(document).ready(function onPageLoad() {
+            var animatedProperties = {
+                paddingLeft: '50px',
+                paddingTop: '75px',
+                paddingBottom: '125px',
+                paddingRight: '150px',
+                opacity: 1
+            };
+
+            $('.tag-cloud').animate(animatedProperties, 500);
+        });
+    </script>
+     @{
+         if (Model.DetailedPost != null)
+         {
+            <!-- Post -->
+            <article class="post">
+	            <header>
+		            <div class="title">
+			            <h2>@Model.DetailedPost.Titolo</h2>
+		            </div>
+		            <div class="meta">
+			            <time class="published" datetime="@Model.DetailedPost.Data.ToShortDateString()">@Model.DetailedPost.Data.ToShortDateString()</time>
+			            <span class="name">@Model.DetailedPost.Autore</span>
+		            </div>
+	            </header>
+                @if (!String.IsNullOrEmpty(Model.DetailedPost.ImageName))
+                {
+	                <img src="/Uploads/@Model.DetailedPost.ImageName" alt="@Model.DetailedPost.Titolo" />
+                }
+	            <p>@Html.Raw(Model.DetailedPost.Testo)</p>
+
+                @if (Model != null && Model.DetailedPost.TagCloud != null && Model.DetailedPost.TagCloud.Count() > 0)
+                {
+                    <div class="tag-cloud">
+                      @foreach (var tag in Model.DetailedPost.TagCloud)
+                      {
+                        <span class="tag kind-@tag.Category">@tag.Text</span>
+                      }
+                    </div>
+                }
+
+	            <footer>
+@*		            <ul class="actions">
+			            <li><a href="#" class="button big">Vai all'articolo</a></li>
+		            </ul>*@
+		            <ul class="stats">
+			            <li><a href="/List/@Model.DetailedPost.NomeCategoriaURLFirendly/@Model.DetailedPost.IdCategoria/1">Categoria: @Model.DetailedPost.Categoria</a></li>
+			            <li><a href="#" class="icon fa-heart">@Model.DetailedPost.Visualizzazioni.ToString()</a></li>
+			            <li><a href="#" class="icon fa-comment">@Model.DetailedPost.NumComments.ToString()</a></li>
+		            </ul>
+	            </footer>
+            </article>
+         
+                if (Model.DetailedPost.Comments != null && Model.DetailedPost.Comments.Count > 0)
+                {
+                    foreach (var c in Model.DetailedPost.Comments)
+                    {
+                    <article class="post">
+	                    <p>Utente: @c.UserName</p>
+                        <p>Mail: @c.UserMail</p>
+                        <p>@c.TextComment</p>
+                    </article>
+                    }
+                }
+
+                using (Html.BeginForm("PostComment", "Page"))
+                {
+                    <!-- Commento -->
+                    <article class="post">
+	                    <header>
+		                    <div class="title">
+			                    <h2>Inserisci un nuovo commento</h2>
+		                    </div>
+	                    </header>
+	                    <p>
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            @if (Model != null && !String.IsNullOrEmpty(Model.Message))
+                            {
+                                @Model.Message
+                            }
+	                    </p>
+                        
+                        @Html.Hidden("TitoloPaginaFirendly", Model.DetailedPost.TitoloURLFirendly)
+                        @Html.Hidden("IdPagina", Model.DetailedPost.Id)
+
+                        <p>
+                             @Html.TextBoxFor(m => m.Comment.UserName, new { placeholder = "Username utente" })
+                        </p>
+                        <p>
+                             @Html.TextBoxFor(m => m.Comment.UserMail, new { placeholder = "Email utente" })
+                        </p>
+                        <p>
+                             @Html.TextAreaFor(m => m.Comment.TextComment, new { placeholder = "Commento" })
+                        </p>
+                        <footer>
+                            <ul class="actions">
+                                <li><button name="SendButton" value="Invia" class="button big icon fa-mail-forward">Invia</button></li>
+		                    </ul>
+                        </footer>
+                    </article>
+                }
+            }
+         }
+@*    <ul class="actions pagination">
+		<li><a href="" class="disabled button big previous">Pagina Precedente</a></li>
+		<li><a href="#" class="button big next">Pagina Successiva</a></li>
+	</ul>*@
+</div>
+
+}
+
+@section category{
+<section>
+	<div class="mini-posts">
+        @{
+            if (Model.CategoriesPreview != null && Model.CategoriesPreview.Count > 0)
+            {
+                foreach (var item in Model.CategoriesPreview)
+                {
+		            <!-- Mini Post -->
+			        <article class="mini-post">
+				        <header>
+					        <h3><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1">@item.Nome</a></h3>
+                            <p>@item.Descrizione</p>
+				        </header>
+                        @if (!String.IsNullOrEmpty(item.FileName))
+                        {
+				            <a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="image"><img src="/Uploads/@item.FileName" alt="@item.Nome" /></a>
+                        }
+			        </article>
+                }
+            }
+        }
+	</div>
+</section>
+}
+
+@section postpreview{
+<section>
+	<ul class="posts">
+        @{
+            if (Model.PostPreview != null && Model.PostPreview.Count > 0)
+            {
+                foreach (var item in Model.PostPreview)
+                {
+                    <li>
+			            <article>
+				            <header>
+					            <h3><a href="/Archive/@item.TitoloURLFirendly/@item.Id">@item.Titolo</a></h3>
+					            <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
+				            </header>
+				            @*<a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>*@
+			            </article>
+		            </li>
+                }
+            }
+        }
+	</ul>
+</section>
+}

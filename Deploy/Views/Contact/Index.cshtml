@@ -1,0 +1,43 @@
+﻿@model Devevil.Blog.MVC.Client.Models.MessageViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content{
+<div id="main">
+    @using (Html.BeginForm("Index", "Contact"))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>Restiamo in contatto</h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Name, new { placeholder = "Nome del mittente" })
+            </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Email, new { placeholder = "Email mittente" })
+            </p>
+            <p>
+                 @Html.TextAreaFor(m => m.Body, new { placeholder = "Messaggio" })
+            </p>
+            <footer>
+                <ul class="actions">
+                    <li><button name="SendButton" value="Invia" class="button big icon fa-mail-forward">Invia</button></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
+}

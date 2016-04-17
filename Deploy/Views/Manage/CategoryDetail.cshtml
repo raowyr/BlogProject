@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Devevil.Blog.MVC.Client.Models.CategoryViewModel
+
+@section content{
+<div id="main">
+    @using (Html.BeginForm("CategoryDetail", "Manage", FormMethod.Post, new 
+                                       { enctype = "multipart/form-data" }))
+    {
+        <!-- Post -->
+        <article class="post">
+	        <header>
+		        <div class="title">
+			        <h2>Gestione dettagli categoria</h2>
+		        </div>
+	        </header>
+	        <p>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @if (Model!=null && !String.IsNullOrEmpty(Model.Message))
+                {
+                    @Model.Message
+                }
+	        </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Nome, new { placeholder = "Nome categoria" })
+            </p>
+            <p>
+                 @Html.TextBoxFor(m => m.Descrizione, new { placeholder = "Descrizione categoria" })
+            </p>
+            <p>
+                @Html.TextBoxFor(m => m.File, new { type = "file" })
+                Dimensioni consigliate: 840x341
+            </p>
+            @if(Model!=null && !String.IsNullOrEmpty(Model.FileName))
+            {
+                <table>
+                    <tr>
+                        <td><strong>Immagine</strong></td>
+                        <td><strong>Azione</strong></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Uploads/@Model.FileName" alt="@Model.FileName" /></td>
+                        <td><a href="/Manage/CategoryRemoveImage/@Model.Id" class="button big icon fa-remove">Elimina</a></td>
+                    </tr>
+                </table>
+            }
+            <footer>
+                <ul class="actions">
+                    <li><button name="Modify" value="Modifica" class="button big icon fa-pencil">Modifica</button></li>
+                    <li><a href="/Manage/Categories" class="button big icon fa-arrow-circle-left">Torna a gestione categorie</a></li>
+		        </ul>
+            </footer>
+        </article>
+    }
+</div>
+}

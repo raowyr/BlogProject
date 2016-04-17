@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<Devevil.Blog.MVC.Client.Models.CategoryViewModel>
+
+@section content{
+    <div id="main">
+        <div class="title">
+            <h1>Gestione Categorie</h1>
+        </div>
+        <div class="meta">
+            <p><button name="NewCategory" value="Crea nuova" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryNew'">Crea nuova categoria</button></p>
+        </div>
+        <table>
+            <tr>
+                <td><strong>Nome categoria</strong></td>
+                <td><strong>Descrizione</strong></td>
+                <td><strong>Azione</strong></td>
+            </tr>
+
+            @if(Model!=null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.Descrizione</td>
+                        <td><button name="Modify" value="Modifica" class="button big icon fa-pencil" onclick="location.href = '/Manage/CategoryDetail/@item.Id'">Modifica</button></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+}

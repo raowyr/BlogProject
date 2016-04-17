@@ -1,0 +1,93 @@
+﻿@model Devevil.Blog.MVC.Client.Models.ListCategoryViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section content{
+<div id="main">
+     @{
+        if (Model.Categories != null && Model.Categories.Count>0)
+        {
+            foreach (var item in Model.Categories)
+            {
+                <!-- Post -->
+                <article class="post">
+	                <header>
+		                <div class="title">
+			                <h2><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1">@item.Nome</a></h2>
+		                </div>
+@*		                <div class="meta">
+			                <time class="published" datetime="@Model.DetailedPost.Data.ToShortDateString()">@Model.DetailedPost.Data.ToShortDateString()</time>
+			                <a href="#" class="author"><span class="name">@Model.DetailedPost.Autore</span></a>
+		                </div>*@
+	                </header>
+                    @if(!String.IsNullOrEmpty(item.FileName))
+                    {
+	                    <a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="image featured"><img src="/Uploads/@item.FileName" alt="" /></a>
+                    }
+	                <p>@item.Descrizione</p>
+
+	                <footer>
+    		            <ul class="actions">
+			                <li><a href="/List/@item.NomeCategoriaURLFirendly/@item.Id/1" class="button big">Vai alla categoria</a></li>
+		                </ul>
+	                </footer>
+                </article>
+            }
+        }
+    }
+@*    <ul class="actions pagination">
+		<li><a href="" class="disabled button big previous">Pagina Precedente</a></li>
+		<li><a href="#" class="button big next">Pagina Successiva</a></li>
+	</ul>*@
+</div>
+
+}
+
+@*@section category{
+<section>
+	<div class="mini-posts">
+        @{
+            if (Model.CategoriesPreview != null && Model.CategoriesPreview.Count > 0)
+            {
+                foreach (var item in Model.CategoriesPreview)
+                {
+		            <!-- Mini Post -->
+			        <article class="mini-post">
+				        <header>
+					        <h3><a href="#">@item.Nome</a></h3>
+                            <p>@item.Descrizione</p>
+				        </header>
+				        <a href="#" class="image"><img src="/images/pic04.jpg" alt="" /></a>
+			        </article>
+                }   
+            }
+        }
+	</div>
+</section>
+}*@
+
+@section postpreview{
+<section>
+	<ul class="posts">
+        @{
+            if (Model.PostPreview != null && Model.PostPreview.Count > 0)
+            {
+                foreach (var item in Model.PostPreview)
+                {
+                    <li>
+			            <article>
+				            <header>
+					            <h3><a href="/Archive/@item.TitoloURLFirendly/@item.Id">@item.Titolo</a></h3>
+					            <time class="published" datetime="@item.Data.ToShortDateString()">@item.Data.ToShortDateString()</time>
+				            </header>
+				            @*<a href="#" class="image"><img src="/images/pic08.jpg" alt="" /></a>*@
+			            </article>
+		            </li>
+                }
+            }
+        }
+	</ul>
+</section>
+}
